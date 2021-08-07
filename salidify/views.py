@@ -1,17 +1,20 @@
 from django.shortcuts import render
 from django.http import HttpResponse
 
-def forecast(request):
-    return render(request, 'salidify/screen1.html')
+def browseSalads(request):
+    return render(request, 'salidify/browseSalads.html')
 
-def forecast_alert(request):
-    return render(request, 'salidify/screen2.html')
+def similarSalads(request):
+    return render(request, 'salidify/similarSalads.html')
 
-def comparison(request):
-    return render(request, 'salidify/screen3.html')
+def viewIngredients(request):
+    return render(request, 'salidify/viewIngredients.html')
 
-def comparison_alert(request):
-    return render(request, 'salidify/screen4.html')
+def alternateIngredients(request):
+    return render(request, 'salidify/alternateIngredients.html')
+
+def viewInstructions(request):
+    return render(request, 'salidify/viewInstructions.html')
 
 def index(request):
     return render(request, 'salidify/index.html')
