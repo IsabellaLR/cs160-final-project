@@ -1,3 +1,66 @@
-li {
-    color: green;
+body {
+    font-family: 'Montserrat', sans-serif !important;
+  }
+
+/* Title for Home page */
+.title {
+  font-size: 48px;
+  font-weight: 900;
 }
+
+/* Green box with rounded corners */
+.green-box {
+  background-color: #31A05E;
+  color: white;
+  border-radius: 5px;
+  padding: 20px;
+  margin: 20px;
+  text-align: center;
+  outline-width: 1px;
+}
+
+/* Light Green box with rounded corners */
+.light-green-box {
+    background-color: #6CBE76;
+    color: white;
+    border-radius: 5px;
+    padding: 20px;
+    margin: 20px;
+    text-align: center;
+    outline-width: 1px;
+}
+
+/* White box with green border + rounded corners */
+.white-box {
+  color: #070707;
+  background-color: white;
+  border-radius: 5px;
+  border-width: thin;
+  border-color: #6CBE76;
+  padding: 20px;
+  margin: 20px;
+  text-align: center;
+  outline-width: 1px;
+}
+
+/* Primary color for the page */
+.green {
+  background-color: #31A05E;
+}
+
+/* Secondary color for the page */
+.light-green {
+  background-color: #6CBE76;
+}
+
+/* Primary green for any text */
+.green-text {
+  color: #31A05E;
+}
+
+/* Specific black for any text */
+.black-text {
+  color: #070707;
+}
+
+
