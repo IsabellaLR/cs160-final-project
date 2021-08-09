@@ -10,6 +10,25 @@
 	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 	<link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet">
 </head>
+<style>
+	.card-container {
+		display: flex;
+		flex-wrap: wrap;
+		justify-content: center;
+		max-width: 100%;
+		margin: 0 auto;
+		padding: 9px;
+	}
+
+	.card {
+		width: 90%;
+		height: 350px;
+		margin: 12px;
+		border-width: 2px;
+		border-radius: 16px;
+		background-color: #31A05E;
+	}
+</style>
 <body>
 	<!-- top navbar with logo -->
 	<nav class="navbar green">
@@ -18,7 +37,7 @@
 		</a>
 	</nav>
 	<!-- navbar with title + navigation -->
-	<nav class="navbar p-5">
+	<nav class="navbar px-5 pt-5">
 		<a class="navbar-brand" href="http://localhost:8000/salidify/">
 			<svg xmlns="http://www.w3.org/2000/svg" height="40px" viewBox="0 0 24 24" width="40px" fill="#000000"><path d="M0 0h24v24H0V0z" fill="none" opacity=".87"/><path d="M17.51 3.87L15.73 2.1 5.84 12l9.9 9.9 1.77-1.77L9.38 12l8.13-8.13z"/></svg>
 		</a>
@@ -29,22 +48,45 @@
 			<svg xmlns="http://www.w3.org/2000/svg" height="40px" viewBox="0 0 24 24" width="40px" fill="#000000"><path d="M0 0h24v24H0V0z" fill="none"/><path d="M3 17v2h6v-2H3zM3 5v2h10V5H3zm10 16v-2h8v-2h-8v-2h-2v6h2zM7 9v2H3v2h4v2h2V9H7zm14 4v-2H11v2h10zm-6-4h2V7h4V5h-4V3h-2v6z"/></svg>
 		</a>
 	</nav>
-	<div id="demo">
-		<button type="button" onclick="loadXMLDoc()">Change Content</button>
-		</div>
-	<script>
-function loadXMLDoc() {
-  var xhttp = new XMLHttpRequest();
-  xhttp.onreadystatechange = function() {
-    if (this.readyState == 4 && this.status == 200) {
-      document.getElementById("demo").innerHTML =
-      this.responseText;
-    }
-  };
-  xhttp.open("GET", "https://www.postman.com/collections/30ff4b61611aadf3df2f", true);
-  xhttp.send();
-}
-</script>
+	<div class="container text-center pt-2 pb-5">
+          <h2>Replacing Kale</h2>
+    </div>
+	<div class="container" id="demo"></div>
+		
+		<script>
+		function loadXMLDoc() {
+			var url = "https://api.spoonacular.com/food/ingredients/substitutes?apiKey=a9f75cfd2e6546e49246a124bde0e650&ingredientName=kale";
+			var xhr = new XMLHttpRequest();
+			
+			xhr.open("GET", url);
+			xhr.setRequestHeader("Accept", "application/json");
+
+			xhr.onreadystatechange = function () {
+			if (xhr.readyState === 4) {
+				console.log(xhr.status);
+				console.log(xhr.responseText);
+			}};
+
+			xhr.onload = function() {
+				myObj = JSON.parse(this.responseText);
+				var subs = myObj.substitutes;
+				let text = "<table border='1'>"
+				for (let i = 0; i < subs.length; i++) {
+					text += "<tr><td>Replace "+ myObj.ingredient + " for:<br>"+ myObj.substitutes[i] +"</td></tr>";
+				}
+				text += "</table>"
+				document.getElementById("demo").innerHTML = text;
+			}
+			xhr.send();
+			
+
+
+		}
+
+		loadXMLDoc();
+		
+		</script>
+		
+		</body>
 	
-</body>
 </html>
