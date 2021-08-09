@@ -22,11 +22,153 @@
 
 	.card {
 		width: 90%;
-		height: 350px;
+		height: 200px;
 		margin: 12px;
 		border-width: 2px;
 		border-radius: 16px;
+		background-color: #6CBE76;
+	}
+	.mediumButton {
+		font-weight: 500;
+		font-size: x-large;
+		border-radius: 30px;
+		padding: 16px 130px;
+		background-color: #6CBE76;
+		color: white;
+		border: none;
+		box-shadow: 0 3px 10px rgb(0 0 0 / 0.2);
+	}
+
+	.ingredientsList {
+		display: flex;
+		width: 85%;
+		margin-left: auto;
+		margin-right: auto;
+		margin-top: 5%;
+		flex-direction: column;
+	}
+
+	.listHeading {
+		border-bottom: 3px solid #31A05E;
+    width: 100%;
+		color: #31A05E;
+		font-size: xx-large;
+		font-weight: 600;
+	}
+	.listHaveItem {
+		display: flex;
+		width: 95%;
+		min-height: 85px;
+		margin-left: auto;
+		margin-right: auto;
+	}
+	.haveItemName {
+		width: 100%;
+    font-size: xx-large;
+    margin-top: auto;
+    margin-bottom: auto;
+    font-weight: 600;
+	}
+	.bottomBtnGroup {
+		display: flex;
+    width: 100%;
+    margin-left: auto;
+    margin-right: auto;
+    justify-content: space-around;
+    position: fixed;
+    bottom: 0;
+	}
+	.bottomBtn {
 		background-color: #31A05E;
+		color: white;
+		padding: 20px;
+		width: 100%;
+		text-align: center;
+		height: 90%;
+		border-radius: 35px;
+		font-size: xx-large;
+		font-weight: 600;
+		margin: 31px 22px;
+		box-shadow: 0 3px 10px rgb(0 0 0 / 0.2);
+	}
+
+
+	/* for checkboxes */
+	.checkContainer {
+	  display: block;
+	  position: relative;
+	  padding-left: 35px;
+	  margin-bottom: 12px;
+	  cursor: pointer;
+	  font-size: 22px;
+	  -webkit-user-select: none;
+	  -moz-user-select: none;
+	  -ms-user-select: none;
+	  user-select: none;
+		width:18%;
+	}
+
+	/* Hide the browser's default checkbox */
+	.checkContainer input {
+	  position: absolute;
+	  opacity: 0;
+	  cursor: pointer;
+	  height: 0;
+	  width: 0;
+	}
+
+	/* Create a custom checkbox */
+	.checkmark {
+		position: absolute;
+    top: 0;
+    left: 0;
+    height: 85px;
+    width: 85px;
+	  background-color: #8ECD95;
+		border-radius:20px;
+		box-shadow: 0 3px 10px rgb(0 0 0 / 0.2);
+
+	}
+
+	/* On mouse-over, add a grey background color */
+	.checkContainer:hover input ~ .checkmark {
+	  background-color: #8ECD95;
+	}
+
+	/* When the checkbox is checked, add a blue background */
+	.checkContainer input:checked ~ .checkmark {
+	 background-color: #6CBE76;
+	 box-shadow: inset 0 3px 10px rgb(0 0 0 / 0.4);
+
+	}
+
+	/* Create the checkmark/indicator (hidden when not checked) */
+	.checkmark:after {
+	  content: "";
+	  position: absolute;
+	  display: none;
+	}
+
+	/* Show the checkmark when checked */
+	.checkContainer input:checked ~ .checkmark:after {
+	  display: block;
+	}
+
+	/* Style the checkmark/indicator */
+	.checkContainer .checkmark:after {
+		left: 32px;
+    top: 12px;
+    width: 20px;
+    height: 46px;
+    border: solid white;
+    border-width: 0 6px 6px 0;
+	  -webkit-transform: rotate(45deg);
+	  -ms-transform: rotate(45deg);
+	  transform: rotate(45deg);
+	}
+	.jumbotron {
+		width: 90%;
+        height: 82px;
 	}
 </style>
 <body>
@@ -49,9 +191,16 @@
 		</a>
 	</nav>
 	<div class="container text-center pt-2 pb-5">
-          <h2>Replacing Kale</h2>
+          <h2>Replacing: 1 Cup Kale</h2>
+		  <h3>Select a substitute from the choices below.</h3>
     </div>
-	<div class="container" id="demo"></div>
+	<div class="card-container" id="demo"></div>
+	<div class="bottomBtnGroup">
+		<div class="bottomBtn" style="margin: 31px 0px 31px 22px;">Complete Replacement</div>
+	</div>
+	
+
+	
 		
 		<script>
 		function loadXMLDoc() {
@@ -69,18 +218,20 @@
 
 			xhr.onload = function() {
 				myObj = JSON.parse(this.responseText);
+				var amount = "1 cup = ";
 				var subs = myObj.substitutes;
 				let text = "<table border='1'>"
 				for (let i = 0; i < subs.length; i++) {
-					text += "<tr><td>Replace "+ myObj.ingredient + " for:<br>"+ myObj.substitutes[i] +"</td></tr>";
+					let idx = myObj.substitutes[i].indexOf(amount);
+					let sub = myObj.substitutes[i].substr(idx+amount.length, myObj.substitutes[i].length-1);
+					//text += "<div class='jumbotron light-green'><h3 class='pb-2' style='color: white;'> Choice "+(i+1)+": "+ sub +"</h3><p class='lead'>In Stock at Selected Store</p></div>"
+					text += "<div class='card light-green p-5'><div class='listHaveItem'><label class='checkContainer'><input type='checkbox' checked='checked'><span class='checkmark'></span></label><div class='haveItemName'>"
+						 + sub + "<br><p class='lead'>In Stock at Selected Store</p></div></div></div>"
 				}
 				text += "</table>"
 				document.getElementById("demo").innerHTML = text;
 			}
 			xhr.send();
-			
-
-
 		}
 
 		loadXMLDoc();
