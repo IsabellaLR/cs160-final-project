@@ -12,9 +12,8 @@ body {
 .green-box {
   background-color: #31A05E;
   color: white;
-  border-radius: 5px;
+  border-radius: 20px;
   padding: 20px;
-  margin: 20px;
   text-align: center;
   outline-width: 1px;
 }
