@@ -10,6 +10,9 @@ def similarSalads(request):
 def viewIngredients(request):
     return render(request, 'salidify/viewIngredients.html')
 
+def shopIngredients(request):
+    return render(request, 'salidify/shopIngredients.html')
+
 def alternateIngredients(request):
     return render(request, 'salidify/alternateIngredients.html')
 
