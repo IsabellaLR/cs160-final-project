@@ -70,14 +70,17 @@
 	</div>
 </body>
 <script>
-	var saladIngredients = sessionStorage.getItem('saladIngredients');
-	var dressingIngredients = sessionStorage.getItem('dressingIngredients');
-	var saladPicture = sessionStorage.getItem('saladPicture');
-	var saladName = sessionStorage.getItem('saladName');
+	var saladIngredients = JSON.parse(sessionStorage.saladIngredients);
+	var dressingIngredients = JSON.parse(sessionStorage.dressingIngredients);
+	var saladPicture = sessionStorage.saladPicture;
+	var saladName = sessionStorage.saladName;
+	//if no dressing, will just be ""
+	var dressingName = sessionStorage.dressingName;
 	$("#saladPic").append("<img src=" + saladPicture + " style='height:25vh;width:25vh;object-fit:cover;border-radius:10%;'/>");
 	$("#saladDesc").append("<p class='text-center green-text' style='padding-top:5vh;font-size:50px;'>" + saladName + "</p>");
 	$("#saladDesc").append("<p class='text-center' style='font-size:35px;'> Rating: 5.0 <br> Prep Time: 20 Min <br> Serving Size: 4 </p>");
 	for (var i = 0; i < saladIngredients.length; i++) {
+		console.log(saladIngredients[i]);
 		//Iterate through each ingredient and append to row with id=ingredients
 	}
 </script>

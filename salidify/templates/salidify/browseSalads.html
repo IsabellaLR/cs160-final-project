@@ -88,14 +88,16 @@
 	}
 
 	function setStorageVal(index){
-		sessionStorage.setItem('saladIngredients', salads[index][3]);
+		sessionStorage.saladIngredients = JSON.stringify(salads[index][3]);
 		if (salads[index][4].length == 0) {
-			sessionStorage.setItem('dressingIngredients', []);
+			sessionStorage.dressingIngredients = JSON.stringify([]);
+			sessionStorage.dressingName = "";
 		} else {
-			sessionStorage.setItem('dressingIngredients', dressingsDict[salads[index][4]]);
+			sessionStorage.dressingIngredients = JSON.stringify(dressingsDict[salads[index][4]]);
+			sessionStorage.dressingName = salads[index][4];
 		}
-		sessionStorage.setItem('saladPicture', salads[index][1]);
-		sessionStorage.setItem('saladName', salads[index][0]);
+		sessionStorage.saladPicture = salads[index][1];
+		sessionStorage.saladName = salads[index][0];
 	}
 
     for (var i = 0; i < salads.length; i++) {
