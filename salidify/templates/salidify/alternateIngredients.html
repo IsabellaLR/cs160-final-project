@@ -198,46 +198,89 @@
 	<div class="bottomBtnGroup">
 		<div class="bottomBtn" style="margin: 31px 0px 31px 22px;">Complete Replacement</div>
 	</div>
-	
-
-	
+<script>
+	//TODO: account for errors when can't find sub ingredients
+	// var subIngredient = sessionStorage.subIngredient;
+	var subIngredient = "1 Cup Kale";
+	var tastes = ["Sweet", "Salty", "Sour", "Bitter", "Savory", "Fatty"];
+	var swappedIngredient = null;
+	var swappedIngredientNoMetric = null;
+	var substitutes = [];
+	var subTastes = {"Sweet":[], "Salty":[], "Sour":[], "Bitter":[], "Savory":[], "Fatty":[]};
+	var APIkey = "a9f75cfd2e6546e49246a124bde0e650";
+	//my APIkey 7c3fcc8ec0b742fdbcb7cd0848220abb
+	function loadXMLDoc() {
+		var url = "https://api.spoonacular.com/food/ingredients/substitutes?apiKey="+APIkey+"&ingredientName=" + subIngredient;
+		var xhr = new XMLHttpRequest();
 		
-		<script>
-		function loadXMLDoc() {
-			var url = "https://api.spoonacular.com/food/ingredients/substitutes?apiKey=a9f75cfd2e6546e49246a124bde0e650&ingredientName=kale";
-			var xhr = new XMLHttpRequest();
-			
-			xhr.open("GET", url);
-			xhr.setRequestHeader("Accept", "application/json");
+		xhr.open("GET", url);
+		xhr.setRequestHeader("Accept", "application/json");
 
-			xhr.onreadystatechange = function () {
-			if (xhr.readyState === 4) {
-				console.log(xhr.status);
-				console.log(xhr.responseText);
-			}};
+		xhr.onreadystatechange = function () {
+		if (xhr.readyState === 4) {
+			// console.log(xhr.status);
+			// console.log(xhr.responseText);
+		}};
 
-			xhr.onload = function() {
-				myObj = JSON.parse(this.responseText);
-				var amount = "1 cup = ";
-				var subs = myObj.substitutes;
-				let text = "<table border='1'>"
-				for (let i = 0; i < subs.length; i++) {
-					let idx = myObj.substitutes[i].indexOf(amount);
-					let sub = myObj.substitutes[i].substr(idx+amount.length, myObj.substitutes[i].length-1);
-					//text += "<div class='jumbotron light-green'><h3 class='pb-2' style='color: white;'> Choice "+(i+1)+": "+ sub +"</h3><p class='lead'>In Stock at Selected Store</p></div>"
-					text += "<div class='card light-green p-5'><div class='listHaveItem'><label class='checkContainer'><input type='checkbox' checked='checked'><span class='checkmark'></span></label><div class='haveItemName'>"
-						 + sub + "<br><p class='lead'>In Stock at Selected Store</p></div></div></div>"
+		xhr.onload = function() {
+			myObj = JSON.parse(this.responseText);
+			var amount = "1 cup = ";
+			console.log(myObj.substitutes);
+			substitutes = myObj.substitutes;
+			let text = "<table border='1'>"
+			for (let i = 0; i < substitutes.length; i++) {
+				let idx = substitutes[i].indexOf(amount);
+				let sub = substitutes[i].substr(idx+amount.length, substitutes[i].length-1);
+				//text += "<div class='jumbotron light-green'><h3 class='pb-2' style='color: white;'> Choice "+(i+1)+": "+ sub +"</h3><p class='lead'>In Stock at Selected Store</p></div>"
+			}
+
+			console.log(substitutes);
+			for (let i = 0; i < substitutes.length; i++) {
+				var counter = 0;
+				var xmlHttp = new XMLHttpRequest();
+				xmlHttp.open("POST", 'https://api.spoonacular.com/recipes/visualizeTaste?apiKey=' + APIkey, true);
+				xmlHttp.send('ingredientList=' + substitutes[i]);
+
+				xmlHttp.onload = function() {
+					var split = JSON.stringify(this.responseText).split("rgb(75, 192, 192)")[2].split("data")[1].split("options")[0].replace(/[^\d.,]/g, '').slice(0, -1).split(",");
+					var tasteNumArray = split.map(function (x) { 
+						return parseInt(x); 
+					});
+					//most appropriate taste for ingredient
+					var closestTaste = tastes[tasteNumArray.indexOf(Math.max.apply(Math, tasteNumArray))];
+					var tasteArray = subTastes[closestTaste];
+					tasteArray.push(substitutes[i]);
+					subTastes[closestTaste] = tasteArray;
+					counter += 1;
+					if (counter == substitutes.length) {
+						// console.log(subTastes);
+						addUI();
+					}
+				}
+			}
+
+			function addUI() {
+				for (key in subTastes) {
+					var value = subTastes[key];
+					console.log(value);
+					if (value.length != 0) {
+						text += "<div class='text' style='font-size: 48px; font-weight:600; font-family: Montserrat; color: #31A05E;'>"+key+"</div>";
+						for (let i = 0; i < value.length; i++) {
+							text += "<div class='card light-green p-5'><div class='listHaveItem'><label class='checkContainer'><input type='checkbox' checked='checked'><span class='checkmark'></span></label><div class='haveItemName'>"
+						+ value[i] + "<br><p class='lead'>In Stock at Selected Store</p></div></div></div>"
+						}
+					}
 				}
 				text += "</table>"
 				document.getElementById("demo").innerHTML = text;
 			}
-			xhr.send();
 		}
+		xhr.send();
+	}
 
-		loadXMLDoc();
-		
-		</script>
-		
-		</body>
+	loadXMLDoc();
+
+</script>
+</body>
 	
 </html>
