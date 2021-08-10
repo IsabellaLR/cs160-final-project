@@ -50,9 +50,9 @@
 				</p>
 			</div>
 		</div>
-		<div class=row id="ingredients">
-			<div class="col-12">
-			PLACEHOLDER
+		<div class="row" style="height:45vh;overflow-y:scroll;">
+			<div class="col-12" id="ingredients">
+
 			</div>
 		</div>
 		<div class="row">
@@ -82,6 +82,7 @@
 	for (var i = 0; i < saladIngredients.length; i++) {
 		console.log(saladIngredients[i]);
 		//Iterate through each ingredient and append to row with id=ingredients
+		$("#ingredients").append("<p style='font-size:40px;'>" + saladIngredients[i] + "</p>");
 	}
 </script>
 </html>
