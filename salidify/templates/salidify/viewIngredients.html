@@ -10,15 +10,16 @@
 	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 	<link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet">
 	<script type="text/javascript" src="{% static 'salidify/vendors/jquery/jquery-3.3.1.min.js' %}"></script>
+
 	<style>
-		.bottomBtnGroup {
+	.bottomBtnGroup {
 		display: flex;
-    width: 100%;
-    margin-left: auto;
-    margin-right: auto;
-    justify-content: space-around;
-    position: fixed;
-    bottom: 0;
+		width: 100%;
+		margin-left: auto;
+		margin-right: auto;
+		justify-content: space-around;
+		position: fixed;
+		bottom: 0;
 		box-shadow: 0 -3px 10px rgb(0 0 0 / 0.2);
 		background-color: white;
 	}
@@ -35,8 +36,100 @@
 		margin: 31px 22px;
 		box-shadow: 0 3px 10px rgb(0 0 0 / 0.2);
 	}
+
+	.listItem {
+		display: flex;
+		width: 95%;
+		min-height: 85px;
+		margin-top: 45px;
+		margin-left: auto;
+		margin-right: auto;
+	}
+	.itemName {
+		width: 100%;
+    font-size: xx-large;
+    margin-top: auto;
+    margin-bottom: auto;
+    font-weight: 600;
+	}
+
+	/* for checkboxes */
+	.checkContainer {
+	  display: block;
+	  position: relative;
+	  padding-left: 35px;
+	  margin-bottom: 12px;
+	  cursor: pointer;
+	  font-size: 22px;
+	  -webkit-user-select: none;
+	  -moz-user-select: none;
+	  -ms-user-select: none;
+	  user-select: none;
+		width:18%;
+	}
+
+	/* Hide the browser's default checkbox */
+	.checkContainer input {
+	  position: absolute;
+	  opacity: 0;
+	  cursor: pointer;
+	  height: 0;
+	  width: 0;
+	}
+
+	/* Create a custom checkbox */
+	.checkmark {
+		position: absolute;
+    top: 0;
+    left: 0;
+    height: 85px;
+    width: 85px;
+	  background-color: #8ECD95;
+		border-radius:20px;
+		box-shadow: 0 3px 10px rgb(0 0 0 / 0.2);
+
+	}
+
+	/* On mouse-over, add a grey background color */
+	.checkContainer:hover input ~ .checkmark {
+	  background-color: #8ECD95;
+	}
+
+	/* When the checkbox is checked, add a blue background */
+	.checkContainer input:checked ~ .checkmark {
+	 background-color: #6CBE76;
+	 box-shadow: inset 0 3px 10px rgb(0 0 0 / 0.4);
+
+	}
+
+	/* Create the checkmark/indicator (hidden when not checked) */
+	.checkmark:after {
+	  content: "";
+	  position: absolute;
+	  display: none;
+	}
+
+	/* Show the checkmark when checked */
+	.checkContainer input:checked ~ .checkmark:after {
+	  display: block;
+	}
+
+	/* Style the checkmark/indicator */
+	.checkContainer .checkmark:after {
+		left: 32px;
+    top: 12px;
+    width: 20px;
+    height: 46px;
+    border: solid white;
+    border-width: 0 6px 6px 0;
+	  -webkit-transform: rotate(45deg);
+	  -ms-transform: rotate(45deg);
+	  transform: rotate(45deg);
+	}
 	</style>
 </head>
+
+
 <body>
 	<!-- top navbar with logo -->
 	<nav class="navbar green">
@@ -50,7 +143,7 @@
 			<svg xmlns="http://www.w3.org/2000/svg" height="40px" viewBox="0 0 24 24" width="40px" fill="#000000"><path d="M0 0h24v24H0V0z" fill="none" opacity=".87"/><path d="M17.51 3.87L15.73 2.1 5.84 12l9.9 9.9 1.77-1.77L9.38 12l8.13-8.13z"/></svg>
 		</a>
 		<a class="navbar-brand green-text mx-auto" href="#">
-			<h1>Recipe</h1>
+			<h1 style="font-weight:bold;font-size:45px;">Recipe</h1>
 		</a>
 		<a class="navbar-brand" href="#">
 			<svg xmlns="http://www.w3.org/2000/svg" height="40px" viewBox="0 0 24 24" width="40px" fill="#000000"><path d="M0 0h24v24H0V0z" fill="none"/><path d="M3 17v2h6v-2H3zM3 5v2h10V5H3zm10 16v-2h8v-2h-8v-2h-2v6h2zM7 9v2H3v2h4v2h2V9H7zm14 4v-2H11v2h10zm-6-4h2V7h4V5h-4V3h-2v6z"/></svg>
@@ -66,10 +159,10 @@
 			</div>
 		</div>
 		<div class="row">
-			<div class="col-6 text-left green-text" style="font-size:50px;padding-top:2vh;">
+			<div class="col-6 text-left green-text" style="font-size:40px;padding-top:2vh;font-weight:bold;">
 				Ingredients
 			</div>
-			<div class="col-6 text-right green-text" style="font-size:50px;padding-top:2vh;">
+			<div class="col-6 text-right green-text" style="font-size:40px;padding-top:2vh;font-weight:bold;">
 				<p id="numObtained">
 					0/5 Obtained
 				</p>
@@ -81,11 +174,8 @@
 			</div>
 		</div>
 		<div class="row">
-			<div class="col-6">
-				<!-- change -->
+			<div class="col-12 bottomBtnGroup">
 				<a href="/salidify/similarSalads" class="bottomBtn" style="margin: 31px 0px 31px 22px;">Save for Later</a>
-			</div>
-			<div class="col-6">
 				<a href="/salidify/shopIngredients" class="bottomBtn" style="margin: 31px 0px 31px 22px;">Make Now</a>
 			</div>
 		</div>
@@ -102,12 +192,11 @@
 	// update sessionStorage.checkedIngredients
 	// sessionStorage.checkedIngredients = whateevr;
 	$("#saladPic").append("<img src=" + saladPicture + " style='height:25vh;width:25vh;object-fit:cover;border-radius:10%;'/>");
-	$("#saladDesc").append("<p class='text-center green-text' style='padding-top:5vh;font-size:50px;'>" + saladName + "</p>");
+	$("#saladDesc").append("<p class='text-center green-text' style='padding-top:5vh;font-size:50px;font-weight:bold;'>" + saladName + "</p>");
 	$("#saladDesc").append("<p class='text-center' style='font-size:35px;'> Rating: 5.0 <br> Prep Time: 20 Min <br> Serving Size: 4 </p>");
 	for (var i = 0; i < saladIngredients.length; i++) {
-		console.log(saladIngredients[i]);
 		//Iterate through each ingredient and append to row with id=ingredients
-		$("#ingredients").append("<p style='font-size:40px;'>" + saladIngredients[i] + "</p>");
+		$("#ingredients").append("<div class='listItem'> <label class='checkContainer'> <input type='checkbox'> <span class='checkmark'></span> </label> <div class='listName'><p style='font-size:38px;'>" + saladIngredients[i] + "</p> </div> </div>");
 	}
 </script>
 </html>
