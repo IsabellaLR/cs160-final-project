@@ -26,7 +26,8 @@
 		margin: 12px;
 		border-width: 2px;
 		border-radius: 16px;
-		background-color: #6CBE76;
+		background-color: white;
+		border-color: #31A05E;
 	}
 	.mediumButton {
 		font-weight: 500;
@@ -211,8 +212,8 @@
 	var swappedIngredientNoMetric = null;
 	var substitutes = [];
 	var subTastes = {"Sweet":[], "Salty":[], "Sour":[], "Bitter":[], "Savory":[], "Fatty":[]};
+	//var APIkey = "a9f75cfd2e6546e49246a124bde0e650";
 	var APIkey = "7c3fcc8ec0b742fdbcb7cd0848220abb";
-	//my APIkey 7c3fcc8ec0b742fdbcb7cd0848220abb
 	function loadXMLDoc() {
 		var url = "https://api.spoonacular.com/food/ingredients/substitutes?apiKey="+APIkey+"&ingredientName=" + subIngredient;
 		var xhr = new XMLHttpRequest();
