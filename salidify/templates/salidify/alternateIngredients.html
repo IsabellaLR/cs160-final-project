@@ -193,23 +193,25 @@
 		</a>
 	</nav>
 	<div class="container text-center pt-2 pb-5">
+		<!-- change this -->
           <h2>Replacing: 1 Cup Kale</h2>
 		  <h3>Select a substitute from the choices below.</h3>
     </div>
 	<div class="card-container" id="demo"></div>
 	<div class="bottomBtnGroup">
-		<div class="bottomBtn" style="margin: 31px 0px 31px 22px;">Complete Replacement</div>
+		<a href="/salidify/shopIngredients" class="bottomBtn" style="margin: 31px 0px 31px 22px;">Complete Replacement</a>
 	</div>
 <script>
 	//TODO: account for errors when can't find sub ingredients
-	// var subIngredient = sessionStorage.subIngredient;
+	// var subIngredient = sessionStorage.clickedSwapIngred;
+	var saladIngredients = JSON.parse(sessionStorage.saladIngredients);
 	var subIngredient = "1 Cup Kale";
 	var tastes = ["Sweet", "Salty", "Sour", "Bitter", "Savory", "Fatty"];
 	var swappedIngredient = null;
 	var swappedIngredientNoMetric = null;
 	var substitutes = [];
 	var subTastes = {"Sweet":[], "Salty":[], "Sour":[], "Bitter":[], "Savory":[], "Fatty":[]};
-	var APIkey = "a9f75cfd2e6546e49246a124bde0e650";
+	var APIkey = "7c3fcc8ec0b742fdbcb7cd0848220abb";
 	//my APIkey 7c3fcc8ec0b742fdbcb7cd0848220abb
 	function loadXMLDoc() {
 		var url = "https://api.spoonacular.com/food/ingredients/substitutes?apiKey="+APIkey+"&ingredientName=" + subIngredient;
@@ -279,9 +281,10 @@
 		}
 		xhr.send();
 	}
-
 	loadXMLDoc();
-
+	//ToDo: only select one checkmark; swap ingredients
+	// saladIngredients[subIngredient] = swappingIngred
+	// sessionStorage.saladIngredients = saladIngredients;
 </script>
 </body>
 	

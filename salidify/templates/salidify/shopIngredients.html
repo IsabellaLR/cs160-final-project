@@ -421,12 +421,16 @@
 
 
 	<div class="bottomBtnGroup">
-		<div class="bottomBtn" style="margin: 31px 0px 31px 22px;">Make Similar</div>
-		<div class="bottomBtn">Make This</div>
+		<a href="/salidify/similarSalads" class="bottomBtn" style="margin: 31px 0px 31px 22px;">Make Similar</a>
+		<a href="/salidify/viewInstructions" class="bottomBtn">Make This</a>
 	</div>
-
 
 </body>
 <script>
-
+	var saladIngredients = JSON.parse(sessionStorage.saladIngredients);
+	var checkedIngredients = JSON.parse(sessionStorage.checkedIngredients);
+	//update above
+	// sessionStorage.checkedIngredients = ur array of checked ingredients
+	//onClick goes to function that sets/changes this var
+	sessionStorage.clickedSwapIngred = "1 Cup Kale";
 </script>
