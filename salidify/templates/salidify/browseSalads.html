@@ -74,6 +74,17 @@
 				["Cauliflower Rice Tabbouleh", "https://i2.wp.com/www.downshiftology.com/wp-content/uploads/2017/06/cauliflower-rice-tabbouleh-18-450x450.jpg", "A tasty spin on traditional tabbouleh", ["1/2 medium head of cauliflower, riced (approx 4 cups)", "8 ounces cherry tomatoes, quartered", "1/2 cucumber, finely diced", "4 scallions, green onions, finely sliced", "2 cups fresh parsley, roughly chopped (approx 2 large bunches)", "1/3 cup fresh mint leaves, roughly chopped", "2 lemons, zested and juiced", "1/4 cup olive oil", "salt, to taste"], []],
 				["Taco Salad", "https://i2.wp.com/www.downshiftology.com/wp-content/uploads/2020/06/Taco-Salad-6-500x500.jpg", "Loaded with crisp vegetables, ground beef, & taco classics", ["1 pound ground beef", "2 tablespoons taco seasoning", "salt and pepper, to taste", "1 head romaine lettuce or iceberg lettuce, chopped", "1 cup grape tomatoes, chopped", "1 cup black beans, drained and rinsed", "1 avocado, diced", "1/2 cup shredded cheese, optional", "1/2 cup salsa", "1/4 cup red onion, diced", "1/4 cup freshly chopped cilantro", "1 lime"], []]];
 
+	var saladIngredients =[["broccoli", "florets", "bacon", "red onion", "cranberries", "sunflower seeds", "goat cheese", "mayonnaise", "plain yogurt"],
+				["baby spinach", "tomatoes", "avocado", "cucumber", "red onion", "olive oil", "salmon filets", "salt and pepper", "olive oil", "lemon juice", "dijon mustard", "honey", "garlic cloves", "salt and pepper"],
+				["chicken breasts", "sliced almonds", "mayonnaise", "dijon mustard", "red grapes", "celery", "green onions", "parsley", "tarragon", "lemon", "salt and pepper"],
+				["large tomatoes", "mozzarella", "basil", "olive oil", "balsamic glaze", "salt and pepper"],
+				["tuna", "mayonnaise", "celery", "red onion", "parsley", "dijon mustard", "salt and pepper"],
+				["cucumber", "grape tomatoes", "green bell pepper", "red onion", "Kalamata olives", "feta cheese", "salt and pepper", "red wine vinegar", "lemon", "dijon mustard", "garlic cloves", "oregano", "salt", "black pepper", "olive oil"],
+				["chickpeas", "cucumber", "red bell pepper", "cherry tomatoes", "red onion", "feta cheese", "parsley", "olive oil", "lemon juice", "dijon mustard", "honey", "garlic cloves", "salt and pepper"],
+				["shrimp", "baby spinach", "fresh parsley", "asparagus", "avocado", "green onions", "salt and pepper", "olive oil", "lemon juice", "dijon mustard", "honey", "garlic cloves", "salt and pepper"],
+				["cauliflower", "cherry tomatoes", "cucumber", "4 scallions", "parsley", "mint leaves", "lemons", "olive oil", "salt"],
+				["ground beef", "taco seasoning", "salt and pepper", "romaine lettuce", "grape tomatoes", "black beans", "avocado", "shredded cheese", "salsa", "red onion", "cilantro", "lime"]];
+	
 	var dressingsDict = {"BROCCOLI SALAD DRESSING":["1/2 cup mayonnaise", "1/4 cup plain yogurt"],
 				"LEMON VINAIGRETTE":["1/3 cup olive oil", "1/4 cup lemon juice", "1 teaspoon Dijon mustard", "1/2 teaspoon honey, or maple syrup", "1-2 garlic cloves, minced", "salt and pepper, to taste"],
 				"GREEK SALAD DRESSING":["1/3 cup red wine vinegar", "1 lemon, juiced", "1 tsp Dijon Mustard", "2 garlic cloves, minced", "1/2 tsp dried oregano", "1/4 tsp salt", "1/4 tsp black pepper", "1/2 cup olive oil"]};
@@ -98,6 +109,8 @@
 		}
 		sessionStorage.saladPicture = salads[index][1];
 		sessionStorage.saladName = salads[index][0];
+		sessionStorage.saladIngredientsNoMetrics = JSON.stringify(saladIngredients[index]);
+		sessionStorage.checkedIngredients = JSON.stringify([]);
 	}
 
     for (var i = 0; i < salads.length; i++) {
