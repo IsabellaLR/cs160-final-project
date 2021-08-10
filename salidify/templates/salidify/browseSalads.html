@@ -83,7 +83,7 @@
 				if (words[k].charAt(0).match(/[a-zA-Z]/)) {
 					words[k] = words[k].charAt(0).toUpperCase() + words[k].slice(1);
 				}
-				else {
+				else if (words[k].charAt(1).match(/[a-zA-Z]/)) {
 					words[k] = words[k].charAt(0) + words[k].charAt(1).toUpperCase() + words[k].slice(2);
 				}
 			}
