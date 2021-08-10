@@ -10,7 +10,32 @@
 	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 	<link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet">
 	<script type="text/javascript" src="{% static 'salidify/vendors/jquery/jquery-3.3.1.min.js' %}"></script>
-
+	<style>
+		.bottomBtnGroup {
+		display: flex;
+    width: 100%;
+    margin-left: auto;
+    margin-right: auto;
+    justify-content: space-around;
+    position: fixed;
+    bottom: 0;
+		box-shadow: 0 -3px 10px rgb(0 0 0 / 0.2);
+		background-color: white;
+	}
+	.bottomBtn {
+		background-color: #31A05E;
+		color: white;
+		padding: 20px;
+		width: 100%;
+		text-align: center;
+		height: 90%;
+		border-radius: 35px;
+		font-size: xx-large;
+		font-weight: 600;
+		margin: 31px 22px;
+		box-shadow: 0 3px 10px rgb(0 0 0 / 0.2);
+	}
+	</style>
 </head>
 <body>
 	<!-- top navbar with logo -->
@@ -57,25 +82,25 @@
 		</div>
 		<div class="row">
 			<div class="col-6">
-				<div class="green-box mx-auto" style="width:46vw;height:6vh;font-size:40px;">
-					Save for Later
-				</div>
+				<!-- change -->
+				<a href="/salidify/similarSalads" class="bottomBtn" style="margin: 31px 0px 31px 22px;">Save for Later</a>
 			</div>
 			<div class="col-6">
-				<div class="green-box mx-auto" style="width:46vw;height:6vh;font-size:40px;">
-					Make Now
-				</div>
+				<a href="/salidify/shopIngredients" class="bottomBtn" style="margin: 31px 0px 31px 22px;">Make Now</a>
 			</div>
 		</div>
 	</div>
 </body>
 <script>
+	// sessionStorage.checkedIngredients = ur array of checked ingredients
 	var saladIngredients = JSON.parse(sessionStorage.saladIngredients);
 	var dressingIngredients = JSON.parse(sessionStorage.dressingIngredients);
 	var saladPicture = sessionStorage.saladPicture;
 	var saladName = sessionStorage.saladName;
 	//if no dressing, will just be ""
 	var dressingName = sessionStorage.dressingName;
+	// update sessionStorage.checkedIngredients
+	// sessionStorage.checkedIngredients = whateevr;
 	$("#saladPic").append("<img src=" + saladPicture + " style='height:25vh;width:25vh;object-fit:cover;border-radius:10%;'/>");
 	$("#saladDesc").append("<p class='text-center green-text' style='padding-top:5vh;font-size:50px;'>" + saladName + "</p>");
 	$("#saladDesc").append("<p class='text-center' style='font-size:35px;'> Rating: 5.0 <br> Prep Time: 20 Min <br> Serving Size: 4 </p>");

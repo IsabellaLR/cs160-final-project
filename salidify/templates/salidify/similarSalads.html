@@ -73,7 +73,13 @@
 				["Mediterranean Chickpea Salad", "https://i2.wp.com/www.downshiftology.com/wp-content/uploads/2020/08/Mediterranean-Chickpea-Salad-4-500x500.jpg", "The ultimate summer salad", ["2 15-ounce cans chickpeas, drained and rinsed", "1 large cucumber, diced", "1 red bell pepper, diced", "2 cups cherry tomatoes, halved", "1/4 cup red onion, diced", "4 oz feta cheese, crumbled", "1/4 cup finely chopped parsley"], ["LEMON VINAIGRETTE"]],
 				["Shrimp, Asparagus, & Avo Salad", "https://i2.wp.com/www.downshiftology.com/wp-content/uploads/2018/05/Shrimp-Asparagus-and-Avocado-Salad-Recipe-500x500.jpg", "Utterly delicious and perfect for spring", ["1 pound raw shrimp, peeled and deveined", "4 cups baby spinach", "1/4 cup fresh parsley, chopped", "20 spears asparagus, (1 bunch)", "1 avocado, sliced", "3 green onions, sliced", "salt and pepper, to taste"], ["LEMON VINAIGRETTE"]],
 				["Cauliflower Rice Tabbouleh", "https://i2.wp.com/www.downshiftology.com/wp-content/uploads/2017/06/cauliflower-rice-tabbouleh-18-450x450.jpg", "A tasty spin on traditional tabbouleh", ["1/2 medium head of cauliflower, riced (approx 4 cups)", "8 ounces cherry tomatoes, quartered", "1/2 cucumber, finely diced", "4 scallions, green onions, finely sliced", "2 cups fresh parsley, roughly chopped (approx 2 large bunches)", "1/3 cup fresh mint leaves, roughly chopped", "2 lemons, zested and juiced", "1/4 cup olive oil", "salt, to taste"], []],
-				["Taco Salad", "https://i2.wp.com/www.downshiftology.com/wp-content/uploads/2020/06/Taco-Salad-6-500x500.jpg", "Loaded with crisp vegetables, ground beef, & taco classics", ["1 pound ground beef", "2 tablespoons taco seasoning", "salt and pepper, to taste", "1 head romaine lettuce or iceberg lettuce, chopped", "1 cup grape tomatoes, chopped", "1 cup black beans, drained and rinsed", "1 avocado, diced", "1/2 cup shredded cheese, optional", "1/2 cup salsa", "1/4 cup red onion, diced", "1/4 cup freshly chopped cilantro", "1 lime"], []]];
+				["Taco Salad", "https://i2.wp.com/www.downshiftology.com/wp-content/uploads/2020/06/Taco-Salad-6-500x500.jpg", "Loaded with crisp vegetables, ground beef, & taco classics", ["1 pound ground beef", "2 tablespoons taco seasoning", "salt and pepper, to taste", "1 head romaine lettuce or iceberg lettuce, chopped", "1 cup grape tomatoes, chopped", "1 cup black beans, drained and rinsed", "1 avocado, diced", "1/2 cup shredded cheese, optional", "1/2 cup salsa", "1/4 cup red onion, diced", "1/4 cup freshly chopped cilantro", "1 lime"], []],
+				
+				// ["Mandarin Chicken Salad", "https://i2.wp.com/www.downshiftology.com/wp-content/uploads/2014/09/Mandarin-Chicken-Salad-8.jpg", "Piled high with sweet mandarins, shredded chicken, avocado, crunchy toppings", ["2 chicken breasts, boneless and skinless", "5 cups spinach", "4 mandarins, peeled and separated", "1 avocado, ripe and diced", "1 cucumber, sliced", "2 green onions, chopped", "1/4 cup slivered almonds", "sprinkle of black and white sesame seeds"], ["LEMON VINAIGRETTE"]],
+				// ["Southwest Chicken Salad", "https://i2.wp.com/www.downshiftology.com/wp-content/uploads/2020/07/Southwest-Chicken-Salad-5.jpg", "Chicken breasts marinated in cilantro lime goodness", ["4 boneless skinless chicken breasts, approximately 6 ounces each", "3 tablespoon olive oil (divided)", "2 limes, juiced and zested", "1/4 cup chopped cilantro leaves", "3 cloves garlic, minced", "1 teaspoon ground cumin", "1/2 teaspoon chili powder", "1/2 teaspoon salt", "1/4 teaspoon black pepper", "4 cups romaine lettuce, chopped", "1 1/2 cup cherry tomatoes, halved", "1 cup black beans, rinsed and drained", "1 cup corn, rinsed and drained", "1/3 cup red onion, thinly sliced"], ["AVOCADO DRESSING"]]
+			
+			
+			]
 
 	var saladIngredients =[["broccoli", "florets", "bacon", "red onion", "cranberries", "sunflower seeds", "goat cheese", "mayonnaise", "plain yogurt"],
 				["baby spinach", "tomatoes", "avocado", "cucumber", "red onion", "olive oil", "salmon filets", "salt and pepper", "olive oil", "lemon juice", "dijon mustard", "honey", "garlic cloves", "salt and pepper"],
@@ -86,16 +92,23 @@
 				["cauliflower", "cherry tomatoes", "cucumber", "4 scallions", "parsley", "mint leaves", "lemons", "olive oil", "salt"],
 				["ground beef", "taco seasoning", "salt and pepper", "romaine lettuce", "grape tomatoes", "black beans", "avocado", "shredded cheese", "salsa", "red onion", "cilantro", "lime"]];
 	
+	//{"Salad Name":[Step #1, #2, #3,...]}
+	var instructionsDict = {"Broccoli Salad":["Preheat the oven to 400 degrees fahrenheit. Add the bacon slices to a parchment lined baking tray and cook for 15 minutes or until crispy. Remove the bacon from the oven and transfer to a paper towel to dry and cool.", "While the bacon is cooking, slice off all the broccoli florets and make sure they're in bite-sized pieces. Add them to a large mixing bowl along with the red onion, dried cranberries, sunflower seeds and goat cheese.", "To make the dressing, add the mayonnaise and yogurt to a small bowl and stir together. Add the dressing to the mixing bowl and stir until everything is well combined."],
+						
+				};
+	
 	var dressingsDict = {"BROCCOLI SALAD DRESSING":["1/2 cup mayonnaise", "1/4 cup plain yogurt"],
 				"LEMON VINAIGRETTE":["1/3 cup olive oil", "1/4 cup lemon juice", "1 teaspoon Dijon mustard", "1/2 teaspoon honey, or maple syrup", "1-2 garlic cloves, minced", "salt and pepper, to taste"],
-				"GREEK SALAD DRESSING":["1/3 cup red wine vinegar", "1 lemon, juiced", "1 tsp Dijon Mustard", "2 garlic cloves, minced", "1/2 tsp dried oregano", "1/4 tsp salt", "1/4 tsp black pepper", "1/2 cup olive oil"]};
-	
+				"GREEK SALAD DRESSING":["1/3 cup red wine vinegar", "1 lemon, juiced", "1 tsp Dijon Mustard", "2 garlic cloves, minced", "1/2 tsp dried oregano", "1/4 tsp salt", "1/4 tsp black pepper", "1/2 cup olive oil"],
+				"AVOCADO DRESSING":["1/2 large avocado", "1/4 cup olive oil", "1/4 cup water, or more for thinner consistency", "1/4 cup cilantro, basil or parsley leaves", "1 lime, juiced", "2 cloves garlic, minced", "salt and pepper, to taste"]
+					};
 	var similarityArray = [];
 	// var checkedIngredients = JSON.parse(sessionStorage.checkedIngredients);
 	checkedIngredients = ["baby spinach", "tomatoes", "avocado", "cucumber", "red onion", "olive oil", "salmon filets", "salt and pepper", "olive oil", "lemon juice", "dijon mustard", "honey"]
 	saladName = "Salmon Avocado Salad"
     for (var i = 0; i < salads.length; i++) {
-		//change saladName
+		//change saladName to sessionStorage.saladName
+		//ToDo: compare to correct cap words/letters
 		if (salads[i][0] != saladName) {
 			var haveIngred = [];
 			var neededIngred = [];
@@ -127,6 +140,7 @@
 		sessionStorage.saladName = similarityArray[index][0][0];
 		sessionStorage.saladIngredientsNoMetrics = JSON.stringify(similarityArray[1]+similarityArray[2]);
 		sessionStorage.checkedIngredients = similarityArray[1];
+		//ToDo: make first letter of each ingred capitalized
 	}
 
 	for (var i = 0; i < similarityArray.length; i++) {

@@ -109,10 +109,10 @@
     justify-content: space-around;
     position: fixed;
     bottom: 0;
-		box-shadow: 0 -3px 10px rgb(0 0 0 / 0.2);
+		/*box-shadow: 0 -3px 10px rgb(0 0 0 / 0.2);*/
 		background-color: white;
 	}
-	.bottomBtn {
+	#bottomBtn {
 		background-color: #31A05E;
 		color: white;
 		padding: 20px;
@@ -421,12 +421,16 @@
 
 
 	<div class="bottomBtnGroup">
-		<div class="bottomBtn" style="margin: 31px 0px 31px 22px;">Make Similar</div>
-		<div class="bottomBtn">Make This</div>
+		<a href="/salidify/similarSalads" id="bottomBtn" style="margin: 31px 0px 31px 22px;">Make Similar</a>
+		<a href="/salidify/viewInstructions" id="bottomBtn">Make This</a>
 	</div>
-
 
 </body>
 <script>
-
+	var saladIngredients = JSON.parse(sessionStorage.saladIngredients);
+	var checkedIngredients = JSON.parse(sessionStorage.checkedIngredients);
+	//update above
+	// sessionStorage.checkedIngredients = ur array of checked ingredients
+	//onClick goes to function that sets/changes this var
+	sessionStorage.clickedSwapIngred = "1 Cup Kale";
 </script>
