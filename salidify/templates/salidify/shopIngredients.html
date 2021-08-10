@@ -58,10 +58,10 @@
 
 	.ingredientsList {
 		display: flex;
-		width: 85%;
+		width: 80%;
 		margin-left: auto;
 		margin-right: auto;
-		margin-top: 5%;
+		margin-top: 8%;
 		flex-direction: column;
 	}
 
@@ -72,21 +72,35 @@
 		font-size: xx-large;
 		font-weight: 600;
 	}
-	.listHaveItem {
+	.listItem {
 		display: flex;
 		width: 95%;
 		min-height: 85px;
-		margin-top: 33px;
+		margin-top: 45px;
 		margin-left: auto;
 		margin-right: auto;
 	}
-	.haveItemName {
+	.itemName {
 		width: 100%;
     font-size: xx-large;
     margin-top: auto;
     margin-bottom: auto;
     font-weight: 600;
 	}
+
+	#swapButton {
+		margin-right: 20px;
+    margin-top: auto;
+    margin-bottom: auto;
+	}
+	.stockStatus {
+		font-size: x-large;
+    display: flex;
+		color: #31A05E;
+	}
+
+
+
 	.bottomBtnGroup {
 		display: flex;
     width: 100%;
@@ -235,21 +249,21 @@
 		<div class="listHeading">
 			You Have 2/5
 		</div>
-		<div class="listHaveItem">
+		<div class="listItem">
 			<label class="checkContainer">
   			<input type="checkbox" checked="checked">
   			<span class="checkmark"></span>
 			</label>
-			<div class="haveItemName">
+			<div class="itemName">
 				5 Cups Kale
 			</div>
 		</div>
-		<div class="listHaveItem">
+		<div class="listItem">
 			<label class="checkContainer">
   			<input type="checkbox" checked="checked">
   			<span class="checkmark"></span>
 			</label>
-			<div class="haveItemName">
+			<div class="itemName">
 				1 Cup Shredded Chicken
 			</div>
 		</div>
@@ -258,31 +272,48 @@
 		<div class="listHeading">
 			You Need 3/5
 		</div>
-		<div class="listHaveItem">
+		<div class="listItem">
 			<label class="checkContainer">
   			<input type="checkbox">
   			<span class="checkmark"></span>
 			</label>
-			<div class="haveItemName">
+			<svg id="swapButton" data-name="Layer 1" xmlns="http://www.w3.org/2000/svg" width="75px" height="75px" viewBox="0 0 33 33"><defs><style>.cls-1{fill:#30a05e;}.cls-2{fill:#fff;}</style></defs><circle class="cls-1" cx="16.5" cy="16.5" r="16.5"/><path class="cls-2" d="M672.7,362.29H661.16l2.43-2.41a1,1,0,1,0-1.41-1.42L658,362.58a1,1,0,0,0-.2.3l0,.1a.69.69,0,0,0,0,.24s0,.07,0,.1a1.2,1.2,0,0,0,.06.32,0,0,0,0,1,0,0h0a1,1,0,0,0,.2.29s0,0,0,0l4.12,4.15a1,1,0,0,0,.71.3,1,1,0,0,0,.71-1.71l-2.43-2.44H672.7a1,1,0,0,0,0-2Z" transform="translate(-653.24 -349.81)"/><path class="cls-2" d="M666.78,370.33h11.54l-2.43,2.41a1,1,0,0,0,1.41,1.42l4.15-4.12a1,1,0,0,0,.2-.3.42.42,0,0,0,0-.1,1.84,1.84,0,0,0,0-.25v-.1a.85.85,0,0,0-.06-.31v0h0a.91.91,0,0,0-.19-.29l0,0-4.12-4.15a1,1,0,0,0-.71-.29,1,1,0,0,0-.71.29,1,1,0,0,0,0,1.41l2.43,2.45H666.78a1,1,0,0,0,0,2Z" transform="translate(-653.24 -349.81)"/></svg>
+			<div class="itemName">
 				1 Apple (Cored & Diced)
+				<div class="stockStatus">
+					<svg xmlns="http://www.w3.org/2000/svg" height="30px" viewBox="0 0 24 24" width="30px" fill="#31A05E" style="margin-top: auto; margin-bottom: auto;"><path d="M0 0h24v24H0V0z" fill="none"/><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zM7 9c0-2.76 2.24-5 5-5s5 2.24 5 5c0 2.88-2.88 7.19-5 9.88C9.92 16.21 7 11.85 7 9z"/><circle cx="12" cy="9" r="2.5"/></svg>
+					In stock at Selected Store
+				</div>
 			</div>
 		</div>
-		<div class="listHaveItem">
+		<div class="listItem">
 			<label class="checkContainer">
   			<input type="checkbox">
   			<span class="checkmark"></span>
 			</label>
-			<div class="haveItemName">
+			<svg id="swapButton" data-name="Layer 1" xmlns="http://www.w3.org/2000/svg" width="75px" height="75px" viewBox="0 0 33 33"><defs><style>.cls-1{fill:#30a05e;}.cls-2{fill:#fff;}</style></defs><circle class="cls-1" cx="16.5" cy="16.5" r="16.5"/><path class="cls-2" d="M672.7,362.29H661.16l2.43-2.41a1,1,0,1,0-1.41-1.42L658,362.58a1,1,0,0,0-.2.3l0,.1a.69.69,0,0,0,0,.24s0,.07,0,.1a1.2,1.2,0,0,0,.06.32,0,0,0,0,1,0,0h0a1,1,0,0,0,.2.29s0,0,0,0l4.12,4.15a1,1,0,0,0,.71.3,1,1,0,0,0,.71-1.71l-2.43-2.44H672.7a1,1,0,0,0,0-2Z" transform="translate(-653.24 -349.81)"/><path class="cls-2" d="M666.78,370.33h11.54l-2.43,2.41a1,1,0,0,0,1.41,1.42l4.15-4.12a1,1,0,0,0,.2-.3.42.42,0,0,0,0-.1,1.84,1.84,0,0,0,0-.25v-.1a.85.85,0,0,0-.06-.31v0h0a.91.91,0,0,0-.19-.29l0,0-4.12-4.15a1,1,0,0,0-.71-.29,1,1,0,0,0-.71.29,1,1,0,0,0,0,1.41l2.43,2.45H666.78a1,1,0,0,0,0,2Z" transform="translate(-653.24 -349.81)"/></svg>
+
+			<div class="itemName">
 				1/4 Cup Dried Cherries
+				<div class="stockStatus">
+					<svg xmlns="http://www.w3.org/2000/svg" height="30px" viewBox="0 0 24 24" width="30px" fill="#31A05E" style="margin-top: auto; margin-bottom: auto;"><path d="M0 0h24v24H0V0z" fill="none"/><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zM7 9c0-2.76 2.24-5 5-5s5 2.24 5 5c0 2.88-2.88 7.19-5 9.88C9.92 16.21 7 11.85 7 9z"/><circle cx="12" cy="9" r="2.5"/></svg>
+					In stock at Selected Store
+				</div>
 			</div>
 		</div>
-		<div class="listHaveItem">
+		<div class="listItem">
 			<label class="checkContainer">
   			<input type="checkbox">
   			<span class="checkmark"></span>
 			</label>
-			<div class="haveItemName">
+			<svg id="swapButton" data-name="Layer 1" xmlns="http://www.w3.org/2000/svg" width="75px" height="75px" viewBox="0 0 33 33"><defs><style>.cls-1{fill:#30a05e;}.cls-2{fill:#fff;}</style></defs><circle class="cls-1" cx="16.5" cy="16.5" r="16.5"/><path class="cls-2" d="M672.7,362.29H661.16l2.43-2.41a1,1,0,1,0-1.41-1.42L658,362.58a1,1,0,0,0-.2.3l0,.1a.69.69,0,0,0,0,.24s0,.07,0,.1a1.2,1.2,0,0,0,.06.32,0,0,0,0,1,0,0h0a1,1,0,0,0,.2.29s0,0,0,0l4.12,4.15a1,1,0,0,0,.71.3,1,1,0,0,0,.71-1.71l-2.43-2.44H672.7a1,1,0,0,0,0-2Z" transform="translate(-653.24 -349.81)"/><path class="cls-2" d="M666.78,370.33h11.54l-2.43,2.41a1,1,0,0,0,1.41,1.42l4.15-4.12a1,1,0,0,0,.2-.3.42.42,0,0,0,0-.1,1.84,1.84,0,0,0,0-.25v-.1a.85.85,0,0,0-.06-.31v0h0a.91.91,0,0,0-.19-.29l0,0-4.12-4.15a1,1,0,0,0-.71-.29,1,1,0,0,0-.71.29,1,1,0,0,0,0,1.41l2.43,2.45H666.78a1,1,0,0,0,0,2Z" transform="translate(-653.24 -349.81)"/></svg>
+
+			<div class="itemName">
 				Apple Cider Vinaigrette
+				<div class="stockStatus">
+					<svg xmlns="http://www.w3.org/2000/svg" height="30px" viewBox="0 0 24 24" width="30px" fill="#31A05E" style="margin-top: auto; margin-bottom: auto;"><path d="M0 0h24v24H0V0z" fill="none"/><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zM7 9c0-2.76 2.24-5 5-5s5 2.24 5 5c0 2.88-2.88 7.19-5 9.88C9.92 16.21 7 11.85 7 9z"/><circle cx="12" cy="9" r="2.5"/></svg>
+					In stock at Selected Store
+				</div>
 			</div>
 		</div>
 	</div>
