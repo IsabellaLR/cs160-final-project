@@ -4,7 +4,7 @@
 <html>
 <head>
 	<title>View Recipe</title>
-	
+
 	<link rel="stylesheet" type="text/css" href="{% static 'salidify/vendors/bootstrap/css/bootstrap.css' %}" />
 	<link rel="stylesheet" type="text/css" href="{% static 'salidify/css/style.css' %}" />
 	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -78,6 +78,7 @@
 	}
 
 	/* Create a custom checkbox */
+
 	.checkmark {
 		position: absolute;
     top: 0;
@@ -155,7 +156,7 @@
 
 			</div>
 			<div class="col-6" id="saladDesc">
-				
+
 			</div>
 		</div>
 		<div class="row">
@@ -183,6 +184,8 @@
 </body>
 <script>
 	// sessionStorage.checkedIngredients = ur array of checked ingredients
+	//var checkedIngredients = [];
+	var checkedIngredients = JSON.parse(sessionStorage.checkedIngredients);
 	var saladIngredients = JSON.parse(sessionStorage.saladIngredients);
 	var dressingIngredients = JSON.parse(sessionStorage.dressingIngredients);
 	var saladPicture = sessionStorage.saladPicture;
@@ -194,9 +197,35 @@
 	$("#saladPic").append("<img src=" + saladPicture + " style='height:25vh;width:25vh;object-fit:cover;border-radius:10%;'/>");
 	$("#saladDesc").append("<p class='text-center green-text' style='padding-top:5vh;font-size:50px;font-weight:bold;'>" + saladName + "</p>");
 	$("#saladDesc").append("<p class='text-center' style='font-size:35px;'> Rating: 5.0 <br> Prep Time: 20 Min <br> Serving Size: 4 </p>");
+
+
 	for (var i = 0; i < saladIngredients.length; i++) {
 		//Iterate through each ingredient and append to row with id=ingredients
-		$("#ingredients").append("<div class='listItem'> <label class='checkContainer'> <input type='checkbox'> <span class='checkmark'></span> </label> <div class='listName'><p style='font-size:38px;'>" + saladIngredients[i] + "</p> </div> </div>");
+		$("#ingredients").append("<div class='listItem'> <label class='checkContainer'> <input class='checkbox' id='checkbox"+ i + "' type='checkbox'> <span class='checkmark'></span> </label> <div class='listName'><p style='font-size:38px;'>" + saladIngredients[i] + "</p> </div> </div>");
 	}
+
+
+
+	//Everytime a checkbox is clicked, check checkedIngredients and make sure it's up to date
+	$(".checkbox").click(function() {
+		var checkedIngredients = JSON.parse(sessionStorage.checkedIngredients);
+
+		for (var i = 0; i < saladIngredients.length; i++) {
+			if (document.getElementById('checkbox' + i).checked) {
+				if (!checkedIngredients.includes(saladIngredients[i])) {
+					checkedIngredients.push(saladIngredients[i]);
+				}
+			} else {
+				if (checkedIngredients.includes(saladIngredients[i])) {
+					checkedIngredients.splice(checkedIngredients.indexOf(saladIngredients[i]), 1);
+				}
+			}
+		}
+		console.log(checkedIngredients); //TAKE THIS OUT THIS IS TEST
+		sessionStorage.checkedIngredients = JSON.stringify(checkedIngredients);
+
+	});
+
+
 </script>
 </html>
