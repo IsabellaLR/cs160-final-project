@@ -7,6 +7,9 @@ def browseSalads(request):
 def similarSalads(request):
     return render(request, 'salidify/similarSalads.html')
 
+def browseFilter(request):
+    return render(request, 'salidify/browseFilter.html')
+
 def viewIngredients(request):
     return render(request, 'salidify/viewIngredients.html')
 
