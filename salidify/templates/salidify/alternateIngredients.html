@@ -4,7 +4,7 @@
 <html>
 <head>
     <title>Screen4</title>
-    
+
     <link rel="stylesheet" type="text/css" href="{% static 'salidify/vendors/bootstrap/css/bootstrap.css' %}" />
     <link rel="stylesheet" type="text/css" href="{% static 'salidify/css/style.css' %}" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -218,13 +218,13 @@
     var orderedSubstitutes = [];
     var noMetricSubstitues = [];
     var subTastes = {"Sweet":[], "Salty":[], "Sour":[], "Bitter":[], "Savory":[], "Fatty":[]};
-    var APIkey = "c61426d2bf9a4cb299a2d057a30f90e5";
-    // var APIkey = "a9f75cfd2e6546e49246a124bde0e650";
+    //var APIkey = "c61426d2bf9a4cb299a2d057a30f90e5";
+    var APIkey = "a9f75cfd2e6546e49246a124bde0e650";
     // var APIkey = "7c3fcc8ec0b742fdbcb7cd0848220abb";
     function loadXMLDoc() {
         var url = "https://api.spoonacular.com/food/ingredients/substitutes?apiKey="+APIkey+"&ingredientName=" + subIngredient;
         var xhr = new XMLHttpRequest();
-        
+
         xhr.open("GET", url);
         xhr.setRequestHeader("Accept", "application/json");
 
@@ -251,8 +251,8 @@
 
                 xmlHttp.onload = function() {
                     var split = JSON.stringify(this.responseText).split("rgb(75, 192, 192)")[2].split("data")[1].split("options")[0].replace(/[^\d.,]/g, '').slice(0, -1).split(",");
-                    var tasteNumArray = split.map(function (x) { 
-                        return parseInt(x); 
+                    var tasteNumArray = split.map(function (x) {
+                        return parseInt(x);
                     });
                     //most appropriate taste for ingredient
                     var closestTaste = tastes[tasteNumArray.indexOf(Math.max.apply(Math, tasteNumArray))];
@@ -337,5 +337,5 @@
 	}
 </script>
 </body>
-    
+
 </html>
