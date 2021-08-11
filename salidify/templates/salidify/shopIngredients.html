@@ -286,6 +286,7 @@
     console.log(saladIngredients);
     var saladIngredientsNoMetrics = JSON.parse(sessionStorage.saladIngredientsNoMetrics);
     console.log(saladIngredientsNoMetrics);
+
     var checkedIngredients = JSON.parse(sessionStorage.checkedIngredients);
     var uncheckIngredients = saladIngredients.filter(x => !checkedIngredients.includes(x));
     var currentOrderIngredients = checkedIngredients.concat(uncheckIngredients);
