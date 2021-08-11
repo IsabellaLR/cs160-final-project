@@ -9,7 +9,7 @@
     <link rel="stylesheet" type="text/css" href="{% static 'salidify/css/style.css' %}" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet">
-
+    <script type="text/javascript" src="{% static 'salidify/vendors/jquery/jquery-3.3.1.min.js' %}"></script>
 </head>
 <style>
 	.bottomBtnGroup {
@@ -57,43 +57,22 @@
         <!--Top of the instructions-->
         <div class="card">
             <div class="row">
-                <div class="col-5 align-self-center">
-                    <img src="https://i2.wp.com/www.downshiftology.com/wp-content/uploads/2014/09/Kale-Salad-with-Apple-Chicken-3-500x500.jpg"
-                    style="border-radius: 16px; width:100%; height:346px;"/>
-                </div>
-                <div class="col-7" style="padding-right: 0.5in; padding-top: 2.5%; padding-bottom: 2.5;">
-                    <div class="row" style="height: 40%; align-content:flex-end;">
-                        <div class="text" style="font-size: 48px; font-weight:600; font-family: Montserrat; color: #31A05E;">Kale Salad with Apples & Chicken</div>
-                    </div>
-                    <hr width = "100%" color="#31A05E" size="1">
-                    <div class="row" style="height: 30%;">
-                        <div class="text" style="font-size: 28px; font-family: Montserrat;">Rating: 5 stars<br> Prep Time: 20 mins <br> Serving Size: 4</div>
-                    </div>
-                </div>
             </div>
         </div>
-        <!--Instructions......-->
-        <div class="text" style="font-size: 40px; font-weight:600; font-family: Montserrat; color: #31A05E; margin-top: 5%;">Instructions</div>
-        <hr width = "100%" color="#31A05E" size="1">
-        <div class="row" style="height: 10%; align-content:flex-end;">
-            <div class="text" style="font-size: 28px; font-family: Montserrat; margin-top: 10px; margin-bottom: 10px;">1. Add Kale to large bowl.</div>
-        </div>
-        <div class="row" style="height: 10%; align-content:flex-end;">
-            <div class="text" style="font-size: 28px; font-family: Montserrat; margin-top: 10px; margin-bottom: 10px;">2. Top Kale with toppings.</div>
-        </div>
-        <div class="row" style="height: 10%; align-content:flex-end;">
-            <div class="text" style="font-size: 28px; font-family: Montserrat; margin-top: 10px; margin-bottom: 10px;">3. Drizzle salad with dressing,
-then toss.</div>
-        </div>
-
     </div>
 </nav>
 <div class="bottomBtnGroup">
-  <div class="bottomBtn">Done</div>
-
+    <a href="/salidify/" class="bottomBtn">Done</a>
 </div>
+
 </body>
 <script>
+     //{"Salad Name":[Rating,PrepTime, Time]}
+     var rateTimeServingDict = {"Broccoli Salad" : ["5.0", "20 mins", "4"],
+                                "Salmon Avocado Salad": ["4.5", "20 mins", "2"]
+
+    };
+
     //{"Salad Name":[Step #1, #2, #3,...]}
 	var instructionsDict = {"Broccoli Salad":["Preheat the oven to 400 degrees fahrenheit. Add the bacon slices to a parchment lined baking tray and cook for 15 minutes or until crispy. Remove the bacon from the oven and transfer to a paper towel to dry and cool.", "While the bacon is cooking, slice off all the broccoli florets and make sure they're in bite-sized pieces. Add them to a large mixing bowl along with the red onion, dried cranberries, sunflower seeds and goat cheese.", "To make the dressing, add the mayonnaise and yogurt to a small bowl and stir together. Add the dressing to the mixing bowl and stir until everything is well combined."],
 							"Salmon Avocado Salad":["Heat olive oil in a large pan over medium-high heat. Season the salmon filets with salt and pepper. Add the salmon filets top side down and cook for 4-5 minutes.", "Flip the salmon and cook for an additional 2-3 minutes or until the salmon is mostly opaque, with just a smidge of softness still in the middle.", "Divide all of the other salad ingredients between two bowls, then place the cooked salmon on top.", "Mix the dressing ingredients together in a small bowl and drizzle on top.", "Mix the dressing ingredients together in a small bowl and drizzle on top."],
@@ -138,8 +117,18 @@ then toss.</div>
                             "Avocado Egg Salad": ["Add all of the ingredients to a mixing bowl and stir to combine.", "Eat the avocado egg salad plain, topped on your favorite bread or on lettuce leaves."],
                             "Potato Salad": ["Fill a large pot with water. Add the potatoes and bring to a boil. Salt the water, reduce to a simmer and cook for 20 minutes or until a fork inserts easily with a little resistance.", "Fill another pot with water and bring to a boil. Reduce the heat to low (so that there's no bubbles breaking the surface) and use a skimmer to gently and slowly add the eggs. Cook the eggs for 12 – 14 minutes, then place in an ice water bath to immediately stop their cooking.", "Once the potatoes have finished cooking, drain the water. Fill the pot with cold water to cool the potatoes down, then drain again.", "Place both the eggs and potatoes in the refrigerator to cool completely.", "While your potatoes and eggs are cooling, prepare the celery, radishes, green onion and dill. Add the ingredients to a large bowl along with the mayonnaise.", "Once your potatoes and eggs are fully cooled, peel the eggs and cube both the potatoes and eggs into 1-inch sized pieces. Add to your mixing bowl with the mayonnaise and vegetables. Stir gently until well combined.", "Serve the potato salad immediately or refrigerate for up to 3 days."]	
 				};
+    var pic = sessionStorage.saladPicture;
     var saladName = sessionStorage.saladName;
+    $(".row").append('<div class="col-5 align-self-center"> <img src="' + pic + '" style="border-radius: 16px; width:100%; height:346px;"/> </div>');
+    
+    var rateTimeServing = rateTimeServingDict['Broccoli Salad'];
+    $(".row").append('<div class="col-7" p style="font-size:35px; padding-right: 0.5in; padding-top: 2.5%; padding-bottom: 2.5;"> <div class="row" style="height: 40%; align-content:flex-end;"> <div class="text" style="font-size: 48px; font-weight:600; font-family: Montserrat; color: #31A05E;">'+ saladName +'</div> </div> <hr width = "100%" color="#31A05E" size="1"> <div class="row" style="height: 30%;"> <div class="text" style="font-size: 28px; font-family: Montserrat;">Rating: ' + rateTimeServing[0]+'<br> Prep Time: '+ rateTimeServing[1]+'<br> Serving Size: '+ rateTimeServing[2]+'</div> </div> </div>');
+
     var instructions = instructionsDict[saladName];
+    $(".card-container").append('<div class="text" style="font-size: 40px; font-weight:600; font-family: Montserrat; color: #31A05E; margin-top: 5%;">Instructions</div><hr width = "100%" color="#31A05E" size="1">')
     //add instructions html part dynamically
+    for (var i = 0; i < instructions.length; i++) {
+        $(".card-container").append('<div class="row" style="height: 10%; align-content:flex-end;"> <div class="text" style="font-size: 28px; font-family: Montserrat; margin-top: 10px; margin-bottom: 10px;">' + (i+1) + ". " + instructions[i] + '<br> </div></div>');
+    }
 </script>
 </html>
