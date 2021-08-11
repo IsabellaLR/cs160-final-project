@@ -192,7 +192,7 @@
 			</div>
 			<div class="col-6 text-right green-text" style="font-size:40px;padding-top:2vh;font-weight:600;">
 				<p id="numObtained">
-					0/5 Obtained
+					<span id="haveIngredNum">0</span>/<span id="totalIngredNum">0</span> Obtained
 				</p>
 			</div>
 		</div>
@@ -225,6 +225,7 @@
 	$("#saladDesc").append("<p class='green-text' style='font-size: 50px; font-weight: bold; border-bottom: #31A05E solid 4px;'>" + saladName + "</p>");
 	$("#saladDesc").append("<p style='font-size:35px;'> Rating: 5.0 <br> Prep Time: 20 Min <br> Serving Size: 4 </p>");
 
+	$("#totalIngredNum").text(saladIngredients.length + dressingIngredients.length);
 
 	for (var i = 0; i < saladIngredients.length; i++) {
 		//Iterate through each ingredient and append to row with id=ingredients
@@ -250,6 +251,8 @@
 		}
 		console.log(checkedIngredients); //TAKE THIS OUT THIS IS TEST
 		sessionStorage.checkedIngredients = JSON.stringify(checkedIngredients);
+
+		$("#haveIngredNum").text(checkedIngredients.length);
 
 	});
 
