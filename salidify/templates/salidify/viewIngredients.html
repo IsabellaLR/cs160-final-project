@@ -59,7 +59,7 @@
     font-weight: 600;
 	}
 
-	#ingredHeading {
+	.ingredHeading {
 		border-bottom: #31A05E solid 3px;
     width: 90%;
     margin-left: auto;
@@ -186,21 +186,30 @@
 
 			</div>
 		</div>
-		<div class="row" id="ingredHeading">
-			<div class="col-6 text-left green-text" style="font-size:40px;padding-top:2vh;font-weight:600;">
-				Ingredients
-			</div>
-			<div class="col-6 text-right green-text" style="font-size:40px;padding-top:2vh;font-weight:600;">
-				<p id="numObtained">
-					<span id="haveIngredNum">0</span>/<span id="totalIngredNum">0</span> Obtained
-				</p>
+		<div class="row ingredHeading">
+			<div class="col-12 text-left green-text" style="font-size:40px;padding-top:2vh;font-weight:600;">
+				Main Ingredients
 			</div>
 		</div>
-		<div class="row" style="overflow-y: scroll; width: 90%; font-weight: 500; margin-left:auto; margin-right:auto; margin-bottom: 250px; height: 1040px;">
+		<div class="row" id="ingredRow" style="width: 90%; font-weight: 500; margin-left:auto; margin-right:auto;">
 			<div class="col-12" id="ingredients">
 
 			</div>
 		</div>
+
+		<div id="dressing">
+			<div class="row ingredHeading">
+				<div id ="dressingheader" class="col-12 text-left green-text" style="font-size:40px;padding-top:2vh;font-weight:600;">
+					
+				</div>
+			</div>
+			<div class="row" style="width: 90%; font-weight: 500; margin-left:auto; margin-right:auto; margin-bottom:200px;">
+				<div class="col-12" id="dressingredients">
+	
+				</div>
+			</div>
+		</div>
+
 		<div class="row">
 			<div class="col-12 bottomBtnGroup">
 				<a href="/salidify/similarSalads" class="bottomBtn" style="margin: 31px 0px 31px 22px;">Save for Later</a>
@@ -224,12 +233,37 @@
 	$("#saladPic").append("<img src=" + saladPicture + " style='height:100%;width:100%;object-fit:cover;border-radius:10%;'/>");
 	$("#saladDesc").append("<p class='green-text' style='font-size: 50px; font-weight: bold; border-bottom: #31A05E solid 4px;'>" + saladName + "</p>");
 	$("#saladDesc").append("<p style='font-size:35px;'> Rating: 5.0 <br> Prep Time: 20 Min <br> Serving Size: 4 </p>");
+	$("#saladDesc").append("<p id='numObtained' class='green-text' style='font-size:40px;padding-top:2vh;font-weight:600;''><span id='haveIngredNum'>0</span>/<span id='totalIngredNum'>0</span> Obtained</p>");
 
 	$("#totalIngredNum").text(saladIngredients.length + dressingIngredients.length);
 
 	for (var i = 0; i < saladIngredients.length; i++) {
 		//Iterate through each ingredient and append to row with id=ingredients
 		$("#ingredients").append("<div class='listItem'> <label class='checkContainer'> <input class='checkbox' id='checkbox"+ i + "' type='checkbox'> <span class='checkmark'></span> </label> <div class='listName'><p>" + saladIngredients[i] + "</p> </div> </div>");
+	}
+
+	if (dressingName != "") {
+		//Change dressingName to all lowercase
+		dressingName = dressingName.toLowerCase();
+		//Uppercase the first letter of each word in dressingName
+		var words = dressingName.split(" ");
+		for (var k = 0; k < words.length; k++) {
+			//If the first char of each word is a letter, uppercase it, else uppercase the second char
+			if (words[k].charAt(0).match(/[a-zA-Z]/)) {
+				words[k] = words[k].charAt(0).toUpperCase() + words[k].slice(1);
+			}
+		}
+		dressingName = words.join(" ");
+		
+		$("#dressingheader").append(dressingName);
+		for (var i = 0; i < dressingIngredients.length; i++) {
+			//Iterate through each ingredient and append to row with id=ingredients
+			$("#dressingredients").append("<div class='listItem'> <label class='checkContainer'> <input class='checkbox' id='checkbox"+ i + "' type='checkbox'> <span class='checkmark'></span> </label> <div class='listName'><p>" + dressingIngredients[i] + "</p> </div> </div>");
+		}
+	}
+	else {
+		$("#dressing").css("display", "none");
+		$("#ingredRow").css("margin-bottom", "200px");
 	}
 
 
