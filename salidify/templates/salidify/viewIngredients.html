@@ -186,12 +186,13 @@
 
 			</div>
 		</div>
+
 		<div class="row ingredHeading">
 			<div class="col-12 text-left green-text" style="font-size:40px;padding-top:2vh;font-weight:600;">
 				Main Ingredients
 			</div>
 		</div>
-		<div class="row" id="ingredRow" style="width: 90%; font-weight: 500; margin-left:auto; margin-right:auto;">
+		<div class="row" id="ingredRow" style="overflow-y: scroll; width: 90%; font-weight: 500; margin-left:auto; margin-right:auto;">
 			<div class="col-12" id="ingredients">
 
 			</div>
@@ -235,6 +236,7 @@
 	$("#saladDesc").append("<p style='font-size:35px;'> Rating: 5.0 <br> Prep Time: 20 Min <br> Serving Size: 4 </p>");
 	$("#saladDesc").append("<p id='numObtained' class='green-text' style='font-size:40px;padding-top:2vh;font-weight:600;''><span id='haveIngredNum'>0</span>/<span id='totalIngredNum'>0</span> Obtained</p>");
 
+
 	$("#totalIngredNum").text(saladIngredients.length + dressingIngredients.length);
 
 	for (var i = 0; i < saladIngredients.length; i++) {
@@ -265,8 +267,6 @@
 		$("#dressing").css("display", "none");
 		$("#ingredRow").css("margin-bottom", "200px");
 	}
-
-
 
 	//Everytime a checkbox is clicked, check checkedIngredients and make sure it's up to date
 	$(".checkbox").click(function() {
