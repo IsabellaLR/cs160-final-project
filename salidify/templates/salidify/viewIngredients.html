@@ -243,10 +243,15 @@
 
 
 	$("#totalIngredNum").text(saladIngredients.length + dressingIngredients.length);
+	$("#haveIngredNum").text(checkedIngredients.length);
 
 	for (var i = 0; i < saladIngredients.length; i++) {
 		//Iterate through each ingredient and append to row with id=ingredients
-		$("#ingredients").append("<div class='listItem'> <label class='checkContainer'> <input class='checkbox' id='checkbox"+ i + "' type='checkbox'> <span class='checkmark'></span> </label> <div class='listName'><p>" + saladIngredients[i] + "</p> </div> </div>");
+		if (checkedIngredients.includes(saladIngredients[i])) {
+			$("#ingredients").append("<div class='listItem'> <label class='checkContainer'> <input class='checkbox' id='checkbox"+ i + "' type='checkbox' checked='true'> <span class='checkmark'></span> </label> <div class='listName'><p>" + saladIngredients[i] + "</p> </div> </div>");
+		} else {
+			$("#ingredients").append("<div class='listItem'> <label class='checkContainer'> <input class='checkbox' id='checkbox"+ i + "' type='checkbox'> <span class='checkmark'></span> </label> <div class='listName'><p>" + saladIngredients[i] + "</p> </div> </div>");
+		}
 	}
 
 	if (dressingName != "") {
@@ -264,8 +269,12 @@
 
 		$("#dressingheader").append(dressingName);
 		for (var i = 0; i < dressingIngredients.length; i++) {
+			if (checkedIngredients.includes(dressingIngredients[i])) {
 			//Iterate through each ingredient and append to row with id=ingredients
-			$("#dressingredients").append("<div class='listItem'> <label class='checkContainer'> <input class='checkbox' id='checkbox"+ (i + saladIngredients.length) + "' type='checkbox'> <span class='checkmark'></span> </label> <div class='listName'><p>" + dressingIngredients[i] + "</p> </div> </div>");
+				$("#dressingredients").append("<div class='listItem'> <label class='checkContainer'> <input class='checkbox' id='checkbox"+ (i + saladIngredients.length) + "' type='checkbox' checked='true'> <span class='checkmark'></span> </label> <div class='listName'><p>" + dressingIngredients[i] + "</p> </div> </div>");
+			} else {
+				$("#dressingredients").append("<div class='listItem'> <label class='checkContainer'> <input class='checkbox' id='checkbox"+ (i + saladIngredients.length) + "' type='checkbox'> <span class='checkmark'></span> </label> <div class='listName'><p>" + dressingIngredients[i] + "</p> </div> </div>");
+			}
 		}
 	}
 	else {
@@ -275,8 +284,6 @@
 
 	//Everytime a checkbox is clicked, check checkedIngredients and make sure it's up to date
 	$(".checkbox").click(function() {
-		var checkedIngredients = JSON.parse(sessionStorage.checkedIngredients);
-
 		for (var i = 0; i < saladIngredients.length; i++) {
 			if (document.getElementById('checkbox' + i).checked) {
 				if (!checkedIngredients.includes(saladIngredients[i])) {
