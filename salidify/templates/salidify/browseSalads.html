@@ -151,23 +151,6 @@
 				231, 1, 9, 225, ["Vegetarian", "Pescatarian", "Gluten-Free", "Dairy-Free"]]
 			];
 
-	for (var i = 0; i < salads.length; i++) {
-		for (var j = 0; j < salads[i][3].length; j++) {
-			//Separate words in salads[i][3][j]
-			var words = salads[i][3][j].split(" ");
-			for (var k = 0; k < words.length; k++) {
-				//If the first char of each word is a letter, uppercase it, else uppercase the second char
-				if (words[k].charAt(0).match(/[a-zA-Z]/)) {
-					words[k] = words[k].charAt(0).toUpperCase() + words[k].slice(1);
-				}
-				else if (words[k].charAt(1).match(/[a-zA-Z]/)) {
-					words[k] = words[k].charAt(0) + words[k].charAt(1).toUpperCase() + words[k].slice(2);
-				}
-			}
-			salads[i][3][j] = words.join(" ");
-		}
-	}
-
 	var saladIngredients =[["broccoli", "florets", "bacon", "red onion", "cranberries", "sunflower seeds", "goat cheese", "mayonnaise", "plain yogurt"],
 				["baby spinach", "tomatoes", "avocado", "cucumber", "red onion", "olive oil", "salmon filets", "salt and pepper", "olive oil", "lemon juice", "dijon mustard", "honey", "garlic cloves", "salt and pepper"],
 				["chicken breasts", "sliced almonds", "mayonnaise", "dijon mustard", "red grapes", "celery", "green onions", "parsley", "tarragon", "lemon", "salt and pepper"],
@@ -261,6 +244,57 @@
 				"AVOCADO CUCUMBER SAUCE": ["1 avocado, peeled and pitted", "1 cucumber, peeled and sliced", "1 lemon, juiced", "2-3 garlic cloves", "salt and pepper, to taste"]
 			};
 
+	//uppcase saladsArray
+	for (var i = 0; i < salads.length; i++) {
+		for (var j = 0; j < salads[i][3].length; j++) {
+			//Separate words in salads[i][3][j]
+			var words = salads[i][3][j].split(" ");
+			for (var k = 0; k < words.length; k++) {
+				//If the first char of each word is a letter, uppercase it, else uppercase the second char
+				if (words[k].charAt(0).match(/[a-zA-Z]/)) {
+					words[k] = words[k].charAt(0).toUpperCase() + words[k].slice(1);
+				}
+				else if (words[k].charAt(1).match(/[a-zA-Z]/)) {
+					words[k] = words[k].charAt(0) + words[k].charAt(1).toUpperCase() + words[k].slice(2);
+				}
+			}
+			salads[i][3][j] = words.join(" ");
+		}
+	}
+
+	//uppcase saladsIngredients
+	for (var i = 0; i < saladIngredients.length; i++) {
+		for (var j = 0; j < saladIngredients[i].length; j++) {
+			var words = saladIngredients[i][j].split(" ");
+			for (var k = 0; k < words.length; k++) {
+				//If the first char of each word is a letter, uppercase it, else uppercase the second char
+				if (words[k].charAt(0).match(/[a-zA-Z]/)) {
+					words[k] = words[k].charAt(0).toUpperCase() + words[k].slice(1);
+				}
+				else if (words[k].charAt(1).match(/[a-zA-Z]/)) {
+					words[k] = words[k].charAt(0) + words[k].charAt(1).toUpperCase() + words[k].slice(2);
+				}
+			}
+			saladIngredients[i][j] = words.join(" ");
+		}
+	}
+
+	//uppcase dressingDict
+	for (i in dressingsDict) {
+		for (var j = 0; j < dressingsDict[i].length; j++) {
+			var words = dressingsDict[i][j].split(" ");
+			for (var k = 0; k < words.length; k++) {
+				//If the first char of each word is a letter, uppercase it, else uppercase the second char
+				if (words[k].charAt(0).match(/[a-zA-Z]/)) {
+					words[k] = words[k].charAt(0).toUpperCase() + words[k].slice(1);
+				}
+				else if (words[k].charAt(1).match(/[a-zA-Z]/)) {
+					words[k] = words[k].charAt(0) + words[k].charAt(1).toUpperCase() + words[k].slice(2);
+				}
+			}
+			dressingsDict[i][j] = words.join(" ");
+		}
+	}
 
 	function numIngredients(saladIngred, dressingIngred) {
 		totalIngred = saladIngred.length;
@@ -271,6 +305,7 @@
 	}
 
 	function setStorageVal(index){
+		sessionStorage.saladIndex = index;
 		sessionStorage.saladIngredients = JSON.stringify(salads[index][3]);
 		if (salads[index][4].length == 0) {
 			sessionStorage.dressingIngredients = JSON.stringify([]);

@@ -206,6 +206,8 @@
     var saladIngredients = JSON.parse(sessionStorage.saladIngredients);
     var saladIngredientsNoMetrics = JSON.parse(sessionStorage.saladIngredientsNoMetrics);
     var subIngredientNoMetric = saladIngredientsNoMetrics[saladIngredients.indexOf(subIngredient)];
+	console.log(saladIngredientsNoMetrics);
+	console.log(subIngredientNoMetric);
     var metric = subIngredient.split(subIngredientNoMetric)[0];
     $("#replacingText").append("<h2>Replacing:"+" "+subIngredient+"</h2><h3>Select a substitute from the choices below.</h3>");
     var saladIngredients = JSON.parse(sessionStorage.saladIngredients);
@@ -236,6 +238,7 @@
             for (let i = 0; i < myObj.substitutes.length; i++) {
                 var sub = myObj.substitutes[i].split("=")[1];
                 sub = splitMetrics(sub);
+				sub = makeUpper(sub);
                 substitutes.push(metric + " " + sub);
                 //text += "<div class='jumbotron light-green'><h3 class='pb-2' style='color: white;'> Choice "+(i+1)+": "+ sub +"</h3><p class='lead'>In Stock at Selected Store</p></div>"
             }
@@ -316,6 +319,22 @@
         }
         return sub;
     }
+
+	function makeUpper(sub) {
+		var words = sub.split(" ");
+		for (var k = 0; k < words.length; k++) {
+			//If the first char of each word is a letter, uppercase it, else uppercase the second char
+			if (words[k].charAt(0).match(/[a-zA-Z]/)) {
+				words[k] = words[k].charAt(0).toUpperCase() + words[k].slice(1);
+			}
+			else if (words[k].charAt(1).match(/[a-zA-Z]/)) {
+				words[k] = words[k].charAt(0) + words[k].charAt(1).toUpperCase() + words[k].slice(2);
+			}
+		}
+		sub = words.join(" ");
+		console.log("SUB sub: " + sub);
+		return sub;
+	}
 </script>
 </body>
     
