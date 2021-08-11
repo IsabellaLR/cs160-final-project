@@ -307,6 +307,7 @@
 		return totalIngred;
 	}
 
+
 	function setStorageVal(index){
 		sessionStorage.saladIndex = index;
 		sessionStorage.saladIngredients = JSON.stringify(salads[index][3]);
@@ -331,7 +332,7 @@
 		sessionStorage.protein = JSON.stringify(salads[index][7]);
 		sessionStorage.sodium = JSON.stringify(salads[index][8]);
 		sessionStorage.diets = JSON.stringify(salads[index][9]);
-		//ToDo: make first letter of each ingred capitalized
+		sessionStorage.similarityArray = JSON.stringify([]);
 	}
 
     for (var i = 0; i < salads.length; i++) {
