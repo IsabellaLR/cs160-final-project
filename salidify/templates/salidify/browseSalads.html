@@ -322,16 +322,38 @@
 		sessionStorage.saladIngredientsNoMetrics = JSON.stringify(saladIngredients[index]);
 		sessionStorage.checkedIngredients = JSON.stringify([]);
 		// content for 'filter' pg
-		sessionStorage.calories = JSON.stringify(salads[index][5]);
-		sessionStorage.sugar = JSON.stringify(salads[index][6]);
-		sessionStorage.protein = JSON.stringify(salads[index][7]);
-		sessionStorage.sodium = JSON.stringify(salads[index][8]);
-		sessionStorage.diets = JSON.stringify(salads[index][9]);
+		//sessionStorage.calories = JSON.stringify(salads[index][5]);
+		//sessionStorage.sugar = JSON.stringify(salads[index][6]);
+		//sessionStorage.protein = JSON.stringify(salads[index][7]);
+		//sessionStorage.sodium = JSON.stringify(salads[index][8]);
+		//sessionStorage.diets = JSON.stringify(salads[index][9]);
 		//ToDo: make first letter of each ingred capitalized
 	}
 
+	var cal_up;
+	if (sessionStorage.getItem("cal_up") == null){
+		cal_up = 400;
+	} else {
+		cal_up = sessionStorage.getItem("cal_up");
+		console.log(cal_up);
+		sessionStorage.setItem("cal_up", cal_up);
+	}
+
+	var sugar_up;
+	if (sessionStorage.getItem("sugar_up") == null){
+		sugar_up = 5;
+	} else {
+		sugar_up = sessionStorage.getItem("sugar_up");
+		console.log(sugar_up);
+		sessionStorage.setItem("sugar_up", sugar_up);
+	}
+
+	
     for (var i = 0; i < salads.length; i++) {
-		$('<a href="/salidify/viewIngredients"onclick="setStorageVal('+i+')"><div class="card"><div class="row"><div class="col-5 align-self-center"><img src="'+salads[i][1]+'"style="border-radius: 30px; width:100%; height:346px;"/></div><div class="col-7" style="padding-right: 0.5in; padding-top: 2.5%; padding-bottom: 2.5;"><div class="row" style="height: 40%; align-content:flex-end;"><div class="text" style="font-size: 48px; font-weight:600; font-family: Montserrat; color: #31A05E;">'+salads[i][0]+'</div></div><hr width = "100%" color="#31A05E" size="1"><div class="row" style="height: 30%;"><div class="text" style="font-size: 28px; font-family: Montserrat;">'+salads[i][2]+' <br> '+numIngredients(salads[i][3], salads[i][4])+' Ingredients</div></div></div></div></div></a>').appendTo('.card-container');
+		if ((salads[i][5] < cal_up) & (salads[i][6] < sugar_up)) {
+			$('<a href="/salidify/viewIngredients"onclick="setStorageVal('+i+')"><div class="card"><div class="row"><div class="col-5 align-self-center"><img src="'+salads[i][1]+'"style="border-radius: 30px; width:100%; height:346px;"/></div><div class="col-7" style="padding-right: 0.5in; padding-top: 2.5%; padding-bottom: 2.5;"><div class="row" style="height: 40%; align-content:flex-end;"><div class="text" style="font-size: 48px; font-weight:600; font-family: Montserrat; color: #31A05E;">'+salads[i][0]+'</div></div><hr width = "100%" color="#31A05E" size="1"><div class="row" style="height: 30%;"><div class="text" style="font-size: 28px; font-family: Montserrat;">'+salads[i][2]+' <br> '+numIngredients(salads[i][3], salads[i][4])+' Ingredients</div></div></div></div></div></a>').appendTo('.card-container');
+		}
+
 	}
 
 </script>

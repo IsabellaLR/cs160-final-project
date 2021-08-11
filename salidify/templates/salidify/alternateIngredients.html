@@ -184,7 +184,7 @@
     </nav>
     <!-- navbar with title + navigation -->
     <nav class="navbar px-5 pt-5">
-        <a class="navbar-brand" href="http://localhost:8000/salidify/">
+        <a class="navbar-brand" href="http://localhost:8000/salidify/shopIngredients/">
             <svg xmlns="http://www.w3.org/2000/svg" height="40px" viewBox="0 0 24 24" width="40px" fill="#000000"><path d="M0 0h24v24H0V0z" fill="none" opacity=".87"/><path d="M17.51 3.87L15.73 2.1 5.84 12l9.9 9.9 1.77-1.77L9.38 12l8.13-8.13z"/></svg>
         </a>
         <a class="navbar-brand green-text mx-auto" href="#">
@@ -218,8 +218,8 @@
     var orderedSubstitutes = [];
     var noMetricSubstitues = [];
     var subTastes = {"Sweet":[], "Salty":[], "Sour":[], "Bitter":[], "Savory":[], "Fatty":[]};
-    var APIkey = "c61426d2bf9a4cb299a2d057a30f90e5";
-    // var APIkey = "a9f75cfd2e6546e49246a124bde0e650";
+    //var APIkey = "c61426d2bf9a4cb299a2d057a30f90e5";
+    var APIkey = "a9f75cfd2e6546e49246a124bde0e650";
     // var APIkey = "7c3fcc8ec0b742fdbcb7cd0848220abb";
     function loadXMLDoc() {
         var url = "https://api.spoonacular.com/food/ingredients/substitutes?apiKey="+APIkey+"&ingredientName=" + subIngredient;
