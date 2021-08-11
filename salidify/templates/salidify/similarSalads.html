@@ -246,6 +246,24 @@
                             "Potato Salad": ["Fill a large pot with water. Add the potatoes and bring to a boil. Salt the water, reduce to a simmer and cook for 20 minutes or until a fork inserts easily with a little resistance.", "Fill another pot with water and bring to a boil. Reduce the heat to low (so that there's no bubbles breaking the surface) and use a skimmer to gently and slowly add the eggs. Cook the eggs for 12 – 14 minutes, then place in an ice water bath to immediately stop their cooking.", "Once the potatoes have finished cooking, drain the water. Fill the pot with cold water to cool the potatoes down, then drain again.", "Place both the eggs and potatoes in the refrigerator to cool completely.", "While your potatoes and eggs are cooling, prepare the celery, radishes, green onion and dill. Add the ingredients to a large bowl along with the mayonnaise.", "Once your potatoes and eggs are fully cooled, peel the eggs and cube both the potatoes and eggs into 1-inch sized pieces. Add to your mixing bowl with the mayonnaise and vegetables. Stir gently until well combined.", "Serve the potato salad immediately or refrigerate for up to 3 days."]	
 				};
 
+	//uppcase saladsArray
+	for (var i = 0; i < salads.length; i++) {
+		for (var j = 0; j < salads[i][3].length; j++) {
+			//Separate words in salads[i][3][j]
+			var words = salads[i][3][j].split(" ");
+			for (var k = 0; k < words.length; k++) {
+				//If the first char of each word is a letter, uppercase it, else uppercase the second char
+				if (words[k].charAt(0).match(/[a-zA-Z]/)) {
+					words[k] = words[k].charAt(0).toUpperCase() + words[k].slice(1);
+				}
+				else if (words[k].charAt(1).match(/[a-zA-Z]/)) {
+					words[k] = words[k].charAt(0) + words[k].charAt(1).toUpperCase() + words[k].slice(2);
+				}
+			}
+			salads[i][3][j] = words.join(" ");
+		}
+	}
+
 	//uppcase saladsIngredients
 	for (var i = 0; i < saladIngredients.length; i++) {
 		for (var j = 0; j < saladIngredients[i].length; j++) {
@@ -261,6 +279,9 @@
 			}
 			saladIngredients[i][j] = words.join(" ");
 		}
+		saladIngredients[i] = saladIngredients[i].filter( function( item, index, inputArray ) {
+           return inputArray.indexOf(item) == index;
+  		});
 	}
 
 	//uppcase dressingDict
@@ -291,6 +312,7 @@
 	var saladIndex = parseInt(sessionStorage.saladIndex);
 	var checkedIngredients = JSON.parse(sessionStorage.checkedIngredients);
 	var currSaladIngredients = JSON.parse(sessionStorage.saladIngredients);
+	var prevSimilarityArray = JSON.parse(sessionStorage.similarityArray);
 	//get checkIngredientsNoMetrics
 	checkedIngredientsNoMetrics = [];
 	for (var i = 0; i < checkedIngredients.length; i++) {
@@ -299,41 +321,55 @@
 		checkedIngredientsNoMetrics.push(ingred);
 	}
 	saladName = sessionStorage.saladName;
-	console.log(checkedIngredientsNoMetrics);
-    for (var i = 0; i < saladIngredients.length; i++) {
-		if (salads[i][0] != saladName) {
-			var haveIngred = [];
-			var neededIngred = [];
-			for (var j = 0; j < saladIngredients[i].length; j++) {
-				if (checkedIngredientsNoMetrics.includes(saladIngredients[i][j])) {
-					haveIngred.push(saladIngredients[i][j]);
-				} else {
-					neededIngred.push(saladIngredients[i][j]);
+	if (prevSimilarityArray.length == 0) {
+		for (var i = 0; i < saladIngredients.length; i++) {
+			if (salads[i][0] != saladName) {
+				var haveIngred = [];
+				var neededIngred = [];
+				for (var j = 0; j < saladIngredients[i].length; j++) {
+					if (checkedIngredientsNoMetrics.includes(saladIngredients[i][j])) {
+						haveIngred.push(saladIngredients[i][j]);
+					} else {
+						neededIngred.push(saladIngredients[i][j]);
+					}
 				}
+				console.log(haveIngred.join(', '));
+				similarityArray.push([salads[i], haveIngred, neededIngred, i]);
 			}
-			console.log(haveIngred.join(', '));
-			similarityArray.push([salads[i], haveIngred, neededIngred]);
 		}
+		
+		similarityArray.sort(function(first, second) {
+			return second[1].length - first[1].length;
+		});
+	} else {
+		similarityArray = prevSimilarityArray;
 	}
-	
-	similarityArray.sort(function(first, second) {
-		return second[1].length - first[1].length;
-	});
 
-	function setStorageVal(index){
-		sessionStorage.saladIngredients = JSON.stringify(similarityArray[index][0][3]);
-		if (similarityArray[index][0][4].length == 0) {
+	function setStorageVal(i){
+		// alert("i :" + i);
+		var index = similarityArray[i][3];
+		// alert("index :" + index);
+		sessionStorage.saladIndex = index;
+		sessionStorage.saladIngredients = JSON.stringify(salads[index][3]);
+		sessionStorage.saladIngredientsNoMetrics = JSON.stringify(saladIngredients[index]);
+		if (salads[index][4].length == 0) {
 			sessionStorage.dressingIngredients = JSON.stringify([]);
 			sessionStorage.dressingName = "";
 		} else {
-			sessionStorage.dressingIngredients = JSON.stringify(dressingsDict[similarityArray[index][0][4]]);
-			sessionStorage.dressingName = similarityArray[index][0][4];
+			var dressingUnique = dressingsDict[salads[index][4]].filter(item => !salads[index][3].includes(item));
+			sessionStorage.dressingIngredients = JSON.stringify(dressingUnique);
+			sessionStorage.dressingName = salads[index][4];
 		}
-		sessionStorage.saladPicture = similarityArray[index][0][1];
-		sessionStorage.saladName = similarityArray[index][0][0];
-		sessionStorage.saladIngredientsNoMetrics = JSON.stringify(similarityArray[index][1]+similarityArray[index][2]);
-		sessionStorage.checkedIngredients = JSON.stringify(similarityArray[index][1]);
-		//ToDo: make first letter of each ingred capitalized
+		sessionStorage.saladPicture = salads[index][1];
+		sessionStorage.saladName = salads[index][0];
+		sessionStorage.checkedIngredients = JSON.stringify([]);
+		// content for 'filter' pg
+		sessionStorage.calories = JSON.stringify(salads[index][5]);
+		sessionStorage.sugar = JSON.stringify(salads[index][6]);
+		sessionStorage.protein = JSON.stringify(salads[index][7]);
+		sessionStorage.sodium = JSON.stringify(salads[index][8]);
+		sessionStorage.diets = JSON.stringify(salads[index][9]);
+		sessionStorage.similarityArray = JSON.stringify(similarityArray);
 	}
 
 	for (var i = 0; i < similarityArray.length; i++) {

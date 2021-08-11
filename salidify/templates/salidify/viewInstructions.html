@@ -69,7 +69,46 @@
 <script>
      //{"Salad Name":[Rating,PrepTime, Time]}
      var rateTimeServingDict = {"Broccoli Salad" : ["5.0", "20 mins", "4"],
-                                "Salmon Avocado Salad": ["4.5", "20 mins", "2"]
+                                "Salmon Avocado Salad": ["4.5", "20 mins", "2"],
+                                "Ultimate Chicken Salad": ["5.0", "25 mins", "6"],
+                                "Caprese Salad": ["4.9", "5 mins", "6"],
+                                "Tuna Salad":["4.0", "15 mins", "4"],
+                                "Greek Salad": ["4.7", "5 mins", "4"],
+                                "Mediterranean Chickpea Salad": ["4.9", "10 mins", "8"],
+                                "Shrimp, Asparagus, & Avo Salad": ["4.5", "20 mins", "4"],
+                                "Cauliflower Rice Tabbouleh":["4.0", "20 mins", "4"],
+                                "Taco Salad": ["4.8", "25 mins", "4"],
+                                "Mandarin Chicken Salad": ["3.9", "55 mins", "4"],
+                                "Southwest Chicken Salad": ["5.0", "6 hrs(Marinade) 20 mins", "4"],
+                                "Greek Chicken Salad": ["4.0", "35 mins", "4"],
+                                "Cobb Salad": ["4.8", "30 mins", "2"],
+                                "Smoked Salmon, Avocado, & Arugula":["4.3", "5 mins", "4"],
+                                "Grilled Peach and Burrata Salad": ["4.7", "20 mins", "4"],
+                                "Wild Rice and Arugula Salad": ["4.8", "50 mins", "4"],
+                                "Pulled Pork & Arugula Salad": ["4.0", "10 mins", "4"],
+                                "Easy Fruit Salad": ["5.0", "20 mins", "10"],
+                                "Berry Spinach Salad": ["4.7", "5 mins", "4"],
+                                "Citrus Shrimp Ceviche": ["4.8", "20 mins", "4"],
+                                "Melon Mozzarella Salad With Basil": ["4.7", "15 mins", "6"],
+                                "Watermelon, Cucumber, & Feta": ["4.3", "20 mins", "6"],
+                                "Orange, Fennel, & Avocado Salad": ["4.8", "15 mins", "4"],
+                                "Stone Fruit Salad With Vanilla Honey": ["3.9", "25 mins", "6"],
+                                "Shaved Brussels Sprouts Salad": ["4.5", "15 mins", "6"],
+                                "Kale Salad with Apples & Chicken": ["5.0", "20 mins", "4"],
+                                "Turkey Cobb Salad": ["4.9", "30 mins", "6"],
+                                "Squash, Romaine, & Goat Cheese": ["4.7", "40 mins", "4"],
+                                "Persimmon Caprese Salad": ["4.8", "15 mins", "2"],
+                                "Zucchini Noodle Caprese": ["5.0", "20 mins", "5"],
+                                "Sweet Potato Noodles Salad": ["4.3", "35 mins", "4"],
+                                "Carrot & Zucchini Salad": ["4.7", "15 mins", "4"],
+                                "Easy Cucumber Salad": ["5.0", "20 mins", "4"],
+                                "Massaged Kale Salad": ["4.5", "12 mins", "4"],
+                                "Israeli Salad": ["4.9", "5 mins", "4"],
+                                "Lentil Salad with Cucumber": ["5.0", "30 mins", "6"],
+                                "Broccoli Tuna Salad": ["4.6", "15 mins", "4"],
+                                "Egg Salad": ["5.0", "25 mins", "4"],
+                                "Avocado Egg Salad": ["5.0", "25 mins", "2"],
+                                "Potato Salad": ["5.0", "1 hr 15 mins", "10"]	
 
     };
 
@@ -81,7 +120,7 @@
 							"Tuna Salad":["Drain the liquid from the tuna cans. Then, add the tuna, mayonnaise, diced celery, diced red onion, herbs, Dijon mustard, salt and pepper to a mixing bowl.", "Stir all of the ingredients together until well combined.", "Enjoy the tuna salad plain out of a bowl, wrapped up in lettuce, or in a sandwich."],
 							"Greek Salad": ["Add all of the ingredients to a bowl and stir to combine. Drizzle with my homemade Greek Salad Dressing."],
 							"Mediterranean Chickpea Salad": ["Add all of the ingredients to a mixing bowl.", "Pour the lemon vinaigrette over the salad and give it a gentle stir.", "Transfer the salad to a large bowl and serve."],
-							"Shrimp, Asparagus and Avo Salad": ["Bring both a medium pot of water and a medium sauté pan of water and to a boil. Add the shrimp to the pot and the asparagus to the sauté pan and cook for 2-3 minutes. Use a skimmer or tongs to transfer the shrimp and asparagus to an ice water bath. Drain and then slice the asparagus into 1 1/2 inch pieces.", "Add the shrimp, sliced asparagus, baby spinach, avocado and green onion to a salad bowl. Add the dressing, season with salt and pepper and toss it all together."],
+							"Shrimp, Asparagus, & Avo Salad": ["Bring both a medium pot of water and a medium sauté pan of water and to a boil. Add the shrimp to the pot and the asparagus to the sauté pan and cook for 2-3 minutes. Use a skimmer or tongs to transfer the shrimp and asparagus to an ice water bath. Drain and then slice the asparagus into 1 1/2 inch pieces.", "Add the shrimp, sliced asparagus, baby spinach, avocado and green onion to a salad bowl. Add the dressing, season with salt and pepper and toss it all together."],
 							"Cauliflower Rice Tabbouleh": ["Add all of the ingredients to a bowl and stir to combine."],
 							"Taco Salad": ["In a pan over medium-high heat, add the ground beef and break it into small pieces with your spatula. Cook for about 8 minutes or until it starts to brown. Then drain the fat from the beef.", "Add in the taco seasoning, give everything a stir and cook for another minute or two.", "In a large salad bowl, layer the chopped lettuce with browned beef, black beans, tomatoes, avocado, red onion, and cheese.", "Dollop some salsa, sour cream, a squeeze of lime juice and cilantro leaves on top."],
 
@@ -121,8 +160,8 @@
     var saladName = sessionStorage.saladName;
     $(".row").append('<div class="col-5 align-self-center"> <img src="' + pic + '" style="border-radius: 16px; width:100%; height:346px;"/> </div>');
     
-    var rateTimeServing = rateTimeServingDict['Broccoli Salad'];
-    $(".row").append('<div class="col-7" p style="font-size:35px; padding-right: 0.5in; padding-top: 2.5%; padding-bottom: 2.5;"> <div class="row" style="height: 40%; align-content:flex-end;"> <div class="text" style="font-size: 48px; font-weight:600; font-family: Montserrat; color: #31A05E;">'+ saladName +'</div> </div> <hr width = "100%" color="#31A05E" size="1"> <div class="row" style="height: 30%;"> <div class="text" style="font-size: 28px; font-family: Montserrat;">Rating: ' + rateTimeServing[0]+'<br> Prep Time: '+ rateTimeServing[1]+'<br> Serving Size: '+ rateTimeServing[2]+'</div> </div> </div>');
+    var rateTimeServing = rateTimeServingDict[saladName];
+    $(".row").append('<div class="col-7" p style="font-size:35px; padding-right: 0.5in; padding-top: 2.5%; padding-bottom: 2.5;"> <div class="row" style="height: 40%; align-content:flex-end;"> <div class="text" style="font-size: 48px; font-weight:600; font-family: Montserrat; color: #31A05E;">'+ saladName +'</div> </div> <hr width = "100%" color="#31A05E" size="1"> <div class="row" style="height: 30%;"> <div class="text" style="font-size: 28px; font-family: Montserrat;">Rating: ' + rateTimeServing[0]+'<br> Total Time: '+ rateTimeServing[1]+'<br> Serving Size: '+ rateTimeServing[2]+'</div> </div> </div>');
 
     var instructions = instructionsDict[saladName];
     $(".card-container").append('<div class="text" style="font-size: 40px; font-weight:600; font-family: Montserrat; color: #31A05E; margin-top: 5%;">Instructions</div><hr width = "100%" color="#31A05E" size="1">')
