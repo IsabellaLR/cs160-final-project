@@ -310,16 +310,20 @@
 	function setStorageVal(index){
 		sessionStorage.saladIndex = index;
 		sessionStorage.saladIngredients = JSON.stringify(salads[index][3]);
+		var ingredientsUnique = saladIngredients[index].filter( function( item, index, inputArray ) {
+           return inputArray.indexOf(item) == index;
+  		});
+		sessionStorage.saladIngredientsNoMetrics = JSON.stringify(ingredientsUnique);
 		if (salads[index][4].length == 0) {
 			sessionStorage.dressingIngredients = JSON.stringify([]);
 			sessionStorage.dressingName = "";
 		} else {
-			sessionStorage.dressingIngredients = JSON.stringify(dressingsDict[salads[index][4]]);
+			var dressingUnique = dressingsDict[salads[index][4]].filter(item => !salads[index][3].includes(item));
+			sessionStorage.dressingIngredients = JSON.stringify(dressingUnique);
 			sessionStorage.dressingName = salads[index][4];
 		}
 		sessionStorage.saladPicture = salads[index][1];
 		sessionStorage.saladName = salads[index][0];
-		sessionStorage.saladIngredientsNoMetrics = JSON.stringify(saladIngredients[index]);
 		sessionStorage.checkedIngredients = JSON.stringify([]);
 		// content for 'filter' pg
 		//sessionStorage.calories = JSON.stringify(salads[index][5]);
