@@ -201,12 +201,12 @@
 		<div id="dressing">
 			<div class="row ingredHeading">
 				<div id ="dressingheader" class="col-12 text-left green-text" style="font-size:40px;padding-top:2vh;font-weight:600;">
-					
+
 				</div>
 			</div>
 			<div class="row" style="width: 90%; font-weight: 500; margin-left:auto; margin-right:auto; margin-bottom:200px;">
 				<div class="col-12" id="dressingredients">
-	
+
 				</div>
 			</div>
 		</div>
@@ -256,11 +256,11 @@
 			}
 		}
 		dressingName = words.join(" ");
-		
+
 		$("#dressingheader").append(dressingName);
 		for (var i = 0; i < dressingIngredients.length; i++) {
 			//Iterate through each ingredient and append to row with id=ingredients
-			$("#dressingredients").append("<div class='listItem'> <label class='checkContainer'> <input class='checkbox' id='checkbox"+ i + "' type='checkbox'> <span class='checkmark'></span> </label> <div class='listName'><p>" + dressingIngredients[i] + "</p> </div> </div>");
+			$("#dressingredients").append("<div class='listItem'> <label class='checkContainer'> <input class='checkbox' id='checkbox"+ (i + saladIngredients.length) + "' type='checkbox'> <span class='checkmark'></span> </label> <div class='listName'><p>" + dressingIngredients[i] + "</p> </div> </div>");
 		}
 	}
 	else {
@@ -283,10 +283,24 @@
 				}
 			}
 		}
+		for (var i = 0; i < dressingIngredients.length; i++) {
+			if (document.getElementById('checkbox' + (i + saladIngredients.length)).checked) {
+				console.log(i);
+				if (!checkedIngredients.includes(dressingIngredients[i])) {
+					checkedIngredients.push(dressingIngredients[i]);
+				}
+			} else {
+				if (checkedIngredients.includes(dressingIngredients[i])) {
+					checkedIngredients.splice(checkedIngredients.indexOf(dressingIngredients[i]), 1);
+				}
+			}
+		}
+		$("#haveIngredNum").text(checkedIngredients.length);
+
 		console.log(checkedIngredients); //TAKE THIS OUT THIS IS TEST
 		sessionStorage.checkedIngredients = JSON.stringify(checkedIngredients);
 
-		$("#haveIngredNum").text(checkedIngredients.length);
+
 
 	});
 
