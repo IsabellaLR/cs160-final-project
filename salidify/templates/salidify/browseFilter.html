@@ -233,7 +233,7 @@
 <script>
   var cal_up;
   if (sessionStorage.getItem("cal_up") == null){
-		cal_up = 400;
+		cal_up = 800;
     $('#caloriesNum').text(cal_up);
 	} else {
 		cal_up = sessionStorage.getItem("cal_up");
@@ -242,65 +242,216 @@
 	}
   var sugar_up;
   if (sessionStorage.getItem("sugar_up") == null){
-		sugar_up = 5;
+		sugar_up = 100;
     $('#sugarNum').text(sugar_up);
 	} else {
 		sugar_up = sessionStorage.getItem("sugar_up");
 		console.log(sugar_up);
     $('#sugarNum').text(sugar_up);
 	}
-  // TODO
-  var protein_low = 20;
-  var sodium_up = 400;
+  var protein_low;
+  if (sessionStorage.getItem("protein_low") == null){
+		protein_low = 0;
+    $('#proteinNum').text(protein_low);
+	} else {
+		protein_low = sessionStorage.getItem("protein_low");
+		console.log(protein_low);
+    $('#proteinNum').text(protein_low);
+	}
+
+  var sodium_up;
+  if (sessionStorage.getItem("sodium_up") == null){
+		sodium_up = 1000;
+    $('#sodiumNum').text(sodium_up);
+	} else {
+		sodium_up = sessionStorage.getItem("sodium_up");
+		console.log(sodium_up);
+    $('#sodiumNum').text(sodium_up);
+	}
 
 
-	$('#caloriesMinus').click(function() {
+	//$('#caloriesMinus').click(function() {
     //$('#caloriesNum').text(Number($('#caloriesNum').text()) - 1);
-    cal_up --;
-    $('#caloriesNum').text(cal_up);
-    sessionStorage.setItem("cal_up", cal_up);
-  });
-  $('#caloriesAdd').click(function() {
+    //cal_up --;
+    //$('#caloriesNum').text(cal_up);
+    //sessionStorage.setItem("cal_up", cal_up);
+  //});
+
+  var to   = null;
+  var iv   = null;
+
+  $("#caloriesMinus").on("mousedown", function () {
+        cal_up --;
+        $('#caloriesNum').text(cal_up);
+        sessionStorage.setItem("cal_up", cal_up);
+        to = setTimeout(function () {
+            iv = setInterval(function () {
+              cal_up --;
+              $('#caloriesNum').text(cal_up);
+              sessionStorage.setItem("cal_up", cal_up);
+            }, 75);
+        }, 500);
+      }).on("mouseup mouseleave", function () {
+        clearTimeout(to);
+        clearInterval(iv);
+      });
+
+  //$('#caloriesAdd').click(function() {
     //$('#caloriesNum').text(Number($('#caloriesNum').text()) + 1);
-    cal_up ++;
-    $('#caloriesNum').text(cal_up);
-    sessionStorage.setItem("cal_up", cal_up);
-  });
+    //cal_up ++;
+    //$('#caloriesNum').text(cal_up);
+    //sessionStorage.setItem("cal_up", cal_up);
+  //});
 
-  $('#sugarMinus').click(function() {
+  $("#caloriesAdd").on("mousedown", function () {
+        cal_up ++;
+        $('#caloriesNum').text(cal_up);
+        sessionStorage.setItem("cal_up", cal_up);
+        to = setTimeout(function () {
+            iv = setInterval(function () {
+              cal_up ++;
+              $('#caloriesNum').text(cal_up);
+              sessionStorage.setItem("cal_up", cal_up);
+            }, 75);
+        }, 500);
+      }).on("mouseup mouseleave", function () {
+        clearTimeout(to);
+        clearInterval(iv);
+      });
+
+  //$('#sugarMinus').click(function() {
     //$('#sugarNum').text(Number($('#sugarNum').text()) - 1);
-    sugar_up --;
-    $('#sugarNum').text(sugar_up);
-    sessionStorage.setItem("sugar_up", sugar_up);
-  });
-  $('#sugarAdd').click(function() {
+    //sugar_up --;
+    //$('#sugarNum').text(sugar_up);
+    //sessionStorage.setItem("sugar_up", sugar_up);
+  //});
+  
+  $("#sugarMinus").on("mousedown", function () {
+        sugar_up --;
+        $('#sugarNum').text(sugar_up);
+        sessionStorage.setItem("sugar_up", sugar_up);
+        to = setTimeout(function () {
+            iv = setInterval(function () {
+              sugar_up --;
+              $('#sugarNum').text(sugar_up);
+              sessionStorage.setItem("sugar_up", sugar_up);
+            }, 75);
+        }, 500);
+      }).on("mouseup mouseleave", function () {
+        clearTimeout(to);
+        clearInterval(iv);
+      });
+
+  //$('#sugarAdd').click(function() {
     //$('#sugarNum').text(Number($('#sugarNum').text()) + 1);
-    sugar_up ++;
-    $('#sugarNum').text(sugar_up);
-    sessionStorage.setItem("sugar_up", sugar_up);
-  });
+    //sugar_up ++;
+    //$('#sugarNum').text(sugar_up);
+    //sessionStorage.setItem("sugar_up", sugar_up);
+  //});
 
-  $('#proteinMinus').click(function() {
+  $("#sugarAdd").on("mousedown", function () {
+        sugar_up ++;
+        $('#sugarNum').text(sugar_up);
+        sessionStorage.setItem("sugar_up", sugar_up);
+        to = setTimeout(function () {
+            iv = setInterval(function () {
+              sugar_up ++;
+              $('#sugarNum').text(sugar_up);
+              sessionStorage.setItem("sugar_up", sugar_up);
+            }, 75);
+        }, 500);
+      }).on("mouseup mouseleave", function () {
+        clearTimeout(to);
+        clearInterval(iv);
+      });
+
+  //$('#proteinMinus').click(function() {
     //$('#proteinNum').text(Number($('#proteinNum').text()) - 1);
-    protein_low --;
-    $('#proteinNum').text(protein_low);
-  });
-  $('#proteinAdd').click(function() {
-    //$('#proteinNum').text(Number($('#proteinNum').text()) + 1);
-    protein_low ++;
-    $('#proteinNum').text(protein_low);
-  });
+    //protein_low --;
+    //$('#proteinNum').text(protein_low);
+  //});
 
-  $('#sodiumMinus').click(function() {
+  $("#proteinMinus").on("mousedown", function () {
+        protein_low --;
+        $('#proteinNum').text(protein_low);
+        sessionStorage.setItem("protein_low", protein_low);
+        to = setTimeout(function () {
+            iv = setInterval(function () {
+              protein_low --;
+              $('#proteinNum').text(protein_low);
+              sessionStorage.setItem("protein_low", protein_low);
+            }, 75);
+        }, 500);
+      }).on("mouseup mouseleave", function () {
+        clearTimeout(to);
+        clearInterval(iv);
+      });
+
+  //$('#proteinAdd').click(function() {
+    //$('#proteinNum').text(Number($('#proteinNum').text()) + 1);
+    //protein_low ++;
+    //$('#proteinNum').text(protein_low);
+  //});
+
+  $("#proteinAdd").on("mousedown", function () {
+        protein_low ++;
+        $('#proteinNum').text(protein_low);
+        sessionStorage.setItem("protein_low", protein_low);
+        to = setTimeout(function () {
+            iv = setInterval(function () {
+              protein_low ++;
+              $('#proteinNum').text(protein_low);
+              sessionStorage.setItem("protein_low", protein_low);
+            }, 75);
+        }, 500);
+      }).on("mouseup mouseleave", function () {
+        clearTimeout(to);
+        clearInterval(iv);
+      });
+
+  //$('#sodiumMinus').click(function() {
     //$('#sodiumNum').text(Number($('#sodiumNum').text()) - 1);
-    sodium_up ++;
-    $('#sodiumNum').text(sodium_up);
-  });
-  $('#sodiumAdd').click(function() {
+    //sodium_up ++;
+    //$('#sodiumNum').text(sodium_up);
+  //});
+
+  $("#sodiumMinus").on("mousedown", function () {
+        sodium_up --;
+        $('#sodiumNum').text(sodium_up);
+        sessionStorage.setItem("sodium_up", sodium_up);
+        to = setTimeout(function () {
+            iv = setInterval(function () {
+              sodium_up --;
+              $('#sodiumNum').text(sodium_up);
+              sessionStorage.setItem("sodium_up", sodium_up);
+            }, 75);
+        }, 500);
+      }).on("mouseup mouseleave", function () {
+        clearTimeout(to);
+        clearInterval(iv);
+      });
+    
+  //$('#sodiumAdd').click(function() {
     //$('#sodiumNum').text(Number($('#sodiumNum').text()) + 1);
-    sodium_up --;
-    $('#sodiumNum').text(sodium_up);
-  });
+    //sodium_up --;
+    //$('#sodiumNum').text(sodium_up);
+  //});
+
+  $("#sodiumAdd").on("mousedown", function () {
+        sodium_up ++;
+        $('#sodiumNum').text(sodium_up);
+        sessionStorage.setItem("sodium_up", sodium_up);
+        to = setTimeout(function () {
+            iv = setInterval(function () {
+              sodium_up ++;
+              $('#sodiumNum').text(sodium_up);
+              sessionStorage.setItem("sodium_up", sodium_up);
+            }, 75);
+        }, 500);
+      }).on("mouseup mouseleave", function () {
+        clearTimeout(to);
+        clearInterval(iv);
+      });
 
 
 
