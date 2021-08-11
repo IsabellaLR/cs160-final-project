@@ -218,9 +218,10 @@
     var orderedSubstitutes = [];
     var noMetricSubstitues = [];
     var subTastes = {"Sweet":[], "Salty":[], "Sour":[], "Bitter":[], "Savory":[], "Fatty":[]};
-    var APIkey = "c61426d2bf9a4cb299a2d057a30f90e5";
-    // var APIkey = "a9f75cfd2e6546e49246a124bde0e650";
+    // var APIkey = "c61426d2bf9a4cb299a2d057a30f90e5";
+    var APIkey = "a9f75cfd2e6546e49246a124bde0e650";
     // var APIkey = "7c3fcc8ec0b742fdbcb7cd0848220abb";
+	var text = "<table border='1'>"
     function loadXMLDoc() {
         var url = "https://api.spoonacular.com/food/ingredients/substitutes?apiKey="+APIkey+"&ingredientName=" + subIngredient;
         var xhr = new XMLHttpRequest();
@@ -229,65 +230,85 @@
         xhr.setRequestHeader("Accept", "application/json");
 
         xhr.onload = function() {
-            myObj = JSON.parse(this.responseText);
+            var myObj = JSON.parse(this.responseText);
             if (typeof myObj.substitutes == "undefined") {
-                $("#replacingText").append("<h3>Unable to find alternatives</h3>");
-                return
-            }
-            let text = "<table border='1'>"
-            for (let i = 0; i < myObj.substitutes.length; i++) {
-                var sub = myObj.substitutes[i].split("=")[1];
-                sub = splitMetrics(sub);
-				sub = makeUpper(sub);
-                substitutes.push(metric + " " + sub);
-                //text += "<div class='jumbotron light-green'><h3 class='pb-2' style='color: white;'> Choice "+(i+1)+": "+ sub +"</h3><p class='lead'>In Stock at Selected Store</p></div>"
-            }
-
-            for (let i = 0; i < substitutes.length; i++) {
-                var counter = 0;
-                var xmlHttp = new XMLHttpRequest();
-                xmlHttp.open("POST", 'https://api.spoonacular.com/recipes/visualizeTaste?apiKey=' + APIkey, true);
-                xmlHttp.send('ingredientList=' + substitutes[i]);
-
-                xmlHttp.onload = function() {
-                    var split = JSON.stringify(this.responseText).split("rgb(75, 192, 192)")[2].split("data")[1].split("options")[0].replace(/[^\d.,]/g, '').slice(0, -1).split(",");
-                    var tasteNumArray = split.map(function (x) { 
-                        return parseInt(x); 
-                    });
-                    //most appropriate taste for ingredient
-                    var closestTaste = tastes[tasteNumArray.indexOf(Math.max.apply(Math, tasteNumArray))];
-                    var tasteArray = subTastes[closestTaste];
-                    tasteArray.push(substitutes[i]);
-                    subTastes[closestTaste] = tasteArray;
-                    counter += 1;
-                    if (counter == substitutes.length) {
-                        addUI();
-                    }
-                }
-            }
-
-            function addUI() {
-                $(".bottomBtnGroup").append('<a href="/salidify/shopIngredients" onclick="completeReplacement()" class="bottomBtn" style="margin: 31px 0px 31px 22px;">Complete Replacement</a>');
-                var counter = 0;
-                for (key in subTastes) {
-                    var value = subTastes[key];
-                    if (value.length != 0) {
-                        text += "<div class='text' style='font-size: 48px; font-weight:600; font-family: Montserrat; color: #31A05E;'>"+key+"</div>";
-                        for (let i = 0; i < value.length; i++) {
-                            text += "<div class='card light-green p-5'><div class='listHaveItem'><label class='checkContainer'><input class='checkbox' onclick='updateCheckedIngred("+counter+")' type='checkbox'><span class='checkmark'></span></label><div class='haveItemName'>"
-                        + value[i] + "<div class='stockStatus'><svg xmlns='http://www.w3.org/2000/svg' height='30px' viewBox='0 0 24 24' width='30px' fill='#31A05E' style='margin-top: auto; margin-bottom: auto;'><path d='M0 0h24v24H0V0z' fill='none'/><path d='M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zM7 9c0-2.76 2.24-5 5-5s5 2.24 5 5c0 2.88-2.88 7.19-5 9.88C9.92 16.21 7 11.85 7 9z'/><circle cx='12' cy='9' r='2.5'/></svg>In stock at Selected Store</div></div></div></div>"
-                        orderedSubstitutes.push(value[i]);
-                        counter += 1;
-                        }
-                    }
-                }
-                text += "</table>"
-                document.getElementById("demo").innerHTML = text;
-            }
+				// console.log("undefined first loop");
+				//see if ingred with no metric works 
+				// url = "https://api.spoonacular.com/food/ingredients/substitutes?apiKey="+APIkey+"&ingredientName=" + subIngredientNoMetric;
+        		// var xhr2 = new XMLHttpRequest();
+				// xhr2.open("GET", url);
+        		// xhr2.setRequestHeader("Accept", "application/json");
+				// xhr2.onload = function() {
+				// 	console.log("on load!");
+				// 	myObj = JSON.parse(this.responseText);
+				// 	console.log(myObj.substitutes);
+				// 	if (typeof myObj.substitutes == "undefined") {
+				// 		console.log("undefined second loop");
+						$("#replacingText").append("<h3>Unable to find alternatives</h3>");
+						return
+				// 	} else {
+				// 		setUpSubs(myObj);
+				// 	}
+				// }
+            } else {
+				setUpSubs(myObj);
+			}
         }
         xhr.send();
     }
     loadXMLDoc();
+
+	function setUpSubs(myObj){
+		for (let i = 0; i < myObj.substitutes.length; i++) {
+			var sub = myObj.substitutes[i].split("=")[1];
+			sub = splitMetrics(sub);
+			sub = makeUpper(sub);
+			substitutes.push(metric + " " + sub);
+			//text += "<div class='jumbotron light-green'><h3 class='pb-2' style='color: white;'> Choice "+(i+1)+": "+ sub +"</h3><p class='lead'>In Stock at Selected Store</p></div>"
+		}
+
+		for (let i = 0; i < substitutes.length; i++) {
+			var counter = 0;
+			var xmlHttp = new XMLHttpRequest();
+			xmlHttp.open("POST", 'https://api.spoonacular.com/recipes/visualizeTaste?apiKey=' + APIkey, true);
+			xmlHttp.send('ingredientList=' + substitutes[i]);
+
+			xmlHttp.onload = function() {
+				var split = JSON.stringify(this.responseText).split("rgb(75, 192, 192)")[2].split("data")[1].split("options")[0].replace(/[^\d.,]/g, '').slice(0, -1).split(",");
+				var tasteNumArray = split.map(function (x) { 
+					return parseInt(x); 
+				});
+				//most appropriate taste for ingredient
+				var closestTaste = tastes[tasteNumArray.indexOf(Math.max.apply(Math, tasteNumArray))];
+				var tasteArray = subTastes[closestTaste];
+				tasteArray.push(substitutes[i]);
+				subTastes[closestTaste] = tasteArray;
+				counter += 1;
+				if (counter == substitutes.length) {
+					addUI();
+				}
+			}
+		}
+	}
+
+	function addUI() {
+		$(".bottomBtnGroup").append('<a href="/salidify/shopIngredients" onclick="completeReplacement()" class="bottomBtn" style="margin: 31px 0px 31px 22px;">Complete Replacement</a>');
+		var counter = 0;
+		for (key in subTastes) {
+			var value = subTastes[key];
+			if (value.length != 0) {
+				text += "<div class='text' style='font-size: 48px; font-weight:600; font-family: Montserrat; color: #31A05E;'>"+key+"</div>";
+				for (let i = 0; i < value.length; i++) {
+					text += "<div class='card light-green p-5'><div class='listHaveItem'><label class='checkContainer'><input class='checkbox' onclick='updateCheckedIngred("+counter+")' type='checkbox'><span class='checkmark'></span></label><div class='haveItemName'>"
+				+ value[i] + "<div class='stockStatus'><svg xmlns='http://www.w3.org/2000/svg' height='30px' viewBox='0 0 24 24' width='30px' fill='#31A05E' style='margin-top: auto; margin-bottom: auto;'><path d='M0 0h24v24H0V0z' fill='none'/><path d='M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zM7 9c0-2.76 2.24-5 5-5s5 2.24 5 5c0 2.88-2.88 7.19-5 9.88C9.92 16.21 7 11.85 7 9z'/><circle cx='12' cy='9' r='2.5'/></svg>In stock at Selected Store</div></div></div></div>"
+				orderedSubstitutes.push(value[i]);
+				counter += 1;
+				}
+			}
+		}
+		text += "</table>"
+		document.getElementById("demo").innerHTML = text;
+	}
 
     function updateCheckedIngred(index) {
         var checkmarks = document.getElementsByClassName('checkbox');
