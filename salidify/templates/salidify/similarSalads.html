@@ -322,10 +322,11 @@
 	var checkedIngredients = JSON.parse(sessionStorage.checkedIngredients);
 	var currSaladIngredients = JSON.parse(sessionStorage.saladIngredients).concat(JSON.parse(sessionStorage.dressingIngredients));
 	var prevSimilarityArray = JSON.parse(sessionStorage.similarityArray);
+	var saladIngredientsNoMetrics = JSON.parse(sessionStorage.saladIngredientsNoMetrics);
 	//get checkIngredientsNoMetrics
 	checkedIngredientsNoMetrics = [];
 	for (var i = 0; i < checkedIngredients.length; i++) {
-		var ingred = saladIngredients[saladIndex][currSaladIngredients.indexOf(checkedIngredients[i])];
+		var ingred = saladIngredientsNoMetrics[currSaladIngredients.indexOf(checkedIngredients[i])];
 		checkedIngredientsNoMetrics.push(ingred);
 	}
 	saladName = sessionStorage.saladName;

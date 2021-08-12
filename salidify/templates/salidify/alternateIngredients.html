@@ -205,13 +205,15 @@
             //make uppercase
     var subIngredient = sessionStorage.clickedSwapIngred;
     var saladIngredients = JSON.parse(sessionStorage.saladIngredients);
+    var dressingIngredients = JSON.parse(sessionStorage.dressingIngredients);
+    var allIngredients = saladIngredients.concat(dressingIngredients);
     var saladIngredientsNoMetrics = JSON.parse(sessionStorage.saladIngredientsNoMetrics);
-    var subIngredientNoMetric = saladIngredientsNoMetrics[saladIngredients.indexOf(subIngredient)];
-	console.log(saladIngredientsNoMetrics);
-	console.log(subIngredientNoMetric);
+    var subIngredientNoMetric = saladIngredientsNoMetrics[allIngredients.indexOf(subIngredient)];
+    console.log("1: " + allIngredients);
+    console.log("2: " + allIngredients.indexOf(subIngredient));
+	console.log("3: " + saladIngredientsNoMetrics[allIngredients.indexOf(subIngredient)]);
     var metric = subIngredient.split(subIngredientNoMetric)[0];
     $("#replacingText").append("<h2>Replacing:"+" "+subIngredient+"</h2><h3>Select a substitute from the choices below.</h3>");
-    var saladIngredients = JSON.parse(sessionStorage.saladIngredients);
     var tastes = ["Sweet", "Salty", "Sour", "Bitter", "Savory", "Fatty"];
     var swappedIngredient = null;
     var swappedIngredientNoMetric = null;
@@ -324,9 +326,15 @@
         var checkmarks = document.getElementsByClassName('checkbox');
         for (var i = 0; i < checkmarks.length; i++) {
             if (checkmarks[i].checked) {
-                saladIngredients[saladIngredients.indexOf(subIngredient)] = orderedSubstitutes[i];
-                sessionStorage.saladIngredients = JSON.stringify(saladIngredients);
-                saladIngredientsNoMetrics[saladIngredients.indexOf(subIngredient)] = orderedSubstitutes[i].split(metric)[1].substring(1);
+                //make sure check all ingredients!
+                if (saladIngredients.includes(subIngredient)) {
+                    saladIngredients[saladIngredients.indexOf(subIngredient)] = orderedSubstitutes[i];
+                    sessionStorage.saladIngredients = JSON.stringify(saladIngredients);
+                } else {
+                    dressingIngredients[dressingIngredients.indexOf(subIngredient)] = orderedSubstitutes[i];
+                    sessionStorage.dressingIngredients = JSON.stringify(dressingIngredients);
+                }
+                saladIngredientsNoMetrics[allIngredients.indexOf(subIngredient)] = orderedSubstitutes[i].split(metric)[1].substring(1);
                 sessionStorage.saladIngredientsNoMetrics = JSON.stringify(saladIngredientsNoMetrics);
             }
         }
@@ -336,8 +344,14 @@
         if (sub.includes("oz")) {
             var sub = sub.split("oz")[1].substring(1);
         }
+        if (sub.includes("Oz")) {
+            var sub = sub.split("Oz")[1].substring(1);
+        }
         if (sub.includes("cup")) {
             var sub = sub.split("cup")[1].substring(1);
+        }
+        if (sub.includes("Cup")) {
+            var sub = sub.split("Cup")[1].substring(1);
         }
         return sub;
     }
