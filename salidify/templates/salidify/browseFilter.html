@@ -453,15 +453,50 @@
         clearInterval(iv);
       });
 
-
+  // to do turn pref on based on getItem!
+  var diets;
+  if (JSON.parse(sessionStorage.getItem("diets")) == null){
+		diets = [];
+	} else {
+		diets = JSON.parse(sessionStorage.getItem("diets"));
+    //alert(diets);
+		console.log(diets);
+    if (diets.includes("Vegan")) {
+      $('#veganBool').text('on');
+      $('#veganToggle').attr('transform', 'scale(-1, 1)');
+    }
+    if (diets.includes("Vegetarian")) {
+      $('#vegetBool').text('on');
+      $('#vegetToggle').attr('transform', 'scale(-1, 1)');
+    }
+    if (diets.includes("Pescatarian")) {
+      $('#pescaBool').text('on');
+      $('#pescaToggle').attr('transform', 'scale(-1, 1)');
+    }
+    if (diets.includes("Gluten-Free")) {
+      $('#glutenBool').text('on');
+      $('#glutenToggle').attr('transform', 'scale(-1, 1)');
+    }
+    if (diets.includes("Dairy-Free")) {
+      $('#dairyBool').text('on');
+      $('#dairyToggle').attr('transform', 'scale(-1, 1)');
+    }
+	}
 
   $('#veganToggle').click(function() {
     if ($('#veganBool').text() === 'off') {
       $('#veganBool').text('on');
       $('#veganToggle').attr('transform', 'scale(-1, 1)');
+      diets.push("Vegan");
+      console.log(diets);
+      sessionStorage.setItem("diets", JSON.stringify(diets));
     } else {
       $('#veganBool').text('off');
       $('#veganToggle').attr('transform', 'scale(1, 1)');
+      //alert(diets.indexOf("Vegan"));
+      diets.splice(diets.indexOf("Vegan"), 1);
+      sessionStorage.setItem("diets", JSON.stringify(diets));
+      
     }
   });
 
@@ -469,9 +504,15 @@
     if ($('#vegetBool').text() === 'off') {
       $('#vegetBool').text('on');
       $('#vegetToggle').attr('transform', 'scale(-1, 1)');
+      diets.push("Vegetarian");
+      sessionStorage.setItem("diets", JSON.stringify(diets));
     } else {
       $('#vegetBool').text('off');
       $('#vegetToggle').attr('transform', 'scale(1, 1)');
+      diets.splice(diets.indexOf("Vegetarian"), 1);
+      console.log(diets);
+      sessionStorage.setItem("diets", JSON.stringify(diets));
+      //alert(diets);
     }
   });
 
@@ -479,9 +520,13 @@
     if ($('#pescaBool').text() === 'off') {
       $('#pescaBool').text('on');
       $('#pescaToggle').attr('transform', 'scale(-1, 1)');
+      diets.push("Pescatarian");
+      sessionStorage.setItem("diets", JSON.stringify(diets));
     } else {
       $('#pescaBool').text('off');
       $('#pescaToggle').attr('transform', 'scale(1, 1)');
+      diets.splice(diets.indexOf("Pescatarian"), 1);
+      sessionStorage.setItem("diets", JSON.stringify(diets));
     }
   });
 
@@ -491,9 +536,13 @@
     if ($('#glutenBool').text() === 'off') {
       $('#glutenBool').text('on');
       $('#glutenToggle').attr('transform', 'scale(-1, 1)');
+      diets.push("Gluten-Free");
+      sessionStorage.setItem("diets", JSON.stringify(diets));
     } else {
       $('#glutenBool').text('off');
       $('#glutenToggle').attr('transform', 'scale(1, 1)');
+      diets.splice(diets.indexOf("Gluten-Free"), 1);
+      sessionStorage.setItem("diets", JSON.stringify(diets));
     }
   });
 
@@ -501,18 +550,17 @@
     if ($('#dairyBool').text() === 'off') {
       $('#dairyBool').text('on');
       $('#dairyToggle').attr('transform', 'scale(-1, 1)');
+      diets.push("Dairy-Free");
+      sessionStorage.setItem("diets", JSON.stringify(diets));
     } else {
       $('#dairyBool').text('off');
       $('#dairyToggle').attr('transform', 'scale(1, 1)');
+      diets.splice(diets.indexOf("Dairy-Free"), 1);
+      sessionStorage.setItem("diets", JSON.stringify(diets));
     }
   });
 
-  sessionStorage.setItem("cal_up", cal_up);
-
-  sessionStorage.sugar_up = sugar_up;
-  sessionStorage.protein_low = protein_low;
-  sessionStorage.sodium_up = sodium_up;
-
+  
 
 
 
