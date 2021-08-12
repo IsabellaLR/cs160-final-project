@@ -18,13 +18,17 @@
 		justify-content: center;
 		max-width: 100%;
 		margin: 0 auto;
-		padding: 9px;
+		/*padding: 9px;*/
+		overflow-y: scroll;
+		z-index:0;
+		position:relative;
 	}
 
 	.card {
 		width: 90%;
 		height: 350px;
-		margin: 12px;
+		/*margin: 12px;*/
+		margin-top: 50px;
 		border-color: #31A05E;
 		border-width: 3px;
 		border-radius: 30px;
@@ -45,23 +49,25 @@
 </style>
 <body>
 	<!-- top navbar with logo -->
-	<nav class="navbar green">
-		<a class="navbar-brand mx-auto" style="color: white;" href="#">
-			<svg height="41" style="fill: white;" viewBox="0 0 64 64" width="41" xmlns="http://www.w3.org/2000/svg"><g id="Glyph"><path d="m7.879 23.457a79.677 79.677 0 0 0 6.371 8.543h1.729a25.744 25.744 0 0 0 -.927-3.683 27.189 27.189 0 0 0 -7.723-11.576l1.342-1.482a29.153 29.153 0 0 1 8.277 12.424c.264.787.481 1.594.674 2.409.09-.164.183-.326.262-.5 2.251-5 1.157-12.962-3.627-15.724a9.56 9.56 0 0 0 -7.5-.543 4.2 4.2 0 0 0 -2.646 2.044c-.531 1.341.927 3.695 3.768 8.088z"/><path d="m30.939 22.279a7.294 7.294 0 0 0 -.449-1.761c-1.559-3.956-6.109-6.161-8.835-5.349a4.346 4.346 0 0 0 -2.2 1.667 17 17 0 0 1 .582 12.747c.057-.07.125-.132.181-.2a18.6 18.6 0 0 0 3.79-9.489l1.988.218a20.483 20.483 0 0 1 -4.21 10.511c-.381.482-.8.935-1.228 1.38h4.612l.083-.039a7.959 7.959 0 0 1 5.688-9.682z"/><path d="m49.2 32h10.015a5.77 5.77 0 0 0 -2.567-2.064 7.322 7.322 0 0 0 -2.1-.38c-.918-.068-1.959-.146-2.441-1.109-.5-1.01.183-1.861.731-2.546a5.256 5.256 0 0 0 1.189-2.124c.494-2.155.5-5.772-1.516-6.906a3.919 3.919 0 0 0 -3.054-.216 6.2 6.2 0 0 0 -3.567 2.805c-.779 1.506-.324 3.176.116 4.789s.9 3.309-.312 4.473c-1.231 1.185-3.029.7-4.77.225a7.541 7.541 0 0 1 -.186 3.053h6.429c.25-1.416.532-2.834.859-4.229.56-2.384 1.242-4.77 2.027-7.091l1.894.64c-.764 2.261-1.428 4.586-1.973 6.909-.292 1.244-.545 2.508-.774 3.771z"/><path d="m38.654 32a5.826 5.826 0 0 0 .325-1.606l-1.663.554-.632-1.9 2.082-.694a6.01 6.01 0 0 0 -4.766-4.264v1.91h-2v-1.91a6.01 6.01 0 0 0 -4.432 3.379l1.748.583-.632 1.9-1.653-.552a6.026 6.026 0 0 0 -.031.6 5.886 5.886 0 0 0 .346 2zm-6.654-4h2v2h-2z"/><path d="m11.653 32q-1.678-2.044-3.231-4.216a15.985 15.985 0 0 0 -2.643 1.154 3.164 3.164 0 0 0 -1.575 1.5 2.727 2.727 0 0 0 -.156 1.562z"/><path d="m4.018 34a27.032 27.032 0 0 0 26.982 26h2a27.032 27.032 0 0 0 26.982-26zm16.547 20.9a27.157 27.157 0 0 1 -11.42-10.381l1.71-1.038a25.172 25.172 0 0 0 10.58 9.619zm4.435 1.1h-2v-2h2z"/><path d="m47 8v-2h-4a8 8 0 0 0 -8 8v2h4a8 8 0 0 0 8-8z"/><circle cx="28" cy="8" r="2"/><circle cx="15" cy="5" r="2"/></g></svg>
-		</a>
-	</nav>
-	<!-- navbar with title + navigation -->
-	<nav class="navbar p-5">
-		<a class="navbar-brand" href="http://localhost:8000/salidify/">
-			<svg xmlns="http://www.w3.org/2000/svg" height="40px" viewBox="0 0 24 24" width="40px" fill="#000000"><path d="M0 0h24v24H0V0z" fill="none" opacity=".87"/><path d="M17.51 3.87L15.73 2.1 5.84 12l9.9 9.9 1.77-1.77L9.38 12l8.13-8.13z"/></svg>
-		</a>
-		<a class="navbar-brand green-text mx-auto" href="#">
-			<h1>Browse Salads</h1>
-		</a>
-		<a class="navbar-brand" href="http://localhost:8000/salidify/browseFilter">
-			<svg xmlns="http://www.w3.org/2000/svg" height="40px" viewBox="0 0 24 24" width="40px" fill="#000000"><path d="M0 0h24v24H0V0z" fill="none"/><path d="M3 17v2h6v-2H3zM3 5v2h10V5H3zm10 16v-2h8v-2h-8v-2h-2v6h2zM7 9v2H3v2h4v2h2V9H7zm14 4v-2H11v2h10zm-6-4h2V7h4V5h-4V3h-2v6z"/></svg>
-		</a>
-	</nav>
+	<div id="topFixed" style="box-shadow: 0 3px 10px rgb(0 0 0 / 0.2); border-radius:0 0 70px 70px; z-index:1; position:relative;">
+		<nav class="navbar green">
+			<a class="navbar-brand mx-auto" style="color: white;" href="#">
+				<svg height="41" style="fill: white;" viewBox="0 0 64 64" width="41" xmlns="http://www.w3.org/2000/svg"><g id="Glyph"><path d="m7.879 23.457a79.677 79.677 0 0 0 6.371 8.543h1.729a25.744 25.744 0 0 0 -.927-3.683 27.189 27.189 0 0 0 -7.723-11.576l1.342-1.482a29.153 29.153 0 0 1 8.277 12.424c.264.787.481 1.594.674 2.409.09-.164.183-.326.262-.5 2.251-5 1.157-12.962-3.627-15.724a9.56 9.56 0 0 0 -7.5-.543 4.2 4.2 0 0 0 -2.646 2.044c-.531 1.341.927 3.695 3.768 8.088z"/><path d="m30.939 22.279a7.294 7.294 0 0 0 -.449-1.761c-1.559-3.956-6.109-6.161-8.835-5.349a4.346 4.346 0 0 0 -2.2 1.667 17 17 0 0 1 .582 12.747c.057-.07.125-.132.181-.2a18.6 18.6 0 0 0 3.79-9.489l1.988.218a20.483 20.483 0 0 1 -4.21 10.511c-.381.482-.8.935-1.228 1.38h4.612l.083-.039a7.959 7.959 0 0 1 5.688-9.682z"/><path d="m49.2 32h10.015a5.77 5.77 0 0 0 -2.567-2.064 7.322 7.322 0 0 0 -2.1-.38c-.918-.068-1.959-.146-2.441-1.109-.5-1.01.183-1.861.731-2.546a5.256 5.256 0 0 0 1.189-2.124c.494-2.155.5-5.772-1.516-6.906a3.919 3.919 0 0 0 -3.054-.216 6.2 6.2 0 0 0 -3.567 2.805c-.779 1.506-.324 3.176.116 4.789s.9 3.309-.312 4.473c-1.231 1.185-3.029.7-4.77.225a7.541 7.541 0 0 1 -.186 3.053h6.429c.25-1.416.532-2.834.859-4.229.56-2.384 1.242-4.77 2.027-7.091l1.894.64c-.764 2.261-1.428 4.586-1.973 6.909-.292 1.244-.545 2.508-.774 3.771z"/><path d="m38.654 32a5.826 5.826 0 0 0 .325-1.606l-1.663.554-.632-1.9 2.082-.694a6.01 6.01 0 0 0 -4.766-4.264v1.91h-2v-1.91a6.01 6.01 0 0 0 -4.432 3.379l1.748.583-.632 1.9-1.653-.552a6.026 6.026 0 0 0 -.031.6 5.886 5.886 0 0 0 .346 2zm-6.654-4h2v2h-2z"/><path d="m11.653 32q-1.678-2.044-3.231-4.216a15.985 15.985 0 0 0 -2.643 1.154 3.164 3.164 0 0 0 -1.575 1.5 2.727 2.727 0 0 0 -.156 1.562z"/><path d="m4.018 34a27.032 27.032 0 0 0 26.982 26h2a27.032 27.032 0 0 0 26.982-26zm16.547 20.9a27.157 27.157 0 0 1 -11.42-10.381l1.71-1.038a25.172 25.172 0 0 0 10.58 9.619zm4.435 1.1h-2v-2h2z"/><path d="m47 8v-2h-4a8 8 0 0 0 -8 8v2h4a8 8 0 0 0 8-8z"/><circle cx="28" cy="8" r="2"/><circle cx="15" cy="5" r="2"/></g></svg>
+			</a>
+		</nav>
+		<!-- navbar with title + navigation -->
+		<nav class="navbar p-5">
+			<a class="navbar-brand" href="http://localhost:8000/salidify/">
+				<svg xmlns="http://www.w3.org/2000/svg" height="40px" viewBox="0 0 24 24" width="40px" fill="#000000"><path d="M0 0h24v24H0V0z" fill="none" opacity=".87"/><path d="M17.51 3.87L15.73 2.1 5.84 12l9.9 9.9 1.77-1.77L9.38 12l8.13-8.13z"/></svg>
+			</a>
+			<a class="navbar-brand green-text mx-auto" href="#">
+				<h1 style="font-weight:bold;font-size:45px;color:#31A05E">Browse Salads</h1>
+			</a>
+			<a class="navbar-brand" href="http://localhost:8000/salidify/browseFilter">
+				<svg xmlns="http://www.w3.org/2000/svg" height="40px" viewBox="0 0 24 24" width="40px" fill="#000000"><path d="M0 0h24v24H0V0z" fill="none"/><path d="M3 17v2h6v-2H3zM3 5v2h10V5H3zm10 16v-2h8v-2h-8v-2h-2v6h2zM7 9v2H3v2h4v2h2V9H7zm14 4v-2H11v2h10zm-6-4h2V7h4V5h-4V3h-2v6z"/></svg>
+			</a>
+		</nav>
+	</div>
 	<div class="card-container"></div>
 </body>
 <script>
@@ -155,36 +161,36 @@
 			];
 
 	var saladIngredients =[["broccoli", "florets", "bacon", "red onion", "cranberries", "sunflower seeds", "goat cheese", "mayonnaise", "plain yogurt"],
-				["baby spinach", "tomatoes", "avocado", "cucumber", "red onion", "olive oil", "salmon filets", "salt and pepper", "olive oil", "lemon juice", "dijon mustard", "honey", "garlic cloves", "salt and pepper"],
+				["baby spinach", "tomatoes", "avocado", "cucumber", "red onion", "olive oil", "salmon filets", "salt and pepper", "olive oil", "lemon juice", "dijon mustard", "honey", "garlic", "salt and pepper"],
 				["chicken breasts", "sliced almonds", "mayonnaise", "dijon mustard", "red grapes", "celery", "green onions", "parsley", "tarragon", "lemon", "salt and pepper"],
 				["large tomatoes", "mozzarella", "basil", "olive oil", "balsamic glaze", "salt and pepper"],
 				["tuna", "mayonnaise", "celery", "red onion", "parsley", "dijon mustard", "salt and pepper"],
-				["cucumber", "grape tomatoes", "green bell pepper", "red onion", "Kalamata olives", "feta cheese", "salt and pepper", "red wine vinegar", "lemon", "dijon mustard", "garlic cloves", "oregano", "salt", "black pepper", "olive oil"],
-				["chickpeas", "cucumber", "red bell pepper", "cherry tomatoes", "red onion", "feta cheese", "parsley", "olive oil", "lemon juice", "dijon mustard", "honey", "garlic cloves", "salt and pepper"],
-				["shrimp", "baby spinach", "fresh parsley", "asparagus", "avocado", "green onions", "salt and pepper", "olive oil", "lemon juice", "dijon mustard", "honey", "garlic cloves", "salt and pepper"],
+				["cucumber", "grape tomatoes", "green bell pepper", "red onion", "Kalamata olives", "feta cheese", "salt and pepper", "red wine vinegar", "lemon", "dijon mustard", "garlic", "oregano", "salt", "black pepper", "olive oil"],
+				["chickpeas", "cucumber", "red bell pepper", "cherry tomatoes", "red onion", "feta cheese", "parsley", "olive oil", "lemon juice", "dijon mustard", "honey", "garlic", "salt and pepper"],
+				["shrimp", "baby spinach", "fresh parsley", "asparagus", "avocado", "green onions", "salt and pepper", "olive oil", "lemon juice", "dijon mustard", "honey", "garlic", "salt and pepper"],
 				["cauliflower", "cherry tomatoes", "cucumber", "4 scallions", "parsley", "mint leaves", "lemons", "olive oil", "salt"],
 				// TACO SALAD
 				["ground beef", "taco seasoning", "salt and pepper", "romaine lettuce", "grape tomatoes", "black beans", "avocado", "shredded cheese", "salsa", "red onion", "cilantro", "lime"],
 				// Mandarin Chicken Salad
-				["chicken breasts", "spinach", "mandarins", "avocado", "cucumber", "green onions", "slivered almonds", "sesame seeds"],
+				["chicken breasts", "spinach", "mandarins", "avocado", "cucumber", "green onions", "slivered almonds", "sesame seeds", "olive oil", "lemon juice", "Dijon mustard", "honey", "garlic", "salt and pepper, to taste"],
 				// Southwest Chicken Salad
-				["chicken breasts", "olive oil", "limes", "cilantro", "garlic cloves", "cumin", "chili powder", "salt", "black pepper", "romaine lettuce", "cherry tomatoes", "black beans", "corn", "red onion"],
+				["chicken breasts", "olive oil", "limes", "cilantro", "garlic", "cumin", "chili powder", "salt", "black pepper", "romaine lettuce", "cherry tomatoes", "black beans", "corn", "red onion", "avocado", "olive oil", "water", "cilantro", "lime", "garlic", "salt and pepper"],
 				// Greek Chicken Salad
-				["cucumber", "cherry tomatoes", "green bell pepper", "red onion", "kalamata olives", "feta cheese", "avocado", "chicken breasts", "olive oil", "paprika", "basil", "thyme", "oregano", "parsley", "salt and pepper"],
+				["cucumber", "cherry tomatoes", "green bell pepper", "red onion", "kalamata olives", "feta cheese", "avocado", "chicken breasts", "olive oil", "paprika", "basil", "thyme", "oregano", "parsley", "salt and pepper", "red wine vinegar", "lemon", "Dijon Mustard", "garlic", "dried oregano", "salt", "black pepper", "olive oil"],
 				// Cobb Salad
-				["eggs", "bacon", "chicken breast", "romaine lettuce", "cherry tomatoes", "blue cheese", "avocado", "chives", "salt and pepper"],
+				["eggs", "bacon", "chicken breast", "romaine lettuce", "cherry tomatoes", "blue cheese", "avocado", "chives", "salt and pepper", "red wine vinegar", "lemon", "Dijon Mustard", "garlic cloves", "dried oregano", "salt", "black pepper", "olive oil"],
 				//Smoked Salmon, Avocado, & Arugula
-				["arugula", "microgreens", "smoked salmon", "avocado", "pear", "red onion", "salt and pepper"],
+				["arugula", "microgreens", "smoked salmon", "avocado", "pear", "red onion", "salt and pepper", "Champagne vinegar", "Dijon mustard", "lemon", "shallot", "honey", "salt", "pepper", "olive oil"],
 				// Grilled Peach and Burrata Salad
 				["burrata cheese", "peaches", "butter", "coconut sugar", "balsamic vinegar", "arugula", "pine nuts", "olive oil", "black pepper"],
 				//Wild Rice and Arugula Salad
-				["arugula", "wild rice", "cucumber", "green onions", "mint", "dried cranberries", "almonds", "salt and pepper"],
+				["arugula", "wild rice", "cucumber", "green onions", "mint", "dried cranberries", "almonds", "salt and pepper", "olive oil", "lemon juice", "Dijon mustard", "honey", "garlic", "salt and pepper"],
 				//Pulled Pork & Arugula Salad
-				["pulled pork", "red cabbage", "arugula", "carrot", "cilantro", "almonds"],
+				["pulled pork", "red cabbage", "arugula", "carrot", "cilantro", "almonds", "olive oil", "orange","limes","jalapeno pepper","cilantro","salt and pepper"],
 				//Easy Fruit Salad
-				["strawberries", "pineapple", "grapes", "blueberries", "kiwis", "mandarin oranges", "mangoes"],
+				["strawberries", "pineapple", "grapes", "blueberries", "kiwis", "mandarin oranges", "mangoes", "lime", "lime juice", "honey"],
 				//Berry Spinach Salad
-				["baby spinach", "strawberries", "raspberries", "blueberries", "goat cheese", "red onion", "pecans"],
+				["baby spinach", "strawberries", "raspberries", "blueberries", "goat cheese", "red onion", "pecans", "raspberries", "olive oil", "red wine vinegar", "shallot", "Dijon mustard", "salt", "pepper"],
 				//Citrus Shrimp Ceviche
 				["shrimp", "lime juice", "lemon juice", "orange juice", "grapefruit", "oranges", "cucumber", "red onion", "jalapeno pepper", "cilantro", "salt", "avocado"],
 				//Melon Mozzarella Salad With Basil
@@ -192,33 +198,33 @@
 				//Watermelon, Cucumber, & Feta
 				["watermelon", "cucumbers", "feta", "fresh mint", "olive oil", "lime", "honey"],
 				//Orange, Fennel, & Avocado Salad
-				["cara cara oranges", "navel oranges", "avocado", "fennel bulb", "red onion", "fennel leaves"],
+				["cara cara oranges", "navel oranges", "avocado", "fennel bulb", "red onion", "fennel leaves", "olive oil", "white wine vinegar", "lemon juice", "honey", "dijon mustard", "salt and pepper"],
 				//Stone Fruit Salad With Vanilla Honey
-				["peaches", "nectarines", "plums", "bunch grapes", "mint leaves"],
+				["peaches", "nectarines", "plums", "grapes", "mint leaves", "honey", "water", "vanilla extract"],
 				//Shaved Brussels Sprouts Salad
 				["brussels sprouts", "red apple", "almonds", "cranberries", "red onion", "goat cheese"],
 				//Kale Salad with Apples & Chicken
-				["kale", "shredded chicken", "apple", "dried cherries", "raisins", "red onion", "walnuts"],
+				["kale", "shredded chicken", "apple", "dried cherries", "raisins", "red onion", "walnuts", "olive oil", "apple cider vinegar", "honey", "Dijon mustard", "garlic", "salt and pepper"],
 				//Turkey Cobb Salad
-				["baby spinach", "bacon", "turkey breast", "butternut squash", "eggs", "goat cheese", "cranberries", "pecans"],
+				["baby spinach", "bacon", "turkey breast", "butternut squash", "eggs", "goat cheese", "cranberries", "pecans", "olive oil", "apple cider vinegar", "honey", "Dijon mustard", "garlic", "salt and pepper"],
 				//Squash, Romaine, & Goat Cheese
-				["butternut squash", "avocado oil", "salt and pepper", "romaine lettuce", "sprouts", "goat cheese", "walnut halves"],
+				["butternut squash", "avocado oil", "salt and pepper", "romaine lettuce", "sprouts", "goat cheese", "walnut halves", "Champagne vinegar", "Dijon mustard", "lemon", "shallot", "honey", "salt", "pepper", "olive oil"],
 				//Persimmon Caprese Salad
-				["Fuyu persimmons", "mozzarella balls", "fresh basil", "pistachios"],
+				["Fuyu persimmons", "mozzarella balls", "fresh basil", "pistachios", "balsamic vinegar","honey"],
 				//Zucchini Noodle Caprese
-				["zucchini", "cherry tomatoes", "buffalo mozzarella balls", "pine nuts", "fresh basil"],
+				["zucchini", "cherry tomatoes", "buffalo mozzarella balls", "pine nuts", "fresh basil", "pine nuts", "cashews", "basil leaves", "olive oil", "garlic", "lemon juice", "salt", "black pepper"],
 				//Sweet Potato Noodles Salad
-				["green lentils", "water", "leaf", "kombu seaweed", "sweet potato", "olive oil", "yellow onion", "Swiss chard", "red cabbage", "pine nuts", "parsley"],
+				["green lentils", "water", "leaf", "kombu seaweed", "sweet potato", "olive oil", "yellow onion", "Swiss chard", "red cabbage", "pine nuts", "parsley", "olive oil", "lemon juice", "white wine vinegar", "Dijon mustard", "garlic", "salt and pepper"],
 				//Carrot & Zucchini Salad
-				["zucchini", "carrots", "micro-greens"],
+				["zucchini", "carrots", "micro-greens", "1 avocado, peeled and pitted", "cucumber", "lemon", "garlic", "salt and pepper"],
 				//Easy Cucumber Salad
 				["English cucumbers", "kosher salt", "red onion", "scallion", "fresh dill", "white wine vinegar", "honey", "pepper"],
 				//Massaged Kale Salad
 				["curly kale", "lemon", "garlic cloves", "olive oil", "parmesan cheese", "salt and pepper"],
 				//Israeli Salad
-				["tomatoes", "cucumber", "bell pepper", "red onion", "parsley", "mint", "lemon juice", "olive oil", "salt and pepper"],
+				["tomatoes", "cucumber", "bell pepper", "red onion", "parsley", "mint", "lemon juice", "olive oil", "salt and pepper", "olive oil", "lemon juice", "Dijon mustard", "honey", "garlic", "salt and pepper"],
 				//Lentil Salad with Cucumber
-				["lentils", "water", "bay leaf", "kombu", "cucumber", "red onion", "Medjool dates", "parsley"],
+				["lentils", "water", "bay leaf", "kombu", "cucumber", "red onion", "Medjool dates", "parsley", "olive oil", "lemon juice", "Dijon mustard", "honey", "garlic", "salt and pepper"],
 				//Broccoli Tuna Salad TODO: BROCCILI RICE OR BROCCLI
 				["tuna", "broccoli rice", "mayonnaise", "Dijon mustard", "green onions", "sunflower seeds", "parsley", "salt and pepper"],
 				//Egg Salad
@@ -389,7 +395,7 @@
 		for (var i = 0; i < salads.length; i++) {
 			if ((salads[i][5] < cal_up) & (salads[i][6] < sugar_up) & (salads[i][7] > protein_low) & (salads[i][8] < sodium_up)) {
 				results ++;
-				$('<a href="/salidify/viewIngredients"onclick="setStorageVal('+i+')"><div class="card"><div class="row"><div class="col-5 align-self-center"><img src="'+salads[i][1]+'"style="border-radius: 30px; width:100%; height:346px;"/></div><div class="col-7" style="padding-right: 0.5in; padding-top: 2.5%; padding-bottom: 2.5;"><div class="row" style="height: 40%; align-content:flex-end;"><div class="text" style="font-size: 48px; font-weight:600; font-family: Montserrat; color: #31A05E;">'+salads[i][0]+'</div></div><hr width = "100%" color="#31A05E" size="1"><div class="row" style="height: 30%;"><div class="text" style="font-size: 28px; font-family: Montserrat;">'+salads[i][2]+' <br> '+numIngredients(salads[i][3], salads[i][4])+' Ingredients</div></div></div></div></div></a>').appendTo('.card-container');
+				$('<a href="/salidify/viewIngredients"onclick="setStorageVal('+i+')"><div class="card"><div class="row"><div class="col-5 align-self-center"><img src="'+salads[i][1]+'"style="border-radius: 30px; width:100%; height:346px;"/></div><div class="col-7" style="padding-right: 0.5in; padding-top: 2.5%; padding-bottom: 2.5;"><div class="row" style="height: 40%; align-content:flex-end;"><div class="text" style="font-size: 48px; font-weight:700; font-family: Montserrat; color: #31A05E;">'+salads[i][0]+'</div></div><hr width = "100%" color="#31A05E" size="1"><div class="row" style="height: 30%;"><div class="text" style="font-size: 28px; font-family: Montserrat;">'+salads[i][2]+' <br> '+numIngredients(salads[i][3], salads[i][4])+' Ingredients</div></div></div></div></div></a>').appendTo('.card-container');
 			}
 		}
 	} else {
@@ -429,12 +435,15 @@
 		}
 		for (var j = 0; j < approved.length; j++) {
 			results ++;
-			$('<a href="/salidify/viewIngredients"onclick="setStorageVal('+j+')"><div class="card"><div class="row"><div class="col-5 align-self-center"><img src="'+approved[j][1]+'"style="border-radius: 30px; width:100%; height:346px;"/></div><div class="col-7" style="padding-right: 0.5in; padding-top: 2.5%; padding-bottom: 2.5;"><div class="row" style="height: 40%; align-content:flex-end;"><div class="text" style="font-size: 48px; font-weight:600; font-family: Montserrat; color: #31A05E;">'+approved[j][0]+'</div></div><hr width = "100%" color="#31A05E" size="1"><div class="row" style="height: 30%;"><div class="text" style="font-size: 28px; font-family: Montserrat;">'+approved[j][2]+' <br> '+numIngredients(approved[j][3], approved[j][4])+' Ingredients</div></div></div></div></div></a>').appendTo('.card-container');
-			
+			$('<a href="/salidify/viewIngredients"onclick="setStorageVal('+i+')"><div class="card"><div class="row"><div class="col-5 align-self-center"><img src="'+approved[j][1]+'"style="border-radius: 30px; width:100%; height:346px;"/></div><div class="col-7" style="padding-right: 0.5in; padding-top: 2.5%; padding-bottom: 2.5;"><div class="row" style="height: 40%; align-content:flex-end;"><div class="text" style="font-size: 48px; font-weight:700; font-family: Montserrat; color: #31A05E;">'+approved[j][0]+'</div></div><hr width = "100%" color="#31A05E" size="1"><div class="row" style="height: 30%;"><div class="text" style="font-size: 28px; font-family: Montserrat;">'+approved[j][2]+' <br> '+numIngredients(approved[j][3], approved[j][4])+' Ingredients</div></div></div></div></div></a>').appendTo('.card-container');
 		}
 		//alert(results);
 	}
 
 	//alert(results + " found");
+
+	//to make the browse list scrollable
+	$(".card-container").attr('style', 'height: ' + ($(window).height() - $("#topFixed").height()) + 'px; overflow-y:scroll;');
+
 
 </script>
