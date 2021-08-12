@@ -238,7 +238,55 @@
 	// sessionStorage.checkedIngredients = whateevr;
 	$("#saladPic").append("<img src=" + saladPicture + " style='height:100%;width:100%;object-fit:cover;border-radius:10%;'/>");
 	$("#saladDesc").append("<p class='green-text' style='font-size: 50px; font-weight: bold; border-bottom: #31A05E solid 4px;'>" + saladName + "</p>");
-	$("#saladDesc").append("<p style='font-size:35px;'> Rating: 5.0 <br> Prep Time: 20 Min <br> Serving Size: 4 </p>");
+	
+	//{"Salad Name":[Rating,PrepTime, Time]}
+	var rateTimeServingDict = {"Broccoli Salad" : ["5.0", "20 mins", "4"],
+                                "Salmon Avocado Salad": ["4.5", "20 mins", "2"],
+                                "Ultimate Chicken Salad": ["5.0", "25 mins", "6"],
+                                "Caprese Salad": ["4.9", "5 mins", "6"],
+                                "Tuna Salad":["4.0", "15 mins", "4"],
+                                "Greek Salad": ["4.7", "5 mins", "4"],
+                                "Mediterranean Chickpea Salad": ["4.9", "10 mins", "8"],
+                                "Shrimp, Asparagus, & Avo Salad": ["4.5", "20 mins", "4"],
+                                "Cauliflower Rice Tabbouleh":["4.0", "20 mins", "4"],
+                                "Taco Salad": ["4.8", "25 mins", "4"],
+                                "Mandarin Chicken Salad": ["3.9", "55 mins", "4"],
+                                "Southwest Chicken Salad": ["5.0", "6 hrs(Marinade) 20 mins", "4"],
+                                "Greek Chicken Salad": ["4.0", "35 mins", "4"],
+                                "Cobb Salad": ["4.8", "30 mins", "2"],
+                                "Smoked Salmon, Avocado, & Arugula":["4.3", "5 mins", "4"],
+                                "Grilled Peach and Burrata Salad": ["4.7", "20 mins", "4"],
+                                "Wild Rice and Arugula Salad": ["4.8", "50 mins", "4"],
+                                "Pulled Pork & Arugula Salad": ["4.0", "10 mins", "4"],
+                                "Easy Fruit Salad": ["5.0", "20 mins", "10"],
+                                "Berry Spinach Salad": ["4.7", "5 mins", "4"],
+                                "Citrus Shrimp Ceviche": ["4.8", "20 mins", "4"],
+                                "Melon Mozzarella Salad With Basil": ["4.7", "15 mins", "6"],
+                                "Watermelon, Cucumber, & Feta": ["4.3", "20 mins", "6"],
+                                "Orange, Fennel, & Avocado Salad": ["4.8", "15 mins", "4"],
+                                "Stone Fruit Salad With Vanilla Honey": ["3.9", "25 mins", "6"],
+                                "Shaved Brussels Sprouts Salad": ["4.5", "15 mins", "6"],
+                                "Kale Salad with Apples & Chicken": ["5.0", "20 mins", "4"],
+                                "Turkey Cobb Salad": ["4.9", "30 mins", "6"],
+                                "Squash, Romaine, & Goat Cheese": ["4.7", "40 mins", "4"],
+                                "Persimmon Caprese Salad": ["4.8", "15 mins", "2"],
+                                "Zucchini Noodle Caprese": ["5.0", "20 mins", "5"],
+                                "Sweet Potato Noodles Salad": ["4.3", "35 mins", "4"],
+                                "Carrot & Zucchini Salad": ["4.7", "15 mins", "4"],
+                                "Easy Cucumber Salad": ["5.0", "20 mins", "4"],
+                                "Massaged Kale Salad": ["4.5", "12 mins", "4"],
+                                "Israeli Salad": ["4.9", "5 mins", "4"],
+                                "Lentil Salad with Cucumber": ["5.0", "30 mins", "6"],
+                                "Broccoli Tuna Salad": ["4.6", "15 mins", "4"],
+                                "Egg Salad": ["5.0", "25 mins", "4"],
+                                "Avocado Egg Salad": ["5.0", "25 mins", "2"],
+                                "Potato Salad": ["5.0", "1 hr 15 mins", "10"]
+    };
+	var rateTimeServing = rateTimeServingDict[saladName];
+    $("#saladDesc").append("<p style='font-size:35px;'> Rating: " + rateTimeServing[0] + "<br> Prep Time: " + rateTimeServing[1] + "<br> Serving Size: " + rateTimeServing[2] + " </p>");
+
+	//$("#saladDesc").append("<p style='font-size:35px;'> Rating: 5.0 <br> Prep Time: 20 Min <br> Serving Size: 4 </p>");
+
 	$("#saladDesc").append("<p id='numObtained' class='green-text' style='font-size:40px;padding-top:2vh;font-weight:600;''><span id='haveIngredNum'>0</span>/<span id='totalIngredNum'>0</span> Obtained</p>");
 
 
