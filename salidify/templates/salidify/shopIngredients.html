@@ -251,7 +251,7 @@
 	    </div>
 		</div>
 
-		<div id="ingredientsContent">
+		<div id="ingredientsContainer">
 	    <div class="ingredientsList" id="haveList">
 	        <div class="listHeading">
 	            You Have <span id="haveIngredNum">0</span>/<span class="totalIngredNum">0<span>
@@ -313,5 +313,5 @@
     }
 
 	//necessary for scrolling through ingredients
-	$("#ingredientsContent").attr('style', 'height: ' + ($(window).height() - $("#topFixed").height() - 70 - $(".bottomBtnGroup").height()) + 'px; overflow-y:scroll;');
+	$("#ingredientsContainer").attr('style', 'height: ' + ($(window).height() - $("#topFixed").height() - 70 - $(".bottomBtnGroup").height()) + 'px; overflow-y:scroll;');
 </script>
