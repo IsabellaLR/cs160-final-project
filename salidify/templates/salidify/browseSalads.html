@@ -93,7 +93,7 @@
 				["Shrimp, Asparagus, & Avo Salad", "https://i2.wp.com/www.downshiftology.com/wp-content/uploads/2018/05/Shrimp-Asparagus-and-Avocado-Salad-Recipe-500x500.jpg", "Utterly delicious and perfect for spring.", ["1 pound raw shrimp, peeled and deveined", "4 cups baby spinach", "1/4 cup fresh parsley, chopped", "20 spears asparagus, (1 bunch)", "1 avocado, sliced", "3 green onions, sliced", "salt and pepper, to taste"], ["LEMON VINAIGRETTE"],
 				233, 0, 25, 916, ["Pescatarian", "Gluten-Free", "Dairy-Free"]],
 				["Cauliflower Rice Tabbouleh", "https://i2.wp.com/www.downshiftology.com/wp-content/uploads/2017/06/cauliflower-rice-tabbouleh-18-450x450.jpg", "A tasty spin on traditional tabbouleh.", ["1/2 medium head of cauliflower, riced (approx 4 cups)", "8 ounces cherry tomatoes, quartered", "1/2 cucumber, finely diced", "4 scallions, green onions, finely sliced", "2 cups fresh parsley, roughly chopped (approx 2 large bunches)", "1/3 cup fresh mint leaves, roughly chopped", "2 lemons, zested and juiced", "1/4 cup olive oil", "salt, to taste"], [],
-				184, 5, 3, 49, ["Vegam", "Vegetarian", "Pescatarian", "Gluten-Free", "Dairy-Free"]],
+				184, 5, 3, 49, ["Vegan", "Vegetarian", "Pescatarian", "Gluten-Free", "Dairy-Free"]],
 				["Taco Salad", "https://i2.wp.com/www.downshiftology.com/wp-content/uploads/2020/06/Taco-Salad-6-500x500.jpg", "Loaded with crisp vegetables, ground beef, & taco classics.", ["1 pound ground beef", "2 tablespoons taco seasoning", "salt and pepper, to taste", "1 head romaine lettuce or iceberg lettuce, chopped", "1 cup grape tomatoes, chopped", "1 cup black beans, drained and rinsed", "1 avocado, diced", "1/2 cup shredded cheese, optional", "1/2 cup salsa", "1/4 cup red onion, diced", "1/4 cup freshly chopped cilantro", "1 lime"], [],
 				433, 6, 34, 512, ["Gluten-Free"]],
 				["Mandarin Chicken Salad", "https://i2.wp.com/www.downshiftology.com/wp-content/uploads/2014/09/Mandarin-Chicken-Salad-main-1-640x640.jpg", "The perfect throw-together salad.", ["2 chicken breasts, boneless and skinless", "5 cups spinach", "4 mandarins, peeled and separated", "1 avocado, ripe and diced", "1 cucumber, sliced", "2 green onions, chopped", "1/4 cup slivered almonds", "sprinkle of black and white sesame seeds"], ["LEMON VINAIGRETTE"],
@@ -103,7 +103,7 @@
 				["Greek Chicken Salad", "https://i2.wp.com/www.downshiftology.com/wp-content/uploads/2021/01/Greek-Chicken-Salad-9-640x640.jpg", "Think Greek side salad turned into a hearty main dish.", ["1 large cucumber, sliced and diced", "1 pint cherry tomatoes, diced", "1 green bell pepper, diced", "1/2 red onion, thinly sliced", "1/2 cup kalamata olives, sliced", "4 ounces feta cheese, small diced", "1 avocado, peeled, pitted, and diced", "2 boneless skinless chicken breasts", "1 tablespoon olive oil", "1/2 teaspoon paprika", "1/2 teaspoon dried basil", "1/2 teaspoon dried thyme", "1/2 teaspoon dried oregano", "1/2 teaspoon dried parsley", "salt and pepper, to taste"], ["GREEK SALAD DRESSING"],
 				350, 7, 19, 687, ["Gluten-Free"]],
 				["Cobb Salad", "https://i2.wp.com/www.downshiftology.com/wp-content/uploads/2019/04/Cobb-Salad-3-500x500.jpg", "This classic American salad makes the most of simple ingredients.", ["2 hard-boiled eggs, quartered", "4 strips bacon, cooked and diced", "1 boneless skinless chicken breast, cooked and diced", "6 cups romaine and green leaf lettuce, roughly chopped", "1 cup cherry tomatoes, halved", "1/2 cup blue cheese crumbles", "1 avocado, sliced", "chopped chives", "salt and pepper, for garnish"], ["GREEK SALAD DRESSING"],
-				704, 5, 35, 961, ["Gluten-Free", ]],
+				704, 5, 35, 961, ["Gluten-Free"]],
 				["Smoked Salmon, Avocado, & Arugula", "https://i2.wp.com/www.downshiftology.com/wp-content/uploads/2018/08/Smoked-Salmon-Avocado-Arugula-Salad-500x500.jpg", "Ingredients come together for one absolutely gorgeous looking salad.", ["4 cups arugula", "1 cup microgreens", "6 ounces smoked salmon, torn into pieces", "1 1/2 avocado, sliced", "1 pear, sliced", "1/2 red onion, thinly sliced", "salt and pepper"], ["CHAMPAGNE VINAIGRETTE"],
 				240, 6, 10, 372, ["Pescatarian", "Gluten-Free", "Dairy-Free"]],
 				["Grilled Peach and Burrata Salad", "https://i2.wp.com/www.downshiftology.com/wp-content/uploads/2017/09/Grilled-Peach-Burrata-Salad-8-450x450.jpg", "True definition of summer.", ["8 oz burrata cheese", "3 peaches", "1 tbsp butter", "1 tbsp coconut sugar", "1/2 cup balsamic vinegar", "4 cups arugula", "1/4 cup pine nuts", "1/4 cup olive oil", "black pepper, to taste"], [],
@@ -326,12 +326,6 @@
 		sessionStorage.saladPicture = salads[index][1];
 		sessionStorage.saladName = salads[index][0];
 		sessionStorage.checkedIngredients = JSON.stringify([]);
-
-		sessionStorage.calories = JSON.stringify(salads[index][5]);
-		sessionStorage.sugar = JSON.stringify(salads[index][6]);
-		sessionStorage.protein = JSON.stringify(salads[index][7]);
-		sessionStorage.sodium = JSON.stringify(salads[index][8]);
-		sessionStorage.diets = JSON.stringify(salads[index][9]);
 		sessionStorage.similarityArray = JSON.stringify([]);
 	}
 
@@ -402,34 +396,235 @@
 		var approvedSaladNames = [];
 		var approved = [];
 		for (var i = 0; i < salads.length; i++) {
-			if (diets.includes("Vegan")) {
-				if ((salads[i][9].includes("Vegan")==true) & (approvedSaladNames.includes(salads[i][0])==false)) {
-						approvedSaladNames.push(salads[i][0]);
-						approved.push(salads[i]);
-				}
-			}
-			if (diets.includes("Vegetarian")) {
-				if ((salads[i][9].includes("Vegetarian")==true) & (approvedSaladNames.includes(salads[i][0])==false)) {
-					approvedSaladNames.push(salads[i][0]);
-					approved.push(salads[i]);
-				}
-			}
-			if (diets.includes("Pescatarian")) {
-				if ((salads[i][9].includes("Pescatarian")==true) & (approvedSaladNames.includes(salads[i][0])==false)) {
-					approvedSaladNames.push(salads[i][0]);
-					approved.push(salads[i]);
-				}
-			}
-			if (diets.includes("Gluten-Free")) {
-				if ((salads[i][9].includes("Gluten-Free")==true) & (approvedSaladNames.includes(salads[i][0])==false)) {
-					approvedSaladNames.push(salads[i][0]);
-					approved.push(salads[i]);
+			if (diets.length == 1) {
+				if (diets.includes("Vegan")) {
+					if ((salads[i][9].includes("Vegan")==true) & (approvedSaladNames.includes(salads[i][0])==false)) {
+							approvedSaladNames.push(salads[i][0]);
+							approved.push(salads[i]);
 					}
 				}
-			if (diets.includes("Dairy-Free")) {
-				if ((salads[i][9].includes("Dairy-Free")==true) & (approvedSaladNames.includes(salads[i][0])==false)) {
-					approvedSaladNames.push(salads[i][0]);
-					approved.push(salads[i]);
+				if (diets.includes("Vegetarian")) {
+					if ((salads[i][9].includes("Vegetarian")==true) & (approvedSaladNames.includes(salads[i][0])==false)) {
+						approvedSaladNames.push(salads[i][0]);
+						approved.push(salads[i]);
+					}
+				}
+				if (diets.includes("Pescatarian")) {
+					if ((salads[i][9].includes("Pescatarian")==true) & (approvedSaladNames.includes(salads[i][0])==false)) {
+						approvedSaladNames.push(salads[i][0]);
+						approved.push(salads[i]);
+					}
+				}
+				if (diets.includes("Gluten-Free")) {
+					if ((salads[i][9].includes("Gluten-Free")==true) & (approvedSaladNames.includes(salads[i][0])==false)) {
+						approvedSaladNames.push(salads[i][0]);
+						approved.push(salads[i]);
+						}
+					}
+				if (diets.includes("Dairy-Free")) {
+					if ((salads[i][9].includes("Dairy-Free")==true) & (approvedSaladNames.includes(salads[i][0])==false)) {
+						approvedSaladNames.push(salads[i][0]);
+						approved.push(salads[i]);
+					}
+				}
+			} else if (diets.length == 2) {
+				if (diets.includes("Vegan") & (diets.includes("Vegetarian"))) {
+					if ((salads[i][9].includes("Vegan")==true) & (salads[i][9].includes("Vegetarian"))
+						& (approvedSaladNames.includes(salads[i][0])==false)) {
+						approvedSaladNames.push(salads[i][0]);
+						approved.push(salads[i]);
+					}
+				}
+				if (diets.includes("Vegan") & (diets.includes("Pescatarian"))) {
+					if ((salads[i][9].includes("Vegan")==true) & (salads[i][9].includes("Pescatarian"))
+						& (approvedSaladNames.includes(salads[i][0])==false)) {
+						approvedSaladNames.push(salads[i][0]);
+						approved.push(salads[i]);
+					}
+				}
+				if (diets.includes("Vegan") & (diets.includes("Gluten-Free"))) {
+					if ((salads[i][9].includes("Vegan")==true) & (salads[i][9].includes("Gluten-Free"))
+						& (approvedSaladNames.includes(salads[i][0])==false)) {
+						approvedSaladNames.push(salads[i][0]);
+						approved.push(salads[i]);
+					}
+				}
+				if (diets.includes("Vegan") & (diets.includes("Dairy-Free"))) {
+					if ((salads[i][9].includes("Vegan")==true) & (salads[i][9].includes("Dairy-Free"))
+						& (approvedSaladNames.includes(salads[i][0])==false)) {
+						approvedSaladNames.push(salads[i][0]);
+						approved.push(salads[i]);
+					}
+				}
+				if (diets.includes("Vegetarian") & (diets.includes("Pescatarian"))) {
+					if ((salads[i][9].includes("Vegetarian")==true) & (salads[i][9].includes("Pescatarian"))
+						& (approvedSaladNames.includes(salads[i][0])==false)) {
+						approvedSaladNames.push(salads[i][0]);
+						approved.push(salads[i]);
+					}
+				}
+				if (diets.includes("Vegetarian") & (diets.includes("Gluten-Free"))) {
+					if ((salads[i][9].includes("Vegetarian")==true) & (salads[i][9].includes("Gluten-Free"))
+						& (approvedSaladNames.includes(salads[i][0])==false)) {
+						approvedSaladNames.push(salads[i][0]);
+						approved.push(salads[i]);
+					}
+				}
+				if (diets.includes("Vegetarian") & (diets.includes("Dairy-Free"))) {
+					if ((salads[i][9].includes("Vegetarian")==true) & (salads[i][9].includes("Dairy-Free"))
+						& (approvedSaladNames.includes(salads[i][0])==false)) {
+						approvedSaladNames.push(salads[i][0]);
+						approved.push(salads[i]);
+					}
+				}
+				if (diets.includes("Pescatarian") & (diets.includes("Gluten-Free"))) {
+					if ((salads[i][9].includes("Pescatarian")==true) & (salads[i][9].includes("Gluten-Free"))
+						& (approvedSaladNames.includes(salads[i][0])==false)) {
+						approvedSaladNames.push(salads[i][0]);
+						approved.push(salads[i]);
+					}
+				}
+				if (diets.includes("Pescatarian") & (diets.includes("Dairy-Free"))) {
+					if ((salads[i][9].includes("Pescatarian")==true) & (salads[i][9].includes("Dairy-Free"))
+						& (approvedSaladNames.includes(salads[i][0])==false)) {
+						approvedSaladNames.push(salads[i][0]);
+						approved.push(salads[i]);
+					}
+				}
+				if (diets.includes("Gluten-Free") & (diets.includes("Dairy-Free"))) {
+					if ((salads[i][9].includes("Gluten-Free")==true) & (salads[i][9].includes("Dairy-Free"))
+						& (approvedSaladNames.includes(salads[i][0])==false)) {
+						approvedSaladNames.push(salads[i][0]);
+						approved.push(salads[i]);
+					}
+				}
+			} else if (diets.length == 3) {
+				// Vegan, Vege, Pesc,
+				if (diets.includes("Vegan") & (diets.includes("Vegetarian")) & (diets.includes("Pescatarian"))) {
+					if ((salads[i][9].includes("Vegan")==true) & (salads[i][9].includes("Vegetarian")) & (salads[i][9].includes("Pescatarian"))
+						& (approvedSaladNames.includes(salads[i][0])==false)) {
+						approvedSaladNames.push(salads[i][0]);
+						approved.push(salads[i]);
+					}
+				}
+				// Vegan, Vege, GF,
+				if (diets.includes("Vegan") & (diets.includes("Vegetarian")) & (diets.includes("Gluten-Free"))) {
+					if ((salads[i][9].includes("Vegan")==true) & (salads[i][9].includes("Vegetarian")) & (salads[i][9].includes("Gluten-Free"))
+						& (approvedSaladNames.includes(salads[i][0])==false)) {
+						approvedSaladNames.push(salads[i][0]);
+						approved.push(salads[i]);
+					}
+				}
+				// Vegan, Vege, DF,
+				if (diets.includes("Vegan") & (diets.includes("Vegetarian")) & (diets.includes("Dairy-Free"))) {
+					if ((salads[i][9].includes("Vegan")==true) & (salads[i][9].includes("Vegetarian")) & (salads[i][9].includes("Dairy-Free"))
+						& (approvedSaladNames.includes(salads[i][0])==false)) {
+						approvedSaladNames.push(salads[i][0]);
+						approved.push(salads[i]);
+					}
+				}
+				// Vegan, Pesc, GF,
+				if (diets.includes("Vegan") & (diets.includes("Pescatarian")) & (diets.includes("Gluten-Free"))) {
+					if ((salads[i][9].includes("Vegan")==true) & (salads[i][9].includes("Pescatarian")) & (salads[i][9].includes("Gluten-Free"))
+						& (approvedSaladNames.includes(salads[i][0])==false)) {
+						approvedSaladNames.push(salads[i][0]);
+						approved.push(salads[i]);
+					}
+				}
+				// Vegan, Pesc, DF,
+				if (diets.includes("Vegan") & (diets.includes("Pescatarian")) & (diets.includes("Dairy-Free"))) {
+					if ((salads[i][9].includes("Vegan")==true) & (salads[i][9].includes("Pescatarian")) & (salads[i][9].includes("Dairy-Free"))
+						& (approvedSaladNames.includes(salads[i][0])==false)) {
+						approvedSaladNames.push(salads[i][0]);
+						approved.push(salads[i]);
+					}
+				}
+				// Vege, Pesc, GF,
+				if (diets.includes("Vegetarian") & (diets.includes("Pescatarian")) & (diets.includes("Gluten-Free"))) {
+					if ((salads[i][9].includes("Vegetarian")==true) & (salads[i][9].includes("Pescatarian")) & (salads[i][9].includes("Gluten-Free"))
+						& (approvedSaladNames.includes(salads[i][0])==false)) {
+						approvedSaladNames.push(salads[i][0]);
+						approved.push(salads[i]);
+					}
+				}
+				// Vege, Pesc, DF,
+				if (diets.includes("Vegetarian") & (diets.includes("Pescatarian")) & (diets.includes("Dairy-Free"))) {
+					if ((salads[i][9].includes("Vegetarian")==true) & (salads[i][9].includes("Pescatarian")) & (salads[i][9].includes("Dairy-Free"))
+						& (approvedSaladNames.includes(salads[i][0])==false)) {
+						approvedSaladNames.push(salads[i][0]);
+						approved.push(salads[i]);
+					}
+				}
+				// Pesc, GF, DF
+				if (diets.includes("Pescatarian") & (diets.includes("Gluten-Free")) & (diets.includes("Dairy-Free"))) {
+					if ((salads[i][9].includes("Pescatarian")==true) & (salads[i][9].includes("Gluten-Free")) & (salads[i][9].includes("Dairy-Free"))
+						& (approvedSaladNames.includes(salads[i][0])==false)) {
+						approvedSaladNames.push(salads[i][0]);
+						approved.push(salads[i]);
+					}
+				}
+				// Vegan, GF, DF
+				if (diets.includes("Vegan") & (diets.includes("Gluten-Free")) & (diets.includes("Dairy-Free"))) {
+					if ((salads[i][9].includes("Vegan")==true) & (salads[i][9].includes("Gluten-Free")) & (salads[i][9].includes("Dairy-Free"))
+						& (approvedSaladNames.includes(salads[i][0])==false)) {
+						approvedSaladNames.push(salads[i][0]);
+						approved.push(salads[i]);
+					}
+				}
+				// Veg, GF, DF
+				if (diets.includes("Vegetarian") & (diets.includes("Gluten-Free")) & (diets.includes("Dairy-Free"))) {
+					if ((salads[i][9].includes("Vegetarian")==true) & (salads[i][9].includes("Gluten-Free")) & (salads[i][9].includes("Dairy-Free"))
+						& (approvedSaladNames.includes(salads[i][0])==false)) {
+						approvedSaladNames.push(salads[i][0]);
+						approved.push(salads[i]);
+					}
+				}
+			} else if (diets.length == 4) {
+				// Vegan, Vege, Pesc, GF,
+				if (diets.includes("Vegan") & (diets.includes("Vegetarian")) & (diets.includes("Pescatarian")) & (diets.includes("Gluten-Free"))) {
+					if ((salads[i][9].includes("Vegan")==true) & (salads[i][9].includes("Vegetarian")) & (salads[i][9].includes("Pescatarian")) & (salads[i][9].includes("Gluten-Free"))
+						& (approvedSaladNames.includes(salads[i][0])==false)) {
+						approvedSaladNames.push(salads[i][0]);
+						approved.push(salads[i]);
+					}
+				}
+				// Vegan, Vege, Pesc, DF,
+				if (diets.includes("Vegan") & (diets.includes("Vegetarian")) & (diets.includes("Pescatarian")) & (diets.includes("Dairy-Free"))) {
+					if ((salads[i][9].includes("Vegan")==true) & (salads[i][9].includes("Vegetarian")) & (salads[i][9].includes("Pescatarian")) & (salads[i][9].includes("Dairy-Free"))
+						& (approvedSaladNames.includes(salads[i][0])==false)) {
+						approvedSaladNames.push(salads[i][0]);
+						approved.push(salads[i]);
+					}
+				}
+				// Vege, Pesc, GF, DF
+				if (diets.includes("Vegetarian") & (diets.includes("Pescatarian")) & (diets.includes("Gluten-Free")) & (diets.includes("Dairy-Free"))) {
+					if ((salads[i][9].includes("Vegetarian")==true) & (salads[i][9].includes("Pescatarian")) & (salads[i][9].includes("Gluten-Free")) & (salads[i][9].includes("Dairy-Free"))
+						& (approvedSaladNames.includes(salads[i][0])==false)) {
+						approvedSaladNames.push(salads[i][0]);
+						approved.push(salads[i]);
+					}
+				}
+				// Vegan, Pesc, GF, DF
+				if (diets.includes("Vegan") & (diets.includes("Pescatarian")) & (diets.includes("Gluten-Free")) & (diets.includes("Dairy-Free"))) {
+					if ((salads[i][9].includes("Vegan")==true) & (salads[i][9].includes("Pescatarian")) & (salads[i][9].includes("Gluten-Free")) & (salads[i][9].includes("Dairy-Free"))
+						& (approvedSaladNames.includes(salads[i][0])==false)) {
+						approvedSaladNames.push(salads[i][0]);
+						approved.push(salads[i]);
+					}
+				}
+				// Vegan, Vege, GF, DF
+				if (diets.includes("Vegan") & (diets.includes("Vegetarian")) & (diets.includes("Gluten-Free")) & (diets.includes("Dairy-Free"))) {
+					if ((salads[i][9].includes("Vegan")==true) & (salads[i][9].includes("Vegetarian")) & (salads[i][9].includes("Gluten-Free")) & (salads[i][9].includes("Dairy-Free"))
+						& (approvedSaladNames.includes(salads[i][0])==false)) {
+						approvedSaladNames.push(salads[i][0]);
+						approved.push(salads[i]);
+					}
+				}
+			} else if (diets.length == 5) {
+				if ((salads[i][9].includes("Vegetarian")==true) & (salads[i][9].includes("Vegan")==true) & (salads[i][9].includes("Pescatarian")) & (salads[i][9].includes("Gluten-Free")) & (salads[i][9].includes("Dairy-Free"))
+					& (approvedSaladNames.includes(salads[i][0])==false)) {
+						approvedSaladNames.push(salads[i][0]);
+						approved.push(salads[i]);
 				}
 			}
 		}
