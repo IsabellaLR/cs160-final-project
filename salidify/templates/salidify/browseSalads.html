@@ -289,6 +289,7 @@
 	}
 
 	//uppcase dressingDict
+	var counter = 0;
 	for (i in dressingsDict) {
 		for (var j = 0; j < dressingsDict[i].length; j++) {
 			var words = dressingsDict[i][j].split(" ");
@@ -303,16 +304,9 @@
 			}
 			dressingsDict[i][j] = words.join(" ");
 		}
+		dressingsDict[i] = dressingsDict[i].filter(item => !salads[counter][3].includes(item));
+		counter += 1;
 	}
-
-	function numIngredients(saladIngred, dressingIngred) {
-		totalIngred = saladIngred.length;
-		if (dressingIngred.length != 0) {
-			totalIngred += dressingIngred.length;
-		}
-		return totalIngred;
-	}
-
 
 	function setStorageVal(index){
 		sessionStorage.saladIndex = index;
@@ -377,12 +371,19 @@
 			sessionStorage.setItem("sodium_up", sodium_up);
 		}
 
+	function findLength(i) {
+		if (salads[i][4].length == 0) {
+			return salads[i][3].length;
+		} else {
+			return salads[i][3].length + dressingsDict[salads[i][4]].length;
+		}
+	}
 	var results = 0;
 	//alert(cal_up + " " + sugar_up + " " + protein_low + " " + sodium_up);
     for (var i = 0; i < salads.length; i++) {
 		if ((salads[i][5] < cal_up) & (salads[i][6] < sugar_up) & (salads[i][7] > protein_low) & (salads[i][8] < sodium_up)) {
 			results ++;
-			$('<a href="/salidify/viewIngredients"onclick="setStorageVal('+i+')"><div class="card"><div class="row"><div class="col-5 align-self-center"><img src="'+salads[i][1]+'"style="border-radius: 30px; width:100%; height:346px;"/></div><div class="col-7" style="padding-right: 0.5in; padding-top: 2.5%; padding-bottom: 2.5;"><div class="row" style="height: 40%; align-content:flex-end;"><div class="text" style="font-size: 48px; font-weight:700; font-family: Montserrat; color: #31A05E;">'+salads[i][0]+'</div></div><hr width = "100%" color="#31A05E" size="1"><div class="row" style="height: 30%;"><div class="text" style="font-size: 28px; font-family: Montserrat;">'+salads[i][2]+' <br> '+numIngredients(salads[i][3], salads[i][4])+' Ingredients</div></div></div></div></div></a>').appendTo('.card-container');
+			$('<a href="/salidify/viewIngredients"onclick="setStorageVal('+i+')"><div class="card"><div class="row"><div class="col-5 align-self-center"><img src="'+salads[i][1]+'"style="border-radius: 30px; width:100%; height:346px;"/></div><div class="col-7" style="padding-right: 0.5in; padding-top: 2.5%; padding-bottom: 2.5;"><div class="row" style="height: 40%; align-content:flex-end;"><div class="text" style="font-size: 48px; font-weight:700; font-family: Montserrat; color: #31A05E;">'+salads[i][0]+'</div></div><hr width = "100%" color="#31A05E" size="1"><div class="row" style="height: 30%;"><div class="text" style="font-size: 28px; font-family: Montserrat;">'+salads[i][2]+' <br> '+findLength(i)+' Ingredients</div></div></div></div></div></a>').appendTo('.card-container');
 		}
 	}
 	//alert(results + " found");
