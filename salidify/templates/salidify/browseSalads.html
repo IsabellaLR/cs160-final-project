@@ -374,10 +374,18 @@
 	}
 
 	var diets;
-	if (JSON.parse(sessionStorage.getItem("diets")) != null){
-		diets = JSON.parse(sessionStorage.getItem("diets"));
-		console.log(diets);
-		sessionStorage.setItem("diets", JSON.stringify(diets));
+	console.log("DIETS");
+	console.log(sessionStorage.diets);
+	if (sessionStorage.diets != undefined){
+		try {
+			diets = JSON.parse(sessionStorage.getItem("diets"));
+			console.log(diets);
+			sessionStorage.setItem("diets", JSON.stringify(diets));
+		} catch (error) {
+			sessionStorage.diets = JSON.stringify([]);
+		}
+	} else {
+		sessionStorage.diets = JSON.stringify([]);
 	}
 
 	var results = 0;
