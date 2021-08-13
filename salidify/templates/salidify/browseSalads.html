@@ -395,36 +395,42 @@
 	} else {
 		var approvedSaladNames = [];
 		var approved = [];
+		var approvedSaladIng = [];
 		for (var i = 0; i < salads.length; i++) {
 			if (diets.length == 1) {
 				if (diets.includes("Vegan")) {
 					if ((salads[i][9].includes("Vegan")==true) & (approvedSaladNames.includes(salads[i][0])==false)) {
 							approvedSaladNames.push(salads[i][0]);
 							approved.push(salads[i]);
+							approvedSaladIng.push(saladIngredients[i]);
 					}
 				}
 				if (diets.includes("Vegetarian")) {
 					if ((salads[i][9].includes("Vegetarian")==true) & (approvedSaladNames.includes(salads[i][0])==false)) {
 						approvedSaladNames.push(salads[i][0]);
 						approved.push(salads[i]);
+						approvedSaladIng.push(saladIngredients[i]);
 					}
 				}
 				if (diets.includes("Pescatarian")) {
 					if ((salads[i][9].includes("Pescatarian")==true) & (approvedSaladNames.includes(salads[i][0])==false)) {
 						approvedSaladNames.push(salads[i][0]);
 						approved.push(salads[i]);
+						approvedSaladIng.push(saladIngredients[i]);
 					}
 				}
 				if (diets.includes("Gluten-Free")) {
 					if ((salads[i][9].includes("Gluten-Free")==true) & (approvedSaladNames.includes(salads[i][0])==false)) {
 						approvedSaladNames.push(salads[i][0]);
 						approved.push(salads[i]);
+						approvedSaladIng.push(saladIngredients[i]);
 						}
 					}
 				if (diets.includes("Dairy-Free")) {
 					if ((salads[i][9].includes("Dairy-Free")==true) & (approvedSaladNames.includes(salads[i][0])==false)) {
 						approvedSaladNames.push(salads[i][0]);
 						approved.push(salads[i]);
+						approvedSaladIng.push(saladIngredients[i]);
 					}
 				}
 			} else if (diets.length == 2) {
@@ -433,6 +439,7 @@
 						& (approvedSaladNames.includes(salads[i][0])==false)) {
 						approvedSaladNames.push(salads[i][0]);
 						approved.push(salads[i]);
+						approvedSaladIng.push(saladIngredients[i]);
 					}
 				}
 				if (diets.includes("Vegan") & (diets.includes("Pescatarian"))) {
@@ -440,6 +447,7 @@
 						& (approvedSaladNames.includes(salads[i][0])==false)) {
 						approvedSaladNames.push(salads[i][0]);
 						approved.push(salads[i]);
+						approvedSaladIng.push(saladIngredients[i]);
 					}
 				}
 				if (diets.includes("Vegan") & (diets.includes("Gluten-Free"))) {
@@ -447,6 +455,7 @@
 						& (approvedSaladNames.includes(salads[i][0])==false)) {
 						approvedSaladNames.push(salads[i][0]);
 						approved.push(salads[i]);
+						approvedSaladIng.push(saladIngredients[i]);
 					}
 				}
 				if (diets.includes("Vegan") & (diets.includes("Dairy-Free"))) {
@@ -454,6 +463,7 @@
 						& (approvedSaladNames.includes(salads[i][0])==false)) {
 						approvedSaladNames.push(salads[i][0]);
 						approved.push(salads[i]);
+						approvedSaladIng.push(saladIngredients[i]);
 					}
 				}
 				if (diets.includes("Vegetarian") & (diets.includes("Pescatarian"))) {
@@ -461,6 +471,7 @@
 						& (approvedSaladNames.includes(salads[i][0])==false)) {
 						approvedSaladNames.push(salads[i][0]);
 						approved.push(salads[i]);
+						approvedSaladIng.push(saladIngredients[i]);
 					}
 				}
 				if (diets.includes("Vegetarian") & (diets.includes("Gluten-Free"))) {
@@ -468,6 +479,7 @@
 						& (approvedSaladNames.includes(salads[i][0])==false)) {
 						approvedSaladNames.push(salads[i][0]);
 						approved.push(salads[i]);
+						approvedSaladIng.push(saladIngredients[i]);
 					}
 				}
 				if (diets.includes("Vegetarian") & (diets.includes("Dairy-Free"))) {
@@ -475,6 +487,7 @@
 						& (approvedSaladNames.includes(salads[i][0])==false)) {
 						approvedSaladNames.push(salads[i][0]);
 						approved.push(salads[i]);
+						approvedSaladIng.push(saladIngredients[i]);
 					}
 				}
 				if (diets.includes("Pescatarian") & (diets.includes("Gluten-Free"))) {
@@ -482,6 +495,7 @@
 						& (approvedSaladNames.includes(salads[i][0])==false)) {
 						approvedSaladNames.push(salads[i][0]);
 						approved.push(salads[i]);
+						approvedSaladIng.push(saladIngredients[i]);
 					}
 				}
 				if (diets.includes("Pescatarian") & (diets.includes("Dairy-Free"))) {
@@ -489,6 +503,7 @@
 						& (approvedSaladNames.includes(salads[i][0])==false)) {
 						approvedSaladNames.push(salads[i][0]);
 						approved.push(salads[i]);
+						approvedSaladIng.push(saladIngredients[i]);
 					}
 				}
 				if (diets.includes("Gluten-Free") & (diets.includes("Dairy-Free"))) {
@@ -496,6 +511,7 @@
 						& (approvedSaladNames.includes(salads[i][0])==false)) {
 						approvedSaladNames.push(salads[i][0]);
 						approved.push(salads[i]);
+						approvedSaladIng.push(saladIngredients[i]);
 					}
 				}
 			} else if (diets.length == 3) {
@@ -505,6 +521,7 @@
 						& (approvedSaladNames.includes(salads[i][0])==false)) {
 						approvedSaladNames.push(salads[i][0]);
 						approved.push(salads[i]);
+						approvedSaladIng.push(saladIngredients[i]);
 					}
 				}
 				// Vegan, Vege, GF,
@@ -513,6 +530,7 @@
 						& (approvedSaladNames.includes(salads[i][0])==false)) {
 						approvedSaladNames.push(salads[i][0]);
 						approved.push(salads[i]);
+						approvedSaladIng.push(saladIngredients[i]);
 					}
 				}
 				// Vegan, Vege, DF,
@@ -521,6 +539,7 @@
 						& (approvedSaladNames.includes(salads[i][0])==false)) {
 						approvedSaladNames.push(salads[i][0]);
 						approved.push(salads[i]);
+						approvedSaladIng.push(saladIngredients[i]);
 					}
 				}
 				// Vegan, Pesc, GF,
@@ -529,6 +548,7 @@
 						& (approvedSaladNames.includes(salads[i][0])==false)) {
 						approvedSaladNames.push(salads[i][0]);
 						approved.push(salads[i]);
+						approvedSaladIng.push(saladIngredients[i]);
 					}
 				}
 				// Vegan, Pesc, DF,
@@ -537,6 +557,7 @@
 						& (approvedSaladNames.includes(salads[i][0])==false)) {
 						approvedSaladNames.push(salads[i][0]);
 						approved.push(salads[i]);
+						approvedSaladIng.push(saladIngredients[i]);
 					}
 				}
 				// Vege, Pesc, GF,
@@ -545,6 +566,7 @@
 						& (approvedSaladNames.includes(salads[i][0])==false)) {
 						approvedSaladNames.push(salads[i][0]);
 						approved.push(salads[i]);
+						approvedSaladIng.push(saladIngredients[i]);
 					}
 				}
 				// Vege, Pesc, DF,
@@ -553,6 +575,7 @@
 						& (approvedSaladNames.includes(salads[i][0])==false)) {
 						approvedSaladNames.push(salads[i][0]);
 						approved.push(salads[i]);
+						approvedSaladIng.push(saladIngredients[i]);
 					}
 				}
 				// Pesc, GF, DF
@@ -561,6 +584,7 @@
 						& (approvedSaladNames.includes(salads[i][0])==false)) {
 						approvedSaladNames.push(salads[i][0]);
 						approved.push(salads[i]);
+						approvedSaladIng.push(saladIngredients[i]);
 					}
 				}
 				// Vegan, GF, DF
@@ -569,6 +593,7 @@
 						& (approvedSaladNames.includes(salads[i][0])==false)) {
 						approvedSaladNames.push(salads[i][0]);
 						approved.push(salads[i]);
+						approvedSaladIng.push(saladIngredients[i]);
 					}
 				}
 				// Veg, GF, DF
@@ -577,6 +602,7 @@
 						& (approvedSaladNames.includes(salads[i][0])==false)) {
 						approvedSaladNames.push(salads[i][0]);
 						approved.push(salads[i]);
+						approvedSaladIng.push(saladIngredients[i]);
 					}
 				}
 			} else if (diets.length == 4) {
@@ -586,6 +612,7 @@
 						& (approvedSaladNames.includes(salads[i][0])==false)) {
 						approvedSaladNames.push(salads[i][0]);
 						approved.push(salads[i]);
+						approvedSaladIng.push(saladIngredients[i]);
 					}
 				}
 				// Vegan, Vege, Pesc, DF,
@@ -594,6 +621,7 @@
 						& (approvedSaladNames.includes(salads[i][0])==false)) {
 						approvedSaladNames.push(salads[i][0]);
 						approved.push(salads[i]);
+						approvedSaladIng.push(saladIngredients[i]);
 					}
 				}
 				// Vege, Pesc, GF, DF
@@ -602,6 +630,7 @@
 						& (approvedSaladNames.includes(salads[i][0])==false)) {
 						approvedSaladNames.push(salads[i][0]);
 						approved.push(salads[i]);
+						approvedSaladIng.push(saladIngredients[i]);
 					}
 				}
 				// Vegan, Pesc, GF, DF
@@ -610,6 +639,7 @@
 						& (approvedSaladNames.includes(salads[i][0])==false)) {
 						approvedSaladNames.push(salads[i][0]);
 						approved.push(salads[i]);
+						approvedSaladIng.push(saladIngredients[i]);
 					}
 				}
 				// Vegan, Vege, GF, DF
@@ -618,6 +648,7 @@
 						& (approvedSaladNames.includes(salads[i][0])==false)) {
 						approvedSaladNames.push(salads[i][0]);
 						approved.push(salads[i]);
+						approvedSaladIng.push(saladIngredients[i]);
 					}
 				}
 			} else if (diets.length == 5) {
@@ -625,6 +656,27 @@
 					& (approvedSaladNames.includes(salads[i][0])==false)) {
 						approvedSaladNames.push(salads[i][0]);
 						approved.push(salads[i]);
+						approvedSaladIng.push(saladIngredients[i]);
+				}
+			}
+			function setStorageVal(index){
+				sessionStorage.saladIndex = index;
+				sessionStorage.saladIngredients = JSON.stringify(approved[index][3]);
+
+				var ingredientsUnique = approvedSaladIng[index].filter( function( item, index, inputArray ) {
+					return inputArray.indexOf(item) == index;
+				});
+				sessionStorage.saladIngredientsNoMetrics = JSON.stringify(ingredientsUnique);
+				sessionStorage.saladPicture = approved[index][1];
+				sessionStorage.saladName =approved[index][0];
+				sessionStorage.dressingName = approved[index][0];
+				if (approved[index][4].length == 0) {
+					sessionStorage.dressingIngredients = JSON.stringify([]);
+					sessionStorage.dressingName = "";
+				} else {
+					var dressingUnique = dressingsDict[approved[index][4]].filter(item => !approved[index][3].includes(item));
+					sessionStorage.dressingIngredients = JSON.stringify(dressingUnique);
+					sessionStorage.dressingName = approved[index][4];
 				}
 			}
 		}
