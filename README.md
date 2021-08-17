@@ -1,5 +1,5 @@
-# P1
-Find an in-depth assignment description in the Google Doc [here](https://docs.google.com/document/d/1xXc3rhyJF0DQz-pQHD-rVkBbjE7yo8WIQvCPbBne0XE). 
+# Final Project
+Saladify is an application designed for salad lovers who enjoy exploring new recipes that support their healthy, balanced lifestyle. It helps those who prioritize variety, convenience, and flexibility in their exploratory cooking habits.
 
 ### Index
 File: `weather/templates/saladify/index.html`
